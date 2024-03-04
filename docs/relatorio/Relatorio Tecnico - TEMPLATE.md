@@ -1,27 +1,15 @@
 # Informações do Projeto
 `Sistema de Gerenciamento da Loja Empório Jeito Simples`  
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
+# Curso 
 `Sistemas de Informação` 
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
 ## Participantes
-
-`Abner Mateus de Oliveira Santos`
-`Hadassa Brenda Souza Santos`
-`Igor Lucas Assunção Ribas`
-`Pedro Henrique Marques Simões`
-`Victor de Castro Nakabayashi`
-
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua a lista dos membros da equipe com seus nomes completos.
->
-> Os membros do grupo são: 
-> - Fulano da Silva
-> - Ciclano Albuquerque
+`- Abner Mateus de Oliveira Santos`
+`- Hadassa Brenda Souza Santos`
+`- Igor Lucas Assunção Ribas`
+`- Pedro Henrique Marques Simões`
+`- Victor de Castro Nakabayashi`
 
 # Estrutura do Documento
 
