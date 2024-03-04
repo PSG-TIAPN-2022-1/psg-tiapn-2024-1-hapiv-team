@@ -1,13 +1,19 @@
 # Informações do Projeto
-`TÍTULO DO PROJETO`  
+`Sistema de Gerenciamento da Loja Empório Jeito Simples`  
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
-`CURSO` 
+`Sistemas de Informação` 
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
 ## Participantes
+
+`Abner Mateus de Oliveira Santos`
+`Hadassa Brenda Souza Santos`
+`Igor Lucas Assunção Ribas`
+`Pedro Henrique Marques Simões`
+`Victor de Castro Nakabayashi`
 
 ......  COLOQUE AQUI O SEU TEXTO ......
 
