@@ -5,10 +5,10 @@
 `Sistemas de Informação` 
 
 ## Participantes
-`- Abner Mateus de Oliveira Santos`
-`- Hadassa Brenda Souza Santos`
-`- Igor Lucas Assunção Ribas`
-`- Pedro Henrique Marques Simões`
+`- Abner Mateus de Oliveira Santos`<br>
+`- Hadassa Brenda Souza Santos`<br>
+`- Igor Lucas Assunção Ribas`<br>
+`- Pedro Henrique Marques Simões`<br>
 `- Victor de Castro Nakabayashi`
 
 # Estrutura do Documento
