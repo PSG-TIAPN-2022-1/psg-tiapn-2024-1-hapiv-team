@@ -130,12 +130,20 @@ O público-alvo é o Empório jeito simples. Empresas de pequeno porte como essa
 > - [Como fazer um mapa de empatia - Vídeo](https://www.youtube.com/watch?v=JlKHGpVoA2Y)
 > 
 > 
-> **Exemplo de Persona**
+> **PersonaS**
+> ![Persona-Angela docx](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/65b75cfc-a953-42a4-a30c-00bcfdb589cb)
 > 
+> ![Persona-Fabio (1)](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/bd93f4ed-bcb3-4784-a1cf-91d820a9c31f)
+>
+> ![Persona-Wide (1)](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/1fe25fe1-0a1a-47c6-8b05-3b187fac3358)
+>
 > 
-> ![Exemplo de Imagem](docs/relatorio/images/ME-Rose.png)
+> **MAPAS DE EMPATIA**
 > ![ME-Rose](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/25534c71-2dec-480c-812d-130b73232f9d)
-
+>
+>![ME-Wide](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/5116823a-eabc-4fc9-8ca0-622db2249575)
+>
+>![ME-Fabio](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/ce16d24b-a5fa-43c9-8d77-44715666d850)
 
 > 
 > Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
