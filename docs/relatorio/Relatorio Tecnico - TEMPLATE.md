@@ -139,7 +139,7 @@ O público-alvo é o Empório jeito simples. Empresas de pequeno porte como essa
 
 > (https://google.com)
 > (https://www.youtube.com/watch?v=JlKHGpVoA2Y)
-> (docs/relatorio/images/ME-Fabio.png)
+> docs/relatorio/images/ME-Fabio.png
 
 ## Histórias de Usuários
 
