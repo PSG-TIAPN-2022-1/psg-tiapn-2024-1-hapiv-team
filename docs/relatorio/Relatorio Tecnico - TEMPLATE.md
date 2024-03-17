@@ -134,14 +134,15 @@ O público-alvo é o Empório jeito simples. Empresas de pequeno porte como essa
 > 
 > 
 > ![Exemplo de Imagem](docs/relatorio/images/ME-Rose.png)
-> 
+> ![ME-Rose](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/25534c71-2dec-480c-812d-130b73232f9d)
+
+
 > 
 > Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
 
 ## Histórias de Usuários
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
-
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
 |Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
