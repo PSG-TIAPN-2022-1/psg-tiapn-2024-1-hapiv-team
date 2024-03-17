@@ -132,7 +132,8 @@ O público-alvo é o Empório jeito simples. Empresas de pequeno porte como essa
 > 
 > **Exemplo de Persona**
 > 
-> (images/../images/ME-Rose.png)
+> 
+> ![Exemplo de Imagem](imagens/ME-Rose.jpg)
 > 
 > 
 > Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
