@@ -1,18 +1,18 @@
 # Informações do Projeto
 
-`Sistema de Gerenciamento da Loja Empório Jeito Simples`
+Sistema de Gerenciamento da Loja Empório Jeito Simples
 
 # Curso
 
-`Sistemas de Informação`
+Sistemas de Informação
 
 ## Participantes
 
-`- Abner Mateus de Oliveira Santos`<br>
-`- Hadassa Brenda Souza Santos`<br>
-`- Igor Lucas Assunção Ribas`<br>
-`- Pedro Henrique Marques Simões`<br>
-`- Victor de Castro Nakabayashi`
+- Abner Mateus de Oliveira Santos<br>
+- Hadassa Brenda Souza Santos<br>
+- Igor Lucas Assunção Ribas<br>
+- Pedro Henrique Marques Simões<br>
+- Victor de Castro Nakabayashi
 
 # Estrutura do Documento
 
@@ -64,7 +64,7 @@ O público-alvo da obra são empresas de médio porte que enfrentam desafios sim
 
 ## Público-Alvo
 
-O público-alvo é o Empório jeito simples. Empresas de pequeno porte como essa geralmente não possuem qualquer método adequado, e acabam por usar o Excel por exemplo que é bem lento, normalmente também não possuem o conhecimento de como criar um sistema/software que consiga ajuda-los. A hierarquia não é bem definida já que a empresa é familiar, mas possui uma gestora e é ela com quem precisamos mais nos comunicar.
+O público-alvo é a empresa Empório Jeito Simples. Empresas de pequeno porte como essa geralmente não possuem qualquer método adequado, e acabam por usar o Excel por exemplo que é bem lento, normalmente também não possuem o conhecimento de como criar um sistema/software que consiga ajuda-los. A hierarquia não é bem definida já que a empresa é familiar, mas possui uma gestora e é ela com quem precisamos mais nos comunicar.
 
 # Especificações do Projeto
 
@@ -92,7 +92,7 @@ Do ponto de vista técnico, o sistema será construído usando tecnologias moder
 
 ## Histórias de Usuários
 
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
+Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
 | EU COMO... `PERSONA` | QUERO/PRECISO ... `FUNCIONALIDADE`                          | PARA ... `MOTIVO/VALOR`                                                                                        |
 | -------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -138,89 +138,40 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Wireframes
 
-...... INCLUA AQUI OS WIREFRAMES DAS TELAS DA APLICAÇÃO COM UM BREVE DESCRITIVO ......
-
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a
-> estrutura de um site web e seu relacionamentos entre suas
-> páginas. Um wireframe web é uma ilustração semelhante ao
-> layout de elementos fundamentais na interface.
->
-> **Links Úteis**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
->
-> **Exemplo**:
->
-> ![Exemplo de Wireframe](images/wireframe-example.png)
 
 # Metodologia
 
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Nesta parte do documento, você deve apresentar a metodologia
-> adotada pelo grupo, descrevendo o processo de trabalho baseado nas metodologias ágeis,
-> a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a
-> gestão de configuração do projeto via GitHub.
->
-> Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
->
-> **Links Úteis**:
->
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
+O grupo adotou as metodologias ágeis Scrum (para divisão de funções) e Kanban (para divisão de tarefas).
+A equipe foi dividida em: 1 Product Owner, 1 Scrum Master, 1 Designer, 2 Desenvolvedores Líderes e 3 desenvolvedores.
+Para a divisão de tarefas, foi criada uma área de trabalho baseada num template pré-definido no Trello, com as colunas “Recursos para Projetos”, “Perguntas para a Próxima Reunião”, “A fazer”, “Pendente”, “Bloqueio” e “Concluído”.
 
 ## Divisão de Papéis
 
-...... COLOQUE AQUI O SEU TEXTO ......
+Product Owner (PO): Hadassa
 
-> Apresente a divisão de papéis e tarefas entre os membros do grupo.
->
-> **Links Úteis**:
->
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+Scrum Master (SM): Abner
+
+Designer: Igor
+
+Desenvolvedores Líderes (DL): Abner e Igor
+
+Desenvolvedores (Devs): Hadassa, Pedro e Victor
 
 ## Ferramentas
 
-...... COLOQUE AQUI O SEU TEXTO - SIGA O EXEMPLO DA TABELA ABAIXO ......
-
 | Ambiente                    | Plataforma        | Link de Acesso                |
 | --------------------------- | ----------------- | ----------------------------- |
-| Processo de Design Thinkgin | Miro              | https://miro.com/XXXXXXX      |
+| Editor de Código            | Miro              | https://miro.com/XXXXXXX      |
 | Repositório de código       | GitHub            | https://github.com/XXXXXXX    |
 | Hospedagem do site          | Heroku            | https://XXXXXXX.herokuapp.com |
 | Protótipo Interativo        | MavelApp ou Figma | https://figma.com/XXXXXXX     |
 
-> Liste as ferramentas empregadas no desenvolvimento do
-> projeto, justificando a escolha delas, sempre que possível.
->
-> As ferramentas empregadas no projeto são:
->
-> - Editor de código.
-> - Ferramentas de comunicação
-> - Ferramentas de diagramação
-> - Plataforma de hospedagem
->
-> O editor de código foi escolhido porque ele possui uma integração com o
-> sistema de versão. As ferramentas de comunicação utilizadas possuem
-> integração semelhante e por isso foram selecionadas. Por fim, para criar
-> diagramas utilizamos essa ferramenta por melhor captar as
-> necessidades da nossa solução.
->
-> **Links Úteis - Hospedagem**:
->
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Crie seu Site com o HostGator](https://www.hostgator.com.br/como-publicar-seu-site)
-> - [GoDady](https://br.godaddy.com/how-to)
-> - [GitHub Pages](https://pages.github.com/)
+Os editores de código VsCode e Visual Studio 2022 foram escolhidos pela afinidade que os integrantes do grupo já possuem com as plataformas.
+O Github foi selecionado como gerenciador de versionamento do código por possuir uma interface amigável, além de oferecer múltiplas funcionalidades de visualização das alterações no código. 
+Como ferramenta de metologia ágil, será utilizada a plataforma Trello, por ser fácil para implementar e visualizar o Scrum/Kanban do projeto.
+Para design da solução proposta, foi selecionada a plataforma Figma, por ter várias opções de confecção de UI (User Interface), Wireframes, etc.
+Além disso, para comunicação, estão sendo utilizados o Whatsapp e Teams para comunicação interna do grupo e Google Meet para reuniões com o cliente.   
+
 
 ## Controle de Versão
 
