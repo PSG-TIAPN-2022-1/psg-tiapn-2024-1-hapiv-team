@@ -56,6 +56,7 @@ Apesar dos avanços tecnológicos, é notável que muitas empresas ainda recorre
 
 ## Objetivos
 Objetivo Geral: O objetivo geral do trabalho é desenvolver um sistema de gestão financeira para a empresa, de forma que ela tenha um melhor controle sobre seus custos e lucros. O sistema deve permitir que a empresa faça o acompanhamento de suas receitas e despesas, bem como a análise de seus resultados financeiros.
+
 Objetivos específicos: O principal objetivo é desenvolver um sistema que permita o registro de receitas e despesas da empresa e a análise de resultados financeiros.
 ## Justificativa
 
