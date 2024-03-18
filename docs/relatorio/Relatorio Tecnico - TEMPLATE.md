@@ -73,7 +73,6 @@ As especificações deste projeto fornecem uma visão abrangente dos requisitos 
 No entanto, certas funcionalidades e características estão fora do escopo deste projeto eserão consideradas para desenvolvimento futuro.
 Os requisitos funcionais do sistema detalham as operações específicas que o sistema deve realizar. Isso inclui a capacidade de os usuários interagirem com o sistema de várias maneiras para alcançar seus objetivos.
 
-
 Os requisitos não funcionais, por outro lado, se concentram na qualidade geral do sistema, incluindo seu desempenho, segurança e usabilidade.
 Do ponto de vista técnico, o sistema será construído usando tecnologias modernas e confiáveis para garantir a robustez e a escalabilidade. Também seguiremos as melhores práticas de codificação e padrões da indústria durante todo o processo de desenvolvimento.
 
@@ -103,24 +102,24 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 | Atendente            | Registrar vendas e atualizar estoque                        | Controlar as vendas diárias e manter o controle financeiro e de estoque da loja atualizados                    |
 | Atendente            | Registrar vendas e atualizar estoque                        | Controlar as vendas diárias e manter o controle financeiro e de estoque da loja atualizados                    |
 
-
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                  | Prioridade |
-| ------ | --------------------------------------- | ---------- |
-| RF-001 | Permitir que o usuário cadastre tarefas | ALTA       |
-| RF-002 | Emitir um relatório de tarefas no mês   | MÉDIA      |
+| ID       | Descrição do Requisito                                                                   | Prioridade |
+| -------- | ---------------------------------------------------------------------------------------- | ---------- |
+| RF - 001 | O sistema deve permitir que os usuários registrem vendas, margem de lucro e gastos fixos | Alta       |
+| RF - 002 | Permitir atualizações das vendas, margem de lucro e gastos fixos                         | Alta       |
 
 ### Requisitos não Funcionais
 
-| ID      | Descrição do Requisito                                            | Prioridade |
-| ------- | ----------------------------------------------------------------- | ---------- |
-| RNF-001 | O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA      |
-| RNF-002 | Deve processar requisições do usuário em no máximo 3s             | BAIXA      |
+| ID      | Descrição do Requisito                                                                                                                      | Prioridade |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| RNF-001 | A interface do usuário deve ser intuitiva e fácil de usar, permitindo que os usuários realizem operações de forma rápida e sem dificuldades | Alta       |
+| RNF-002 | Deve ser responsivo para rodar em dispositivos móveis                                                                                       | Média      |
+| RNF-003 | O sistema deve ser capaz de lidar volume de dados sem comprometer o desempenho                                                              | Baixa      |
 
 ## Restrições
 
