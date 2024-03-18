@@ -73,6 +73,7 @@ As especificações deste projeto fornecem uma visão abrangente dos requisitos 
 No entanto, certas funcionalidades e características estão fora do escopo deste projeto eserão consideradas para desenvolvimento futuro.
 Os requisitos funcionais do sistema detalham as operações específicas que o sistema deve realizar. Isso inclui a capacidade de os usuários interagirem com o sistema de várias maneiras para alcançar seus objetivos.
 
+
 Os requisitos não funcionais, por outro lado, se concentram na qualidade geral do sistema, incluindo seu desempenho, segurança e usabilidade.
 Do ponto de vista técnico, o sistema será construído usando tecnologias modernas e confiáveis para garantir a robustez e a escalabilidade. Também seguiremos as melhores práticas de codificação e padrões da indústria durante todo o processo de desenvolvimento.
 
@@ -101,6 +102,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 | Atendente            | Visualizar relatório de vendas diárias e estoque atualizado | Tomar decisões estratégicas com base nas informações atualizadas e evitar falta ou excesso de produtos na loja |
 | Atendente            | Registrar vendas e atualizar estoque                        | Controlar as vendas diárias e manter o controle financeiro e de estoque da loja atualizados                    |
 | Atendente            | Registrar vendas e atualizar estoque                        | Controlar as vendas diárias e manter o controle financeiro e de estoque da loja atualizados                    |
+
 
 ## Requisitos
 
