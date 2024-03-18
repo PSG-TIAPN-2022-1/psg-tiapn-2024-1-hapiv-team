@@ -52,9 +52,15 @@
 
 ## Problema
 
+Apesar dos avanços tecnológicos, é notável que muitas empresas ainda recorrem a métodos antiquados, como o uso excessivo do Excel, para realizar tarefas simples do dia a dia. Isso resulta em processos lentos, suscetíveis a erros e dificuldades na gestão de dados. A falta de integração e automação desses sistemas pode acarretar desperdício de tempo e recursos, limitando a capacidade da empresa de acompanhar o ritmo competitivo do mercado. Diante desse cenário, torna-se evidente a necessidade premente de implementar um sistema gerencial eficiente para que a empresa possa alcançar seu máximo potencial no mercado.
+
 ## Objetivos
 
 ## Justificativa
+
+O tema foi escolhido devido à necessidade evidente da empresa em melhorar sua eficiência operacional e competitividade no mercado. O uso de processos manuais, especialmente na gestão de vendas, margem de lucro e controle de gastos fixos, tem se mostrado inadequado diante das demandas atuais do mercado. Portanto, a implementação de um software para automatizar esses processos é crucial para otimizar o desempenho da empresa.
+A função do projeto é desenvolver um software que simplifique e agilize as operações da empresa, especialmente nas áreas de vendas, margem de lucro e controle de gastos fixos. O software terá funcionalidades para facilitar o registro de vendas, análise da margem de lucro e acompanhamento dos gastos fixos. Essa solução visa aumentar a eficiência operacional, minimizar erros e proporcionar uma experiência mais fluida tanto para os funcionários quanto para os clientes.
+O público-alvo da obra são empresas de médio porte que enfrentam desafios similares em relação à gestão de vendas, margem de lucro e controle de gastos fixos. Especificamente, gestores e funcionários envolvidos na operação diária da empresa, são o público principal que se beneficiará da solução proposta. O trabalho está baseado em uma análise cuidadosa dos processos atuais da empresa, bem como em estudos de mercado e tendências tecnológicas relevantes para o desenvolvimento do software. Além disso, serão realizadas consultas a fontes confiáveis, como artigos acadêmicos, relatórios de mercado, para embasar as decisões de design e desenvolvimento do software.
 
 ## Público-Alvo
 
@@ -72,6 +78,18 @@ Os requisitos não funcionais, por outro lado, se concentram na qualidade geral 
 Do ponto de vista técnico, o sistema será construído usando tecnologias modernas e confiáveis para garantir a robustez e a escalabilidade. Também seguiremos as melhores práticas de codificação e padrões da indústria durante todo o processo de desenvolvimento.
 
 ## Personas e Mapas de Empatia
+
+> **PersonaS** > ![Persona-Angela docx](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/65b75cfc-a953-42a4-a30c-00bcfdb589cb)
+>
+> ![Persona-Fabio (1)](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/bd93f4ed-bcb3-4784-a1cf-91d820a9c31f)
+>
+> ![Persona-Wide (1)](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/1fe25fe1-0a1a-47c6-8b05-3b187fac3358)
+>
+> **MAPAS DE EMPATIA** > ![ME-Rose](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/25534c71-2dec-480c-812d-130b73232f9d)
+>
+> ![ME-Wide](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/5116823a-eabc-4fc9-8ca0-622db2249575)
+>
+> ![ME-Fabio](https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team/assets/127894385/ce16d24b-a5fa-43c9-8d77-44715666d850)
 
 ## Histórias de Usuários
 
@@ -114,6 +132,8 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 | 02  | Não pode ser desenvolvido um módulo de backend        |
 
 # Projeto de Interface
+
+![alt text](image.png)
 
 ## User Flow
 
