@@ -138,7 +138,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Wireframes
 
-
 # Metodologia
 
 O grupo adotou as metodologias ágeis Scrum (para divisão de funções) e Kanban (para divisão de tarefas).
@@ -159,19 +158,19 @@ Desenvolvedores (Devs): Hadassa, Pedro e Victor
 
 ## Ferramentas
 
-| Ambiente                    | Plataforma        | Link de Acesso                |
-| --------------------------- | ----------------- | ----------------------------- |
-| Editor de Código            | Miro              | https://miro.com/XXXXXXX      |
-| Repositório de código       | GitHub            | https://github.com/XXXXXXX    |
-| Hospedagem do site          | Heroku            | https://XXXXXXX.herokuapp.com |
-| Protótipo Interativo        | MavelApp ou Figma | https://figma.com/XXXXXXX     |
+| Ambiente                               | Plataforma                              | Link de Acesso                                                                 |
+| -------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------ |
+| Editor de Código                       | Visual Studio Code e Visual Studio 2022 | https://code.visualstudio.com/ https://visualstudio.microsoft.com/pt-br/vs/    |
+| Gerenciador de Versionamento do Código | GitHub                                  | https://github.com/PSG-TIAPN-2022-1/psg-tiapn-2024-1-hapiv-team                |
+| Ferramenta de Metodologia Ágil         | Trello                                  | https://trello.com/b/DIofQd7U/gerenciamento-da-loja-emp%C3%B3rio-jeito-simples |
+| Ferramenta de Design                   | Figma                                   | https://www.figma.com/                                                         |
+| Ferramentas de Comunicação             | Whatsapp, Teams e Google Meet           |                                                                                |
 
 Os editores de código VsCode e Visual Studio 2022 foram escolhidos pela afinidade que os integrantes do grupo já possuem com as plataformas.
-O Github foi selecionado como gerenciador de versionamento do código por possuir uma interface amigável, além de oferecer múltiplas funcionalidades de visualização das alterações no código. 
+O Github foi selecionado como gerenciador de versionamento do código por possuir uma interface amigável, além de oferecer múltiplas funcionalidades de visualização das alterações no código.
 Como ferramenta de metologia ágil, será utilizada a plataforma Trello, por ser fácil para implementar e visualizar o Scrum/Kanban do projeto.
 Para design da solução proposta, foi selecionada a plataforma Figma, por ter várias opções de confecção de UI (User Interface), Wireframes, etc.
-Além disso, para comunicação, estão sendo utilizados o Whatsapp e Teams para comunicação interna do grupo e Google Meet para reuniões com o cliente.   
-
+Além disso, para comunicação, estão sendo utilizados o Whatsapp e Teams para comunicação interna do grupo e Google Meet para reuniões com o cliente.
 
 ## Controle de Versão
 
