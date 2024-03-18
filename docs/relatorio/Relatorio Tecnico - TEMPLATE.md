@@ -125,12 +125,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ## Restrições
 
-O projeto está restrito pelos itens apresentados na tabela a seguir.
+Na atual etapa de desenvolvimento do projeto, não foi possivel definir as restrições.
 
 | ID  | Restrição                                             |
 | --- | ----------------------------------------------------- |
-| 01  | O projeto deverá ser entregue até o final do semestre |
-| 02  | Não pode ser desenvolvido um módulo de backend        |
+| 01  |  |
+| 02  |  |
 
 # Projeto de Interface
 
