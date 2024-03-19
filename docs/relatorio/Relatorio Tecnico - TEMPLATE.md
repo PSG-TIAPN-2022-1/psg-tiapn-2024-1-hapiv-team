@@ -191,15 +191,15 @@ Quanto à gerência de issues, o projeto adota a seguinte convenção para etiqu
 
 bug: Indica que há um problema que precisa ser corrigido.
 
-sh``` Example: bug/Correção-Do-Bug ```
+``` Exemplo: bug/Correção-Do-Bug ```
 
 improvement: Indica que uma funcionalidade existente pode ser melhorada.
 
-sh``` Example: improvement/Nova-Melhoria ```
+``` Exemplo: improvement/Nova-Melhoria ```
 
 feature: Indica que uma nova funcionalidade deve ser adicionada.
 
-sh``` Example: feature/Nova-Funcionalide ```
+``` Exemplo: feature/Nova-Funcionalide ```
 
 # **############## SPRINT 1 ACABA AQUI #############**
 
