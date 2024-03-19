@@ -55,9 +55,11 @@ Sistemas de Informação
 Apesar dos avanços tecnológicos, é notável que muitas empresas ainda recorrem a métodos antiquados, como o uso excessivo do Excel, para realizar tarefas simples do dia a dia. Isso resulta em processos lentos, suscetíveis a erros e dificuldades na gestão de dados. A falta de integração e automação desses sistemas pode acarretar desperdício de tempo e recursos, limitando a capacidade da empresa de acompanhar o ritmo competitivo do mercado. Diante desse cenário, torna-se evidente a necessidade premente de implementar um sistema gerencial eficiente para que a empresa possa alcançar seu máximo potencial no mercado.
 
 ## Objetivos
+
 Objetivo Geral: O objetivo geral do trabalho é desenvolver um sistema de gestão financeira para a empresa, de forma que ela tenha um melhor controle sobre seus custos e lucros. O sistema deve permitir que a empresa faça o acompanhamento de suas receitas e despesas, bem como a análise de seus resultados financeiros.
 
 Objetivos específicos: O principal objetivo é desenvolver um sistema que permita o registro de receitas e despesas da empresa e a análise de resultados financeiros.
+
 ## Justificativa
 
 O tema foi escolhido devido à necessidade evidente da empresa em melhorar sua eficiência operacional e competitividade no mercado. O uso de processos manuais, especialmente na gestão de vendas, margem de lucro e controle de gastos fixos, tem se mostrado inadequado diante das demandas atuais do mercado. Portanto, a implementação de um software para automatizar esses processos é crucial para otimizar o desempenho da empresa.
@@ -127,14 +129,14 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 Na atual etapa de desenvolvimento do projeto, não foi possivel definir as restrições.
 
-| ID  | Restrição                                             |
-| --- | ----------------------------------------------------- |
-| 01  |  |
-| 02  |  |
+| ID  | Restrição |
+| --- | --------- |
+| 01  |           |
+| 02  |           |
 
 # Projeto de Interface
 
-![alt text](image.png)
+![alt text](images/Ui.png)
 
 ## User Flow
 
@@ -191,15 +193,15 @@ Quanto à gerência de issues, o projeto adota a seguinte convenção para etiqu
 
 bug: Indica que há um problema que precisa ser corrigido.
 
-``` Exemplo: bug/Correção-Do-Bug ```
+`Exemplo: bug/Correção-Do-Bug`
 
 improvement: Indica que uma funcionalidade existente pode ser melhorada.
 
-``` Exemplo: improvement/Nova-Melhoria ```
+`Exemplo: improvement/Nova-Melhoria`
 
 feature: Indica que uma nova funcionalidade deve ser adicionada.
 
-``` Exemplo: feature/Nova-Funcionalide ```
+`Exemplo: feature/Nova-Funcionalide`
 
 # **############## SPRINT 1 ACABA AQUI #############**
 
