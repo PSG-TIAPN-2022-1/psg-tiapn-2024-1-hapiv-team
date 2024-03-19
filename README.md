@@ -1,5 +1,5 @@
-# Nome do projeto
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+# Sistema de Gerenciamento da Loja Empório Jeito Simples
+O objetivo geral do trabalho é desenvolver um sistema de gestão financeira para a empresa Empório Jeito Simples, de forma que ela tenha um melhor controle sobre seus custos e lucros. O sistema deve permitir que a empresa faça o acompanhamento de suas receitas e despesas, bem como a análise de seus resultados financeiros.
 
 ## Alunos integrantes da equipe
 
