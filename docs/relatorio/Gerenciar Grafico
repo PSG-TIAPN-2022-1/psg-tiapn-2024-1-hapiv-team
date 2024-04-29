@@ -1,0 +1,18 @@
+GERAR GRAFICO
+## Processo de Registrar Entrada
+
+> A gestora abre a home do sistema
+
+## Processo de registrar saída
+
+> Após o gestor abrir a home do sistema o gráfico de financias vai ser gerado automaticamente, mostrando todas as atualizações financeiras feitas.
+
+
+MODIFICAR GRAFICO   
+## Processo de Registrar Entrada
+
+> A gestora realiza o registro das financias no sistema.
+
+## Processo de registrar saída
+
+> Após o registro das financias, o sistema vai realizar a conta dos registros e quando a gestora retornar a home page o gráfico será atualizado automaticamente.
