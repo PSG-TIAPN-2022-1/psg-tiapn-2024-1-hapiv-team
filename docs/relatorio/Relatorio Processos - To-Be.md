@@ -16,11 +16,11 @@
 
 ### Configuração de quantidade mínima
 
-> A gerente da loja escolhe o produto e define a quantidade mínima desejada, então o sistema automaticamente atualiza a coluna de quantidade mínima no banco de dados.
+>A gerente irá escolher o produto e define a quantidade mínima desejada, então o sistema automaticamente atualiza a coluna de quantidade mínima no banco de dados.
 
 ### Gerar Tabela de estoque
 
-> Quando o usuário acessa a página de estoque, o sistema carrega a tabela automaticamente.
+> Quando a gerente acessar a página de estoque, o sistema carrega a tabela automaticamente.
 
 ### Gerar gráfico de vendas
 >
