@@ -27,7 +27,7 @@
 >Após a atualização manual das finanças, o algoritmo irá extrair as informações do banco de dados e, em seguida, atualizará o gráfico automaticamente com base nos dados atualizados.
 
 ## Atualizar gráfico manualemnte
->Após o registro das finanças, o sistema irá calcular as entradas e saídas, e quando a gestora retornar à página inicial, o gráfico será atualizado automaticamente para refletir essas informações.
+>Após o registro das finanças, o sistema irá calcular as entradas e saídas, e quando a gestora retornar à página inicial, o gráfico será atualizado automaticamente para refletir essas informações
 
 
 ## Registrar venda de produtos
