@@ -1,0 +1,6 @@
+@HapivAPI_HostAddress = http://localhost:5252
+
+GET {{HapivAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

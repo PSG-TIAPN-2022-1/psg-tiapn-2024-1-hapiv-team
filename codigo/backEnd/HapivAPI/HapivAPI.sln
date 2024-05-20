@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HapivAPI", "HapivAPI.csproj", "{C6C8BD61-80D4-491B-868A-3D05A1BD3EDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6C8BD61-80D4-491B-868A-3D05A1BD3EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C8BD61-80D4-491B-868A-3D05A1BD3EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C8BD61-80D4-491B-868A-3D05A1BD3EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C8BD61-80D4-491B-868A-3D05A1BD3EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2A54C8B-6BAE-4ABA-B5B3-5D09CD40820B}
+	EndGlobalSection
+EndGlobal
