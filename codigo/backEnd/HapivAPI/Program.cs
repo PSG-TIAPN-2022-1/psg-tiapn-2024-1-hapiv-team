@@ -1,17 +1,57 @@
-var builder = WebApplication.CreateBuilder(args);
+using Asp.Versioning;
+using HapivAPI.Context;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
-// Add services to the container.
+namespace API
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+            ConfigureServices(builder.Services);
 
-var app = builder.Build();
+            var connectionString = builder.Configuration.GetConnectionString("Server1"); //Busco a String de conexão no appSettings.json
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); //Insere AppDbContext no container DI nativo
 
-// Configure the HTTP request pipeline.
+            var app = builder.Build();
 
-app.UseHttpsRedirection();
+            Configure(app);
 
-app.UseAuthorization();
+            app.Run();
+        }
 
-app.MapControllers();
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ReportApiVersions = true;
+            });
 
-app.Run();
+            // Add services to the container.
+            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+        }
+
+        private static void Configure(WebApplication app)
+        {
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseAuthorization();
+            app.MapControllers();
+        }
+    }
+}
