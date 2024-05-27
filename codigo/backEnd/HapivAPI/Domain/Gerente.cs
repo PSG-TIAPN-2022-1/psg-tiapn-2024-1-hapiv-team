@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.VisualBasic;
+using System.Collections.ObjectModel;
 
 namespace HapivAPI.Domain
 {
     public class Gerente
     {
         [Key]
-        public Guid UserId { get; set; }
+        public Guid GerenteId { get; set; }
 
         [Required]
         [MaxLength(300)]
@@ -20,5 +22,12 @@ namespace HapivAPI.Domain
         public ICollection<Produto>? Produtos { get; set; }
         public ICollection<Venda>? Vendas { get; set; }
         public ICollection<GastoFixo>? GastosFixos { get; set; }
+
+        public Gerente()
+        {
+            Produtos = new Collection<Produto>();
+            Vendas = new Collection<Venda>();
+            GastosFixos = new Collection<GastoFixo>();
+        }
     }
 }

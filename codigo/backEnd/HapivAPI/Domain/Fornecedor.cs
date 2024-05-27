@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace HapivAPI.Domain
 {
@@ -13,6 +14,9 @@ namespace HapivAPI.Domain
         
         public ICollection<Produto>? Produto { get; set; }
 
-        public Fornecedor() { }
+        public Fornecedor() 
+        {
+            Produto = new Collection<Produto>();
+        }
     }
 }

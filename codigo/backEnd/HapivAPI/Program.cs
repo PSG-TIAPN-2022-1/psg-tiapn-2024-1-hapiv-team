@@ -1,5 +1,6 @@
 using Asp.Versioning;
 using HapivAPI.Context;
+using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -14,6 +15,7 @@ namespace API
             ConfigureServices(builder.Services);
 
             var connectionString = builder.Configuration.GetConnectionString("Server1"); //Busco a String de conexão no appSettings.json
+            
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); //Insere AppDbContext no container DI nativo
 
@@ -46,7 +48,10 @@ namespace API
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                });
             }
 
             app.UseHttpsRedirection();

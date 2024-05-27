@@ -1,6 +1,29 @@
-﻿namespace HapivAPI.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace HapivAPI.Domain
 {
-    public class GastoFIxo
+    public class GastoFixo
     {
+        [Key]
+        public Guid GastoFixoId { get; set; }
+
+        [Required]
+        [MaxLength(300)]
+        public string? Descricao { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Gasto { get; set; }
+
+        [Required]
+        public DateTime Data { get; set; }
+
+        // Propriedade de navegação
+        [Required]
+        [ForeignKey("Gerente")]
+        public Guid GerenteId { get; set; }
+        [Required]
+        public Gerente? Gerente { get; set; }
     }
 }
