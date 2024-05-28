@@ -3,6 +3,7 @@ using HapivAPI.Context;
 using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using HapivAPI.Exceptions.MiddlewareException;
 
 namespace API
 {
@@ -50,6 +51,7 @@ namespace API
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 });
+                app.ConfigureExceptionsHandler(); //Configura middleware para mensagens de erro personalizadas em exceções não tratadas
             }
 
             app.UseHttpsRedirection();
