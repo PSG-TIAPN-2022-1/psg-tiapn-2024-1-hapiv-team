@@ -22,8 +22,6 @@ namespace API
             var app = builder.Build();
 
             Configure(app);
-
-            app.Run();
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -55,8 +53,10 @@ namespace API
             }
 
             app.UseHttpsRedirection();
+            // app.UseAuthentication(); Pesquisar mais depois
             app.UseAuthorization();
             app.MapControllers();
+            app.Run();
         }
     }
 }
