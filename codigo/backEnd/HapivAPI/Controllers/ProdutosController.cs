@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Asp.Versioning;
+using HapivAPI.Context;
+using HapivAPI.Domain;
+using HapivAPI.Domain.Repositorys.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HapivAPI.Context;
-using HapivAPI.Domain;
-using Asp.Versioning;
 
 namespace HapivAPI.Controllers
 {
@@ -17,18 +14,20 @@ namespace HapivAPI.Controllers
     public class ProdutosController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly ICategoriaRepository _catRepo;
 
-        public ProdutosController(AppDbContext context)
+        public ProdutosController(AppDbContext context, ICategoriaRepository catRepo)
         {
             _context = context;
+            _catRepo = catRepo;
         }
 
         // GET: Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> Index()
+        public async Task<ActionResult<IEnumerable<Categoria>>> Index()
         {
-            var produtos = await _context.Produtos.Include(p => p.Gerente).Include(p => p.VendaProdutos).ToListAsync();
-            return Ok(produtos);
+            //var produtos = await _context.Produtos.Include(p => p.Gerente).Include(p => p.VendaProdutos).ToListAsync();
+            return Ok(await _catRepo.GetAllComProduto());
         }
 
         // GET: Produtos/Details/5

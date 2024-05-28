@@ -4,6 +4,9 @@ using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using HapivAPI.Exceptions.MiddlewareException;
+using HapivAPI.Domain.Repositorys.Interfaces;
+using HapivAPI.Domain;
+using HapivAPI.Domain.Repositorys;
 
 namespace API
 {
@@ -33,7 +36,7 @@ namespace API
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
             });
-
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             // Add services to the container.
             services.AddControllers();
             services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
