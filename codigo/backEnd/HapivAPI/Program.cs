@@ -36,7 +36,14 @@ namespace API
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
             });
-            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+            services.AddScoped<IGastoFixoRepository, GastoFixoRepository>();
+            services.AddScoped<IGerenteRepository, GerenteRepository>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IVendaRepository, VendaRepository>();
+
             // Add services to the container.
             services.AddControllers();
             services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
