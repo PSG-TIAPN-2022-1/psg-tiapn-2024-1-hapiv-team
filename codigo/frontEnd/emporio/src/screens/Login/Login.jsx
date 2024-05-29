@@ -5,6 +5,7 @@ import {
   TituloLogin,
   TelaLogin,
   SubmitButton,
+  Link,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
 
@@ -20,6 +21,9 @@ const Login = () => {
         <InputLogin placeholder="Senha" type="password" />
         <div className="submit-container">
           <SubmitButton>Entrar</SubmitButton>
+        </div>
+        <div> 
+          <Link>Não Possui login? <a href="google.com"> Clique aqui</a></Link>
         </div>
       </ContainerLogin>
     </TelaLogin>

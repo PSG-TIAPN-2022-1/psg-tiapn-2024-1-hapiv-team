@@ -30,6 +30,7 @@ export const CabecalhoLogin = styled.div`
   gap: 10px;
   width: 100%;
   padding: 10px;
+  text-decoration: underline rgb(78, 44, 16);
 `;
 
 export const TituloLogin = styled.span`
@@ -49,6 +50,7 @@ export const SubmitButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px auto;
   background-color: rgb(78, 44, 16);
   border-radius: 7px;
   cursor: pointer;
@@ -58,3 +60,7 @@ export const SubmitButton = styled.button`
   height: 25px;
   transition: 1s;
 `;
+
+export const Link = styled.a`
+
+`
