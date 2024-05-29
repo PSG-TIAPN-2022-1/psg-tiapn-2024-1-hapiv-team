@@ -4,11 +4,12 @@ using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using HapivAPI.Exceptions.MiddlewareException;
-using HapivAPI.Domain.Repositorys.Interfaces;
 using HapivAPI.Domain;
 using HapivAPI.Domain.Repositorys;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using HapivAPI.Domain.Repositorys.BaseRepository;
+using HapivAPI.Interfaces;
+using HapivAPI.Services;
 
 namespace API
 {
@@ -45,6 +46,7 @@ namespace API
             services.AddScoped<IGerenteRepository, GerenteRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Add services to the container.
             services.AddControllers();

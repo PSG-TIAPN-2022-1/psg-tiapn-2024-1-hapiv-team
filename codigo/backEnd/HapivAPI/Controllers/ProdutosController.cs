@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using HapivAPI.Context;
 using HapivAPI.Domain;
-using HapivAPI.Domain.Repositorys.Interfaces;
+using HapivAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,20 +14,25 @@ namespace HapivAPI.Controllers
     public class ProdutosController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly ICategoriaRepository _catRepo;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ProdutosController(AppDbContext context, ICategoriaRepository catRepo)
+        public ProdutosController(AppDbContext context, IUnitOfWork unit)
         {
             _context = context;
-            _catRepo = catRepo;
+            unitOfWork = unit;
         }
 
         // GET: Produtos
-        [HttpGet]
+        [HttpGet("Testandooo")]
         public async Task<ActionResult<IEnumerable<Categoria>>> Index()
         {
-            //var produtos = await _context.Produtos.Include(p => p.Gerente).Include(p => p.VendaProdutos).ToListAsync();
-            return Ok(await _catRepo.GetAllComProduto());
+            var itens = await unitOfWork.ProdutoRepository.GetAll();
+
+            if (!itens.Any())
+            {
+                return Ok("Não há produtos cadastrados");
+            }
+            return Ok(itens);
         }
 
         // GET: Produtos/Details/5

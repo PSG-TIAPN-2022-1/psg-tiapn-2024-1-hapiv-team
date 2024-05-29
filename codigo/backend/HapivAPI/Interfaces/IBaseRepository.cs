@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace HapivAPI.Domain.Repositorys.BaseRepository
+namespace HapivAPI.Interfaces
 {
     public interface IBaseRepository<T>
     {

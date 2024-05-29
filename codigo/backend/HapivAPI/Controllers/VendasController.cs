@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using HapivAPI.Context;
 using HapivAPI.Domain;
-using HapivAPI.Domain.Repositorys.Interfaces;
+using HapivAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +11,12 @@ namespace HapivAPI.Controllers
     [ApiVersion("1.0")]
     [Route("api/{version:apiVersion}/[controller]")]
     [ApiController]
-    public class ProdutosController : Controller
+    public class VendasController : Controller
     {
         private readonly AppDbContext _context;
         private readonly ICategoriaRepository _catRepo;
 
-        public ProdutosController(AppDbContext context, ICategoriaRepository catRepo)
+        public VendasController(AppDbContext context, ICategoriaRepository catRepo)
         {
             _context = context;
             _catRepo = catRepo;

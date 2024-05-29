@@ -1,4 +1,5 @@
 ﻿using HapivAPI.Context;
+using HapivAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Linq.Expressions;

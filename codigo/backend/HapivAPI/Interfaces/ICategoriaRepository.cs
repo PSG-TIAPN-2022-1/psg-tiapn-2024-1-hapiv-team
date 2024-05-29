@@ -1,6 +1,6 @@
-﻿using HapivAPI.Domain.Repositorys.BaseRepository;
+﻿using HapivAPI.Domain;
 
-namespace HapivAPI.Domain.Repositorys.Interfaces
+namespace HapivAPI.Interfaces
 {
     public interface ICategoriaRepository : IBaseRepository<Categoria>
     {

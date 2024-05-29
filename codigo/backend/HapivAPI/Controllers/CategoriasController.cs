@@ -2,7 +2,7 @@
 using HapivAPI.Constantes;
 using HapivAPI.Context;
 using HapivAPI.Domain;
-using HapivAPI.Domain.Repositorys.Interfaces;
+using HapivAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

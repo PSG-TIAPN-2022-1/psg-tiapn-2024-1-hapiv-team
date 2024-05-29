@@ -1,6 +1,6 @@
 ﻿using HapivAPI.Context;
 using HapivAPI.Domain.Repositorys.BaseRepository;
-using HapivAPI.Domain.Repositorys.Interfaces;
+using HapivAPI.Interfaces;
 
 namespace HapivAPI.Domain.Repositorys
 {
