@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constantes\" />
     <Folder Include="Utils\" />
     <Folder Include="Services\" />
     <Folder Include="Migrations\" />

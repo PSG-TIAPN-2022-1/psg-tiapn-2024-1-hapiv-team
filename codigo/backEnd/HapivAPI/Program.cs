@@ -7,6 +7,8 @@ using HapivAPI.Exceptions.MiddlewareException;
 using HapivAPI.Domain.Repositorys.Interfaces;
 using HapivAPI.Domain;
 using HapivAPI.Domain.Repositorys;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using HapivAPI.Domain.Repositorys.BaseRepository;
 
 namespace API
 {
@@ -36,7 +38,7 @@ namespace API
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
             });
-
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddScoped<IGastoFixoRepository, GastoFixoRepository>();

@@ -59,7 +59,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            var itens = await _dbSet.ToListAsync<T>();
+            var itens = await _dbSet.AsNoTracking().ToListAsync<T>();
             return itens??new List<T>();
         }
 
@@ -68,7 +68,6 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             if (entity != null)
             {
                 _dbSet.Update(entity);
-                _context.SaveChanges();
                 return entity;
             }
             return null;
