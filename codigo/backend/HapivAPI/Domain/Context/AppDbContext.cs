@@ -3,7 +3,7 @@ using HapivAPI.Domain.Relacionamentos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HapivAPI.Context
+namespace HapivAPI.Domain.Context
 {
     public class AppDbContext : DbContext
     {
@@ -44,6 +44,6 @@ namespace HapivAPI.Context
                     .HasForeignKey(vp => vp.ProdutoId);
             }
         }
-        
+
     }
 }

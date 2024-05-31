@@ -1,5 +1,4 @@
-﻿
-using HapivAPI.Context;
+﻿using HapivAPI.Domain.Context;
 using HapivAPI.Domain.Repositorys;
 using HapivAPI.Interfaces;
 

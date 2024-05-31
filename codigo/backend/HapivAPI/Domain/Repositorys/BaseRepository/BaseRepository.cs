@@ -1,4 +1,4 @@
-﻿using HapivAPI.Context;
+﻿using HapivAPI.Domain.Context;
 using HapivAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;

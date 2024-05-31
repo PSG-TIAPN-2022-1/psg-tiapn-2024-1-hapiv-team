@@ -1,4 +1,4 @@
-﻿using HapivAPI.Context;
+﻿using HapivAPI.Domain.Context;
 
 namespace HapivAPI.Interfaces
 {

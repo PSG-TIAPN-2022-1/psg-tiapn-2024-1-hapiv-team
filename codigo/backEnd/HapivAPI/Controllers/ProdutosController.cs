@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
-using HapivAPI.Context;
 using HapivAPI.Domain;
+using HapivAPI.Domain.Context;
 using HapivAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,15 +15,17 @@ namespace HapivAPI.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IEmailSender emailsender;
 
-        public ProdutosController(AppDbContext context, IUnitOfWork unit)
+        public ProdutosController(AppDbContext context, IUnitOfWork unit, IEmailSender emailsender)
         {
             _context = context;
             unitOfWork = unit;
+            this.emailsender = emailsender;
         }
 
         // GET: Produtos
-        [HttpGet("Testandooo")]
+        [HttpGet()]
         public async Task<ActionResult<IEnumerable<Categoria>>> Index()
         {
             var itens = await unitOfWork.ProdutoRepository.GetAll();

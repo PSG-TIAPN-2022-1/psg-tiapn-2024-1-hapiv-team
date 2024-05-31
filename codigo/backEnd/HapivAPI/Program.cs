@@ -1,5 +1,4 @@
 using Asp.Versioning;
-using HapivAPI.Context;
 using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -10,6 +9,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using HapivAPI.Domain.Repositorys.BaseRepository;
 using HapivAPI.Interfaces;
 using HapivAPI.Services;
+using HapivAPI.Domain.Context;
+using HapivAPI.Agents;
 
 namespace API
 {
@@ -47,6 +48,7 @@ namespace API
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
             // Add services to the container.
             services.AddControllers();
