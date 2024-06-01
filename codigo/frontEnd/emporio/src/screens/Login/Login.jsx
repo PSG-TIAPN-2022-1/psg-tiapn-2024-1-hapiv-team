@@ -1,11 +1,12 @@
 import React from "react";
 import {
+  TelaLogin,
   ContainerLogin,
   CabecalhoLogin,
   TituloLogin,
-  TelaLogin,
+  SecaoInput,
+  SecaoBotao,
   SubmitButton,
-  Link,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
 
@@ -15,16 +16,15 @@ const Login = () => {
       <ContainerLogin>
         <CabecalhoLogin>
           <TituloLogin>Login</TituloLogin>
-          <div className="underLine"></div>
         </CabecalhoLogin>
-        <InputLogin placeholder="Nome do usuário" type="text" />
-        <InputLogin placeholder="Senha" type="password" />
-        <div className="submit-container">
+        <SecaoInput>
+          <InputLogin icon="person" placeholder="Usuário" type="text" />
+          <InputLogin icon="key" placeholder="Senha" type="password" />
+        </SecaoInput>
+        <SecaoBotao>
           <SubmitButton>Entrar</SubmitButton>
-        </div>
-        <div> 
-          <Link>Não Possui login? <a href="google.com"> Clique aqui</a></Link>
-        </div>
+          <SubmitButton>Cadastrar</SubmitButton>
+        </SecaoBotao>
       </ContainerLogin>
     </TelaLogin>
   );

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BoxInput, Input } from "./InputLogin.style";
-import "./InputLogin.style";
-import { ImageIcon } from "../../Login.style";
 
-export const InputLogin = ({ icon, placeholder, type }) => {
+export const InputLogin = ({ placeholder, type, icon }) => {
+  const inputRef = useRef();
+
+  const clicarBoxInput = () => {
+    inputRef.current.focus();
+  };
+
   return (
-    <BoxInput>
-      <ImageIcon src={icon} alt="" className="icon" />
-      <Input  type={type} placeholder={placeholder} />
+    <BoxInput onClick={clicarBoxInput}>
+      <span class="material-symbols-outlined">{icon}</span>
+      <label>{placeholder}</label>
+      <Input ref={inputRef} type={type} />
     </BoxInput>
   );
 };
