@@ -75,7 +75,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const EsqueceuSenha = styled.span`
-  color: rgb(00, 00, 00);
+  color: red;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
