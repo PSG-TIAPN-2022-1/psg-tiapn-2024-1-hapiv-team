@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { BoxInput, Input } from "./InputLogin.style";
 
-export const InputLogin = ({ key, placeholder, type, icon }) => {
+export const InputLogin = ({ placeholder, type, icon }) => {
   const inputRef = useRef();
   const [inputPlaceholder, setInputPlaceholder] = useState(placeholder);
 
@@ -14,10 +14,9 @@ export const InputLogin = ({ key, placeholder, type, icon }) => {
   };
 
   return (
-    <BoxInput onClick={handleFocus}>
+    <BoxInput>
       <span class="material-symbols-outlined">{icon}</span>
       <Input
-        key={key}
         ref={inputRef}
         type={type}
         placeholder={inputPlaceholder}
