@@ -8,86 +8,116 @@ import {
   SecaoInput,
   SecaoBotao,
   SubmitButton,
-  SecaoSenha,
-  EsqueceuOuAlterarSenha,
+  EsqueceuSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
 
 const Login = () => {
-  const [ehRegistrado, setEhRegistrado] = useState(true);
-  const [esqueceuSenha, setEsqueceuSenha] = useState(false);
-  const [alterarSenha, setAlterarSenha] = useState(false);
+  const [visualizacao, setVisualizacao] = useState("login");
 
-  const clicouRegistrar = () => {
-    setEhRegistrado(!ehRegistrado);
-  };
-
-  const clicouEsqueceuSenha = () => {
-    setEsqueceuSenha(!esqueceuSenha);
-  };
-
-  const clicouAlterarSenha = () => {
-    setAlterarSenha(!alterarSenha);
-  };
-
-  return (
-    <TelaLogin>
-      <ContainerLogin>
-        <CabecalhoLogin>
-          <TituloLogin>{!ehRegistrado ? "Registrar" : "Login"}</TituloLogin>
-        </CabecalhoLogin>
-        <SecaoInput>
-          {!ehRegistrado ? (
-            <>
+  const renderizarPagina = () => {
+    switch (visualizacao) {
+      case "esqueceuSenha":
+        return (
+          <>
+            <CabecalhoLogin>
+              <TituloLogin>Esqueceu a Senha</TituloLogin>
+            </CabecalhoLogin>
+            <SecaoInput>
               <InputLogin
-                key={!ehRegistrado ? "registrar" : "logar"}
+                key="email"
+                icon="email"
+                placeholder="Email"
+                type="email"
+              />
+            </SecaoInput>
+            <SecaoBotao>
+              <SubmitButton onClick={() => setVisualizacao("login")}>
+                Voltar
+              </SubmitButton>
+              <SubmitButton>Enviar Email</SubmitButton>
+            </SecaoBotao>
+          </>
+        );
+      case "registrar":
+        return (
+          <>
+            <CabecalhoLogin>
+              <TituloLogin>Registrar</TituloLogin>
+            </CabecalhoLogin>
+            <SecaoInput>
+              <InputLogin
+                key="usuario"
                 icon="person"
                 placeholder="Usuário"
                 type="text"
               />
               <InputLogin
-                key={!ehRegistrado ? "registrarEmail" : ""}
+                key="email"
                 icon="email"
                 placeholder="Email"
                 type="email"
               />
               <InputLogin
-                key={!ehRegistrado ? "registrarSenha" : "loginSenha"}
+                key="senha"
                 icon="key"
                 placeholder="Senha"
                 type="password"
               />
               <InputLogin
-                key={!ehRegistrado ? "registrarRepetirSenha" : ""}
+                key="repetirSenha"
                 icon="key"
                 placeholder="Repetir Senha"
                 type="password"
               />
-            </>
-          ) : (
-            <>
-              <InputLogin icon="person" placeholder="Usuário" type="text" />
-              <InputLogin icon="key" placeholder="Senha" type="password" />
-            </>
-          )}
-        </SecaoInput>
-        <SecaoBotao>
-          <SubmitButton onClick={clicouRegistrar}>
-            {!ehRegistrado ? "Login" : "Registrar"}
-          </SubmitButton>
-          <SubmitButton>{!ehRegistrado ? "Registrar" : "Entrar"}</SubmitButton>
-        </SecaoBotao>
-        {ehRegistrado && (
-          <SecaoSenha>
-            <EsqueceuOuAlterarSenha onClick={clicouEsqueceuSenha}>
+            </SecaoInput>
+            <SecaoBotao>
+              <SubmitButton onClick={() => setVisualizacao("login")}>
+                Voltar
+              </SubmitButton>
+              <SubmitButton onClick={() => setVisualizacao("registrar")}>
+                Registrar
+              </SubmitButton>
+            </SecaoBotao>
+          </>
+        );
+      default:
+        return (
+          <>
+            <CabecalhoLogin>
+              <TituloLogin>Login</TituloLogin>
+            </CabecalhoLogin>
+            <SecaoInput>
+              <InputLogin
+                key="usuario"
+                icon="person"
+                placeholder="Usuário"
+                type="text"
+              />
+              <InputLogin
+                key="senha"
+                icon="key"
+                placeholder="Senha"
+                type="password"
+              />
+            </SecaoInput>
+            <SecaoBotao>
+              <SubmitButton onClick={() => setVisualizacao("registrar")}>
+                Registrar
+              </SubmitButton>
+              <SubmitButton>Entrar</SubmitButton>
+            </SecaoBotao>
+            <EsqueceuSenha onClick={() => setVisualizacao("esqueceuSenha")}>
               Esqueceu a senha?
-            </EsqueceuOuAlterarSenha>
-            <EsqueceuOuAlterarSenha onClick={clicouAlterarSenha}>
-              Alterar a senha
-            </EsqueceuOuAlterarSenha>
-          </SecaoSenha>
-        )}
-      </ContainerLogin>
+            </EsqueceuSenha>
+          </>
+        );
+    }
+  };
+
+  return (
+    <TelaLogin>
+      <ContainerLogin>{renderizarPagina()}</ContainerLogin>
     </TelaLogin>
   );
 };

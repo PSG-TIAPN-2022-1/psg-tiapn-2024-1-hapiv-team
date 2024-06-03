@@ -74,21 +74,11 @@ export const SubmitButton = styled.button`
   transition: 1s;
 `;
 
-export const SecaoSenha = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  width: 100%;
-  height: 25px;
-  gap: 24px;
-  margin-top: 12px;
-`;
-
-export const EsqueceuOuAlterarSenha = styled.span`
+export const EsqueceuSenha = styled.span`
   color: rgb(00, 00, 00);
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   text-decoration: underline;
-  margin-top: 10px;
+  margin-top: 12px;
 `;
