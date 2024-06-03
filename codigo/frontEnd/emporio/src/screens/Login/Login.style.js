@@ -10,6 +10,13 @@ export const TelaLogin = styled.div`
   background-size: cover;
 `;
 
+export const EsqueceuSenha = styled.p`
+  color: #000;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
+`;
+
 export const ContainerLogin = styled.div`
   display: flex;
   flex-direction: column;
@@ -17,7 +24,7 @@ export const ContainerLogin = styled.div`
   align-items: center;
   margin: auto;
   padding-bottom: 30px;
-  height: 350px;
+  min-height: 350px;
   width: 450px;
   box-sizing: border-box;
   background-color: rgba(175, 135, 94, 0.585);
@@ -45,7 +52,7 @@ export const SecaoInput = styled.div`
   display: flex;
   flex-direction: column;
   width: 65%;
-  height: 40%;
+  height: auto;
 `;
 
 export const SecaoBotao = styled.div`
@@ -54,7 +61,7 @@ export const SecaoBotao = styled.div`
   align-items: center;
   flex-direction: row;
   width: 100%;
-  height: 10%;
+  height: 25px;
   gap: 10px;
   margin-top: 12px;
 `;
