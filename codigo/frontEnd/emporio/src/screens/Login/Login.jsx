@@ -8,46 +8,57 @@ import {
   SecaoInput,
   SecaoBotao,
   SubmitButton,
-  EsqueceuSenha,
+  SecaoSenha,
+  EsqueceuOuAlterarSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
 
 const Login = () => {
-  const [isRegister, setIsRegister] = useState(false);
+  const [ehRegistrado, setEhRegistrado] = useState(true);
+  const [esqueceuSenha, setEsqueceuSenha] = useState(false);
+  const [alterarSenha, setAlterarSenha] = useState(false);
 
-  const handleButtonClick = () => {
-    setIsRegister(!isRegister);
+  const clicouRegistrar = () => {
+    setEhRegistrado(!ehRegistrado);
+  };
+
+  const clicouEsqueceuSenha = () => {
+    setEsqueceuSenha(!esqueceuSenha);
+  };
+
+  const clicouAlterarSenha = () => {
+    setAlterarSenha(!alterarSenha);
   };
 
   return (
     <TelaLogin>
       <ContainerLogin>
         <CabecalhoLogin>
-          <TituloLogin>{isRegister ? "Registrar" : "Login"}</TituloLogin>
+          <TituloLogin>{!ehRegistrado ? "Registrar" : "Login"}</TituloLogin>
         </CabecalhoLogin>
         <SecaoInput>
-          {isRegister ? (
+          {!ehRegistrado ? (
             <>
               <InputLogin
-                key={isRegister ? "registerUser" : "loginUser"}
+                key={!ehRegistrado ? "registrar" : "logar"}
                 icon="person"
                 placeholder="Usuário"
                 type="text"
               />
               <InputLogin
-                key={isRegister ? "registerEmail" : ""}
+                key={!ehRegistrado ? "registrarEmail" : ""}
                 icon="email"
                 placeholder="Email"
                 type="email"
               />
               <InputLogin
-                key={isRegister ? "registerPassword" : "loginPassword"}
+                key={!ehRegistrado ? "registrarSenha" : "loginSenha"}
                 icon="key"
                 placeholder="Senha"
                 type="password"
               />
               <InputLogin
-                key={isRegister ? "registerRepeatPassword" : ""}
+                key={!ehRegistrado ? "registrarRepetirSenha" : ""}
                 icon="key"
                 placeholder="Repetir Senha"
                 type="password"
@@ -61,12 +72,21 @@ const Login = () => {
           )}
         </SecaoInput>
         <SecaoBotao>
-          <SubmitButton onClick={handleButtonClick}>
-            {isRegister ? "Login" : "Registrar"}
+          <SubmitButton onClick={clicouRegistrar}>
+            {!ehRegistrado ? "Login" : "Registrar"}
           </SubmitButton>
-          <SubmitButton>{isRegister ? "Registrar" : "Entrar"}</SubmitButton>
+          <SubmitButton>{!ehRegistrado ? "Registrar" : "Entrar"}</SubmitButton>
         </SecaoBotao>
-        {!isRegister && <EsqueceuSenha>Esqueceu a senha?</EsqueceuSenha>}
+        {ehRegistrado && (
+          <SecaoSenha>
+            <EsqueceuOuAlterarSenha onClick={clicouEsqueceuSenha}>
+              Esqueceu a senha?
+            </EsqueceuOuAlterarSenha>
+            <EsqueceuOuAlterarSenha onClick={clicouAlterarSenha}>
+              Alterar a senha
+            </EsqueceuOuAlterarSenha>
+          </SecaoSenha>
+        )}
       </ContainerLogin>
     </TelaLogin>
   );

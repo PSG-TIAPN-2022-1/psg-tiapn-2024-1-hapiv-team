@@ -10,13 +10,6 @@ export const TelaLogin = styled.div`
   background-size: cover;
 `;
 
-export const EsqueceuSenha = styled.p`
-  color: #000;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-top: 10px;
-`;
-
 export const ContainerLogin = styled.div`
   display: flex;
   flex-direction: column;
@@ -79,4 +72,23 @@ export const SubmitButton = styled.button`
   width: 40%;
   height: 100%;
   transition: 1s;
+`;
+
+export const SecaoSenha = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 25px;
+  gap: 24px;
+  margin-top: 12px;
+`;
+
+export const EsqueceuOuAlterarSenha = styled.span`
+  color: rgb(00, 00, 00);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
 `;
