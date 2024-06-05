@@ -5,6 +5,6 @@ namespace HapivAPI.Interfaces
 {
     public interface IEmailSender
     {
-        public Task<Response?> SendEmailAsync(string email, string subject, string message);
+        public Task<Response?> SendEmailAsync(string email,string action, string subject, string message);
     }
 }

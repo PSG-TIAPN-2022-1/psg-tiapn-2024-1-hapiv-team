@@ -1,10 +1,12 @@
 ﻿using Asp.Versioning;
+using HapivAPI.Agents;
+using HapivAPI.Constantes;
 using HapivAPI.Domain;
 using HapivAPI.Domain.Context;
 using HapivAPI.Interfaces;
+using HapivAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HapivAPI.Controllers
 {
@@ -13,161 +15,67 @@ namespace HapivAPI.Controllers
     [ApiController]
     public class GerentesController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly ICategoriaRepository _catRepo;
+        private readonly IGerenteRepository _gerente;
+        private readonly IEmailSender _emailSender;
 
-        public GerentesController(AppDbContext context, ICategoriaRepository catRepo)
+        public GerentesController(IGerenteRepository gerente, IEmailSender emailSender)
         {
-            _context = context;
-            _catRepo = catRepo;
+            _gerente = gerente;
+            _emailSender = emailSender;
+        }
+        [HttpPost("Login")]
+        public IActionResult Login([FromQuery] string email, string senha)
+        { 
+            var gerente = _gerente.FazerLogin(email, senha);
+
+            return gerente == null ? NotFound() : Ok();
         }
 
-        // GET: Produtos
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Categoria>>> Index()
+        [HttpPost("Cadastrar")]
+        public IActionResult Cadastrar([FromBody]GerenteRequest gerente)
         {
-            //var produtos = await _context.Produtos.Include(p => p.Gerente).Include(p => p.VendaProdutos).ToListAsync();
-            return Ok(await _catRepo.GetAllComProduto());
+            var novoGerente = new Gerente() 
+            { 
+                GerenteId = Guid.NewGuid(),
+                Email = gerente.Email,
+                Senha = gerente.Senha
+            };
+            try
+            {
+                _gerente.Add(novoGerente);
+                _gerente.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Ok();
         }
 
-        // GET: Produtos/Details/5
-        [HttpGet("Details")]
-        public async Task<IActionResult> Details(Guid? id)
+        [HttpPost("SenhaEsquecida")]
+        public async Task<IActionResult> SenhaEsquecida([FromQuery] string email)
         {
-            if (id == null)
+            var gerente = await _gerente.Get(g => g.Email == email);
+
+            if (gerente == null)
             {
-                return NotFound();
+                return NotFound(new KeyValuePair<string, string>("Gerente", "Gerente não cadastrado"));
             }
 
-            var produto = await _context.Produtos
-                .Include(p => p.Gerente)
-                .FirstOrDefaultAsync(m => m.ProdutoId == id);
-            if (produto == null)
+            try
             {
-                return NotFound();
+                await _emailSender.SendEmailAsync(email,"Recuperação de Senha", "Recuperação de senha", criarHtmlSenha(gerente.Senha));
             }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Ok();
+        }   
 
-            return View(produto);
-        }
-
-        // GET: Produtos/Create
-        [HttpGet("teste")]
-        public IActionResult Create()
+        private string criarHtmlSenha(string senha)
         {
-            ViewData["GerenteId"] = new SelectList(_context.Gerentes, "UserId", "Email");
-            return View();
-        }
-
-        // POST: Produtos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdutoId,Nome,PrecoDeCompra,PrecoDeVenda,Descricao,Quantidade,DataEntrada,UserId,GerenteId")] Produto produto)
-        {
-            if (ModelState.IsValid)
-            {
-                produto.ProdutoId = Guid.NewGuid();
-                _context.Add(produto);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["GerenteId"] = new SelectList(_context.Gerentes, "UserId", "Email", produto.GerenteId);
-            return View(produto);
-        }
-
-        // GET: Produtos/Edit/5
-        [HttpPost("Edit")]
-        public async Task<IActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos.FindAsync(id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
-            ViewData["GerenteId"] = new SelectList(_context.Gerentes, "UserId", "Email", produto.GerenteId);
-            return View(produto);
-        }
-
-        // POST: Produtos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("Add")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ProdutoId,Nome,PrecoDeCompra,PrecoDeVenda,Descricao,Quantidade,DataEntrada,UserId,GerenteId")] Produto produto)
-        {
-            if (id != produto.ProdutoId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(produto);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProdutoExists(produto.ProdutoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["GerenteId"] = new SelectList(_context.Gerentes, "UserId", "Email", produto.GerenteId);
-            return View(produto);
-        }
-
-        // GET: Produtos/Delete/5
-        [HttpPost("Delete1")]
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos
-                .Include(p => p.Gerente)
-                .FirstOrDefaultAsync(m => m.ProdutoId == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
-
-            return View(produto);
-        }
-
-        // POST: Produtos/Delete/5
-        [HttpPost("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var produto = await _context.Produtos.FindAsync(id);
-            if (produto != null)
-            {
-                _context.Produtos.Remove(produto);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProdutoExists(Guid id)
-        {
-            return _context.Produtos.Any(e => e.ProdutoId == id);
+            return string.Format(ConstantesGerais.Agents.EmailSender.HtmlContent, senha);
         }
     }
 }

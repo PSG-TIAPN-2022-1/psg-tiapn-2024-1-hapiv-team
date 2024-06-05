@@ -15,6 +15,17 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             _context = context;
             _dbSet = _context.Set<T>();
         }
+        public void Add(T entity)
+        {
+            try
+            {
+               _context.Set<T>().Add(entity);
+            }
+            catch (Exception ex)
+            {
+                //ferramenta de logs aqui
+            }
+        }
 
         public async Task AddAsync(T entity)
         {
@@ -72,6 +83,10 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 return entity;
             }
             return null;
+        }
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }

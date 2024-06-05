@@ -9,15 +9,16 @@ namespace HapivAPI.Agents
     {
         private readonly IConfiguration config;
 
-        private readonly EmailAddress from;
+        private EmailAddress from;
         public EmailSender(IConfiguration _config)
         {
             config = _config;
-            from = new EmailAddress(ConstantesGerais.Agents.EmailSender.EmailRemetente, "Relatorio"); //Remetente (Email e Nome) (foram cadastrados no SendGrid)
+            from = new EmailAddress(ConstantesGerais.Agents.EmailSender.EmailRemetente, ""); //Remetente (Email e Nome) (foram cadastrados no SendGrid)
         }
 
-        public async Task<Response?> SendEmailAsync(string email, string subjects, string message) // destinatario, assunto, corpo
+        public async Task<Response?> SendEmailAsync(string email,string action, string subjects, string message) // destinatario, assunto, corpo
         { 
+            from.Name = action;
             var msg = sendGridMessage(email, subjects, message);
             try
             {
@@ -45,8 +46,8 @@ namespace HapivAPI.Agents
         private SendGridMessage sendGridMessage(string email, string subjects, string message) //Message ainda não está sendo utilizado, ainda estou pensando
         {
             var to = new EmailAddress(email, "Gerente");
-            var plainTextContent = "and easy to do anywhere, even with C#"; // Mensagem que aparece antes (no inbox)
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";//Conteúdo do email de fato
+            var plainTextContent = $"{subjects}"; // Mensagem que aparece antes (no inbox)
+            var htmlContent = $"<strong>{message}</strong>";//Conteúdo do email de fato
             return MailHelper.CreateSingleEmail(from, to, subjects, plainTextContent, htmlContent);
         }
     }
