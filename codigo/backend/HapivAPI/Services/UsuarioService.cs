@@ -49,6 +49,11 @@ namespace HapivAPI.Services
         }
         public async Task<Response?> EnviarEmailRecuperacaoDeSenha(string email)
         {
+            if(string.IsNullOrEmpty(email))
+            {
+                throw new Exception("Email não informado");
+            }
+
             var gerente = await _gerenteRepository.Get(g => g.Email == email);
 
             if (gerente == null)
