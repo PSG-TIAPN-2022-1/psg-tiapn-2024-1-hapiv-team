@@ -1,12 +1,11 @@
 ﻿using Asp.Versioning;
-using HapivAPI.Agents;
 using HapivAPI.Constantes;
 using HapivAPI.Domain;
-using HapivAPI.Domain.Context;
-using HapivAPI.Interfaces;
+using HapivAPI.Interfaces.Services;
 using HapivAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using SendGrid;
+using System.Text.Json;
 
 namespace HapivAPI.Controllers
 {
@@ -15,67 +14,35 @@ namespace HapivAPI.Controllers
     [ApiController]
     public class GerentesController : Controller
     {
-        private readonly IGerenteRepository _gerente;
-        private readonly IEmailSender _emailSender;
+        private readonly IUsuarioService _userService;
 
-        public GerentesController(IGerenteRepository gerente, IEmailSender emailSender)
+        public GerentesController(IUsuarioService user)
         {
-            _gerente = gerente;
-            _emailSender = emailSender;
+            _userService = user;
         }
-        [HttpPost("Login")]
-        public IActionResult Login([FromQuery] string email, string senha)
-        { 
-            var gerente = _gerente.FazerLogin(email, senha);
 
-            return gerente == null ? NotFound() : Ok();
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] GerenteRequest gerente)
+        {
+             _userService.FazerLogin(gerente);
+             return Ok();
         }
 
         [HttpPost("Cadastrar")]
         public IActionResult Cadastrar([FromBody]GerenteRequest gerente)
         {
-            var novoGerente = new Gerente() 
-            { 
-                GerenteId = Guid.NewGuid(),
-                Email = gerente.Email,
-                Senha = gerente.Senha
-            };
-            try
-            {
-                _gerente.Add(novoGerente);
-                _gerente.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            _userService.Cadastrar(gerente);
             return Ok();
         }
 
-        [HttpPost("SenhaEsquecida")]
-        public async Task<IActionResult> SenhaEsquecida([FromQuery] string email)
+        [HttpPost("RecuperarSenha")]
+        public async Task<IActionResult> RecuperarSenha([FromQuery] string email)
         {
-            var gerente = await _gerente.Get(g => g.Email == email);
+            var result = await _userService.EnviarEmailRecuperacaoDeSenha(email);
 
-            if (gerente == null)
-            {
-                return NotFound(new KeyValuePair<string, string>("Gerente", "Gerente não cadastrado"));
-            }
+            var response = JsonSerializer.Serialize(new { statusCode = (int)result.StatusCode, result.IsSuccessStatusCode });
 
-            try
-            {
-                await _emailSender.SendEmailAsync(email,"Recuperação de Senha", "Recuperação de senha", criarHtmlSenha(gerente.Senha));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-            return Ok();
+            return Ok(response);
         }   
-
-        private string criarHtmlSenha(string senha)
-        {
-            return string.Format(ConstantesGerais.Agents.EmailSender.HtmlContent, senha);
-        }
     }
 }

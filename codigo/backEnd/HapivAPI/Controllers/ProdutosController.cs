@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using HapivAPI.Domain;
 using HapivAPI.Domain.Context;
-using HapivAPI.Interfaces;
+using HapivAPI.Interfaces.Agents;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,28 +14,26 @@ namespace HapivAPI.Controllers
     public class ProdutosController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly IUnitOfWork unitOfWork;
         private readonly IEmailSender emailsender;
 
-        public ProdutosController(AppDbContext context, IUnitOfWork unit, IEmailSender emailsender)
+        public ProdutosController(AppDbContext context, IEmailSender emailsender)
         {
             _context = context;
-            unitOfWork = unit;
             this.emailsender = emailsender;
         }
 
         // GET: Produtos
-        [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Categoria>>> Index()
-        {
-            var itens = await unitOfWork.ProdutoRepository.GetAll();
+        //[HttpGet()]
+        //public async Task<ActionResult<IEnumerable<Categoria>>> Index()
+        //{
+        //    var itens = await unitOfWork.ProdutoRepository.GetAll();
 
-            if (!itens.Any())
-            {
-                return Ok("Não há produtos cadastrados");
-            }
-            return Ok(itens);
-        }
+        //    if (!itens.Any())
+        //    {
+        //        return Ok("Não há produtos cadastrados");
+        //    }
+        //    return Ok(itens);
+        //}
 
         // GET: Produtos/Details/5
         [HttpGet("Details")]

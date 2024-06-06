@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace HapivAPI.Interfaces
+namespace HapivAPI.Interfaces.Repositorys
 {
     public interface IBaseRepository<T>
     {
@@ -10,6 +10,6 @@ namespace HapivAPI.Interfaces
         Task AddAsync(T entity);
         T? Update(T entity);
         T? Delete(Expression<Func<T, bool>> predicate);
-        void SaveChanges(); 
+        void SaveChanges();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using HapivAPI.Domain;
 using HapivAPI.Domain.Context;
-using HapivAPI.Interfaces;
+using HapivAPI.Interfaces.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

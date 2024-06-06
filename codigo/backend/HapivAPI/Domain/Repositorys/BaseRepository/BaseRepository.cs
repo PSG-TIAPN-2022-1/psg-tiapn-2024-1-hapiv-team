@@ -1,5 +1,6 @@
 ﻿using HapivAPI.Domain.Context;
-using HapivAPI.Interfaces;
+using HapivAPI.Interfaces.Repositorys;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Linq.Expressions;
@@ -19,11 +20,11 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         {
             try
             {
-               _context.Set<T>().Add(entity);
+               _dbSet.Add(entity);
             }
             catch (Exception ex)
             {
-                //ferramenta de logs aqui
+                throw new Exception(ex.Message);
             }
         }
 
@@ -31,7 +32,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         {
             try
             {
-                await _context.Set<T>() .AddAsync(entity);
+                await _dbSet.AddAsync(entity);
             }catch(Exception ex)
             {
                 //ferramenta de logs aqui

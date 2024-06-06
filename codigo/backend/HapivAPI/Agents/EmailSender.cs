@@ -1,7 +1,7 @@
-﻿using HapivAPI.Interfaces;
-using SendGrid;
+﻿using SendGrid;
 using SendGrid.Helpers.Mail;
 using HapivAPI.Constantes;
+using HapivAPI.Interfaces.Agents;
 
 namespace HapivAPI.Agents
 {
@@ -47,7 +47,7 @@ namespace HapivAPI.Agents
         {
             var to = new EmailAddress(email, "Gerente");
             var plainTextContent = $"{subjects}"; // Mensagem que aparece antes (no inbox)
-            var htmlContent = $"<strong>{message}</strong>";//Conteúdo do email de fato
+            var htmlContent = $"{message}";//Conteúdo do email de fato
             return MailHelper.CreateSingleEmail(from, to, subjects, plainTextContent, htmlContent);
         }
     }

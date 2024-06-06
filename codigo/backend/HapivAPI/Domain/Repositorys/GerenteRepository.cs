@@ -1,6 +1,6 @@
 ﻿using HapivAPI.Domain.Context;
 using HapivAPI.Domain.Repositorys.BaseRepository;
-using HapivAPI.Interfaces;
+using HapivAPI.Interfaces.Repositorys;
 using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 
@@ -13,7 +13,14 @@ namespace HapivAPI.Domain.Repositorys
         }
         public Gerente? FazerLogin(string email, string senha)
         {
-            return _dbSet.FirstOrDefault(g => g.Email == email && g.Senha == senha);
+            var result = _dbSet.FirstOrDefault(g => g.Email == email && g.Senha == senha);
+
+            if(result == null)
+            {
+                throw new Exception("Usuário não encontrado");
+            }
+
+            return result;
         }
     }
 }

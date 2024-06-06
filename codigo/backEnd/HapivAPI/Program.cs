@@ -7,10 +7,12 @@ using HapivAPI.Domain;
 using HapivAPI.Domain.Repositorys;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using HapivAPI.Domain.Repositorys.BaseRepository;
-using HapivAPI.Interfaces;
 using HapivAPI.Services;
 using HapivAPI.Domain.Context;
 using HapivAPI.Agents;
+using HapivAPI.Interfaces.Repositorys;
+using HapivAPI.Interfaces.Agents;
+using HapivAPI.Interfaces.Services;
 
 namespace API
 {
@@ -47,8 +49,8 @@ namespace API
             services.AddScoped<IGerenteRepository, GerenteRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
 
             // Add services to the container.
             services.AddControllers();

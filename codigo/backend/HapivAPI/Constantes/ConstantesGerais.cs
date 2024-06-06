@@ -19,12 +19,17 @@
                                                 '<html>
                                                     <head>
                                                         <style>
+                                                            p {{
+                                                                font-size: 16px;
+                                                            }}
                                                             body {{
                                                                 font-family: Arial, sans-serif;
+                                                                border: 1px solid #f8f9fa;
                                                             }}
                                                             .container {{
                                                                 width: 80%;
                                                                 margin: auto;
+                                                                border: 5px solid #f8f9fa;
                                                             }}
                                                             .header {{
                                                                 background-color: #f8f9fa;
@@ -39,14 +44,13 @@
                                                     <body>
                                                         <div class='container'>
                                                             <div class='header'>
-                                                                <h1>Welcome to Our Website</h1>
+                                                                <h1>Olá Gestor(a)!</h1>
                                                             </div>
                                                             <div class='content'>
-                                                                <p>Hello,</p>
-                                                                <p>We're glad you've joined our website. Your password is: <strong>{0}</strong></p>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget lorem id magna consequat convallis. Suspendisse potenti. In non metus auctor, feugiat purus vitae, ultrices mauris. Sed ac diam nec neque egestas congue. Curabitur euismod lacinia risus, sed tempus odio placerat a.</p>
-                                                                <p>Best regards,</p>
-                                                                <p>The Team</p>
+                                                                <p>Tudo bem?</p>
+                                                                <p>Esqueceu sua senha? Sua senha é: <strong>{0}</strong></p>
+                                                                <p>Aconselhamos que altere sua senha depois disso.</p>
+                                                                <p>Atenciosamente,TI.</p>
                                                             </div>
                                                         </div>
                                                     </body>
