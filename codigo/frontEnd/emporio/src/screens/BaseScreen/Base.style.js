@@ -11,3 +11,15 @@ export const ContainerBase = styled.div`
   flex-direction: column;
   width: 100%;
 `;
+
+export const Cabecalho = styled.div`
+  display: flex;
+  align-items: center;
+  height: 20%;
+  font-size: 24px;
+`;
+
+export const Titulo = styled.h1`
+  font-size: 24px;
+  padding-left: 45px;
+`;

@@ -1,12 +1,18 @@
 import React from "react";
-import { ContainerBase, TelaBase } from "./Base.style";
+import { ContainerBase, TelaBase, Cabecalho, Titulo } from "./Base.style";
 import { BarraLateral } from "./components/BarraLateral/BarraLateral";
+import { TelaEstoque } from "./components/TelaEstoque/TelaEstoque";
 
 const Base = () => {
   return (
     <TelaBase>
       <BarraLateral />
-      <ContainerBase></ContainerBase>
+      <ContainerBase>
+        <Cabecalho>
+          <Titulo>Estoque</Titulo>
+        </Cabecalho>
+        <TelaEstoque/>
+        </ContainerBase>
     </TelaBase>
   );
 };

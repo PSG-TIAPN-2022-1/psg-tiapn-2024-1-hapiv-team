@@ -5,8 +5,9 @@ export const BarraLateralBox = styled.div`
   flex-direction: column;
   width: 20%;
   height: 100%;
-  border-right: 1px solid black;
-  border-radius: 8px;
+  border-radius: 6px;
+  background-color: rgb(245, 245, 220);
+  border-right: 1px solid transparent;
 `;
 
 export const BarraLateralCabecalho = styled.div`
@@ -21,7 +22,17 @@ export const BarraLateralLogo = styled.img`
 
 export const SecaoBotoes = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  height: 40%;
+  padding: 16px;
+  gap: 8px;
+`;
+
+export const SecaoInferior = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  flex-direction: column;
+  height: 30%;
   padding: 16px;
 `;
