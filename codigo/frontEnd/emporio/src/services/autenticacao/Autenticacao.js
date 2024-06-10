@@ -1,7 +1,7 @@
 import { apiConfig } from "../../config/api";
 
 export const efetuarLogin = async (email, senha) => {
-  const response = await fetch("http://localhost:7209/api/1/login", {
+  const response = await fetch("https://localhost:7209/api/1/Gerentes/Login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

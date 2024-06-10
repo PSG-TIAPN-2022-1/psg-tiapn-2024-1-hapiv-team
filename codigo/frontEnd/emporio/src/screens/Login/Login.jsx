@@ -11,9 +11,22 @@ import {
   EsqueceuSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
+import { efetuarLogin } from "../../services/autenticacao/Autenticacao";
 
 const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
+  const [usuario, setUsuario] = useState("hello@gmail.com");
+  const [senha, setSenha] = useState("hellohello");
+
+  const handleLogin = async () => {
+    try {
+      console.log(usuario, senha);
+      const response = await efetuarLogin(usuario, senha);
+      console.log(response); // ou faça o que quiser com a resposta
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const renderizarPagina = () => {
     switch (visualizacao) {
@@ -93,19 +106,21 @@ const Login = () => {
                 icon="person"
                 placeholder="Usuário"
                 type="text"
+                onChange={(e) => setUsuario(e.target.value)}
               />
               <InputLogin
                 key="senha"
                 icon="key"
                 placeholder="Senha"
                 type="password"
+                onChange={(e) => setSenha(e.target.value)}
               />
             </SecaoInput>
             <SecaoBotao>
               <SubmitButton onClick={() => setVisualizacao("registrar")}>
                 Registrar
               </SubmitButton>
-              <SubmitButton>Entrar</SubmitButton>
+              <SubmitButton onClick={handleLogin}>Entrar</SubmitButton>
             </SecaoBotao>
             <EsqueceuSenha onClick={() => setVisualizacao("esqueceuSenha")}>
               Esqueceu a senha?
