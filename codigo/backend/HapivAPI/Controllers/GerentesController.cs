@@ -28,7 +28,7 @@ namespace HapivAPI.Controllers
              return Ok();
         }
 
-        [HttpPost("Cadastrar")]
+        [HttpPut("Cadastrar")]
         public IActionResult Cadastrar([FromBody]GerenteRequest gerente)
         {
             _userService.Cadastrar(gerente);
@@ -36,7 +36,7 @@ namespace HapivAPI.Controllers
         }
 
         [HttpPost("RecuperarSenha")]
-        public async Task<IActionResult> RecuperarSenha([FromQuery] string email)
+        public async Task<IActionResult> RecuperarSenha([FromBody] string email)
         {
             var result = await _userService.EnviarEmailRecuperacaoDeSenha(email);
 

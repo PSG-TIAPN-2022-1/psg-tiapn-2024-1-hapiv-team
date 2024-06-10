@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { BoxInput, Input } from "./InputLogin.style";
 
-export const InputLogin = ({ placeholder, type, icon }) => {
+export const InputLogin = ({ placeholder, type, icon, onChange }) => {
   const inputRef = useRef();
   const [inputPlaceholder, setInputPlaceholder] = useState(placeholder);
 
@@ -13,6 +13,12 @@ export const InputLogin = ({ placeholder, type, icon }) => {
     setInputPlaceholder(placeholder);
   };
 
+  const handleChange = (event) => {
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  };
+
   return (
     <BoxInput>
       <span class="material-symbols-outlined">{icon}</span>
@@ -22,6 +28,7 @@ export const InputLogin = ({ placeholder, type, icon }) => {
         placeholder={inputPlaceholder}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        onChange={handleChange}
       />
     </BoxInput>
   );
