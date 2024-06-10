@@ -1,5 +1,4 @@
 using Asp.Versioning;
-using HapivAPI.Context;
 using HapivAPI.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -8,13 +7,18 @@ using HapivAPI.Domain;
 using HapivAPI.Domain.Repositorys;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using HapivAPI.Domain.Repositorys.BaseRepository;
-using HapivAPI.Interfaces;
 using HapivAPI.Services;
+using HapivAPI.Domain.Context;
+using HapivAPI.Agents;
+using HapivAPI.Interfaces.Repositorys;
+using HapivAPI.Interfaces.Agents;
+using HapivAPI.Interfaces.Services;
 
 namespace API
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -46,7 +50,16 @@ namespace API
             services.AddScoped<IGerenteRepository, GerenteRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Frontend",
+                builder => builder.WithOrigins("http://localhost:3000") // substitua pelo domínio do seu front-end
+                                   .AllowAnyHeader()
+                                   .AllowAnyMethod());
+            });
 
             // Add services to the container.
             services.AddControllers();
@@ -67,7 +80,7 @@ namespace API
                 });
                 app.ConfigureExceptionsHandler(); //Configura middleware para mensagens de erro personalizadas em exceções não tratadas
             }
-
+            app.UseCors("Frontend");
             app.UseHttpsRedirection();
             // app.UseAuthentication(); Pesquisar mais depois
             app.UseAuthorization();

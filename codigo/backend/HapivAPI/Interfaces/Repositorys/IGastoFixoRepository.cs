@@ -1,6 +1,6 @@
 ﻿using HapivAPI.Domain;
 
-namespace HapivAPI.Interfaces
+namespace HapivAPI.Interfaces.Repositorys
 {
     public interface IGastoFixoRepository : IBaseRepository<GastoFixo>
     {

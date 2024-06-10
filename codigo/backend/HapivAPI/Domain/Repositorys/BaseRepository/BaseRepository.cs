@@ -1,5 +1,6 @@
-﻿using HapivAPI.Context;
-using HapivAPI.Interfaces;
+﻿using HapivAPI.Domain.Context;
+using HapivAPI.Interfaces.Repositorys;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Linq.Expressions;
@@ -15,15 +16,26 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             _context = context;
             _dbSet = _context.Set<T>();
         }
+        public void Add(T entity)
+        {
+            try
+            {
+               _dbSet.Add(entity);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public async Task AddAsync(T entity)
         {
             try
             {
-                await _context.Set<T>() .AddAsync(entity);
+                await _dbSet.AddAsync(entity);
             }catch(Exception ex)
             {
-                //ferramenta de logs aqui
+                throw new Exception(ex.Message);
             }
         }
 
@@ -40,8 +52,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 return deleted;
             }catch (Exception ex)
             {
-                //Ferramentas de log aqui
-                return null;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -53,8 +64,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 return item;
             }catch (Exception ex)
             {
-                //Ferramenta de logs aqui
-                return null;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -68,10 +78,20 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         {
             if (entity != null)
             {
-                _dbSet.Update(entity);
-                return entity;
+                try
+                {
+                    _dbSet.Update(entity);
+                    return entity;
+                }catch(Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
             }
             return null;
+        }
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }
