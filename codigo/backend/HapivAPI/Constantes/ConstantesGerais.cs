@@ -49,7 +49,6 @@
                                                             <div class='content'>
                                                                 <p>Tudo bem?</p>
                                                                 <p>Esqueceu sua senha? Sua senha é: <strong>{0}</strong></p>
-                                                                <p>Aconselhamos que altere sua senha depois disso.</p>
                                                                 <p>Atenciosamente,TI.</p>
                                                             </div>
                                                         </div>

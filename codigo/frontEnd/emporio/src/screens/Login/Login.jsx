@@ -11,12 +11,17 @@ import {
   EsqueceuSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
-import { handleLogin } from "./Login.js";
+import { handleLogin, handleRegistrar, handleRecuperarSenha } from "./Login.js";
 
 const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
+  const [senhaRepetida, setSenhaRepetida] = useState("");
+
+  const verificarSenha = (senha, senhaRepetida) => {
+    return senha === senhaRepetida;
+  };
 
   const renderizarPagina = () => {
     switch (visualizacao) {
@@ -28,17 +33,20 @@ const Login = () => {
             </CabecalhoLogin>
             <SecaoInput>
               <InputLogin
-                key="email"
+                key="email-Esqueceu-Senha"
                 icon="email"
                 placeholder="Email"
                 type="email"
+                onChange={(value) => setUsuario(value)}
               />
             </SecaoInput>
             <SecaoBotao>
               <SubmitButton onClick={() => setVisualizacao("login")}>
                 Voltar
               </SubmitButton>
-              <SubmitButton>Enviar Email</SubmitButton>
+              <SubmitButton onClick={() => handleRecuperarSenha(usuario)}>
+                Enviar Email
+              </SubmitButton>
             </SecaoBotao>
           </>
         );
@@ -50,35 +58,37 @@ const Login = () => {
             </CabecalhoLogin>
             <SecaoInput>
               <InputLogin
-                key="usuario"
-                icon="person"
-                placeholder="Usuário"
-                type="text"
-              />
-              <InputLogin
-                key="email"
+                key="email-Registrar"
                 icon="email"
                 placeholder="Email"
                 type="email"
+                onChange={(value) => setUsuario(value)}
               />
               <InputLogin
                 key="senha"
                 icon="key"
                 placeholder="Senha"
                 type="password"
+                onChange={(value) => setSenha(value)}
               />
               <InputLogin
                 key="repetirSenha"
                 icon="key"
                 placeholder="Repetir Senha"
                 type="password"
+                onChange={(value) => setSenhaRepetida(value)}
               />
             </SecaoInput>
             <SecaoBotao>
               <SubmitButton onClick={() => setVisualizacao("login")}>
                 Voltar
               </SubmitButton>
-              <SubmitButton onClick={() => setVisualizacao("registrar")}>
+              <SubmitButton
+                onClick={() => {
+                  if (verificarSenha(senha, senhaRepetida))
+                    handleRegistrar(usuario, senha);
+                }}
+              >
                 Registrar
               </SubmitButton>
             </SecaoBotao>
@@ -92,9 +102,9 @@ const Login = () => {
             </CabecalhoLogin>
             <SecaoInput>
               <InputLogin
-                key="usuario"
-                icon="person"
-                placeholder="Usuário"
+                key="usuario-Login"
+                icon="email"
+                placeholder="Email"
                 type="text"
                 onChange={(value) => setUsuario(value)}
               />
