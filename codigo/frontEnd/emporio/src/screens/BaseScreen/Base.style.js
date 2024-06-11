@@ -19,7 +19,8 @@ export const Cabecalho = styled.div`
   font-size: 24px;
 `;
 
-export const Titulo = styled.h1`
-  font-size: 24px;
+export const Titulo = styled.h3`
+  font-size: 20px;
+  font-family: Cambria;
   padding-left: 45px;
 `;

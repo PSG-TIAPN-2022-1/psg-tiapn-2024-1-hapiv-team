@@ -7,7 +7,6 @@ export const BarraLateralBox = styled.div`
   height: 100%;
   border-radius: 6px;
   background-color: rgb(245, 245, 220);
-  border-right: 1px solid transparent;
 `;
 
 export const BarraLateralCabecalho = styled.div`
@@ -31,7 +30,6 @@ export const SecaoBotoes = styled.div`
 export const SecaoInferior = styled.div`
   display: flex;
   justify-content: flex-end;
-
   flex-direction: column;
   height: 30%;
   padding: 16px;

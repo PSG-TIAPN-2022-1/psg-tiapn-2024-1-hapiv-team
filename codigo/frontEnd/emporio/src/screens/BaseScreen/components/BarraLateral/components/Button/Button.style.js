@@ -8,6 +8,7 @@ export const ContainerButton = styled.div`
   gap: 12px;
   border-radius: 15px;
   font-size: 16px;
+  font-weight: 400;
   font-family: Cambria;
   cursor: pointer;
   transition-duration: 0.4s;
