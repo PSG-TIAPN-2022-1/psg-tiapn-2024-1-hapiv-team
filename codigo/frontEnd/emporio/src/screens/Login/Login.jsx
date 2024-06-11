@@ -17,10 +17,16 @@ const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
-  const [senhaRepetida, setSenhaRepetida] = useState("");
+  const [senharepetida, setSenhaRepetida] = useState("");
 
-  const verificarSenha = (senha, senhaRepetida) => {
-    return senha === senhaRepetida;
+  
+  function verificarSenha(x, y){
+    if (x === y && x !== "" && x !== null){
+      handleRegistrar(usuario, setSenha)
+      alert("Deu")
+    }else{
+      alert("Senhas Não são iguais, ou senha vazia")
+    }
   };
 
   const renderizarPagina = () => {
@@ -85,8 +91,8 @@ const Login = () => {
               </SubmitButton>
               <SubmitButton
                 onClick={() => {
-                  if (verificarSenha(senha, senhaRepetida))
-                    handleRegistrar(usuario, senha);
+                  if (verificarSenha(senha, senharepetida))
+                    handleRegistrar(usuario, setSenha);
                 }}
               >
                 Registrar
