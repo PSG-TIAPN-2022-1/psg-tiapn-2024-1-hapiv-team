@@ -25,7 +25,7 @@ const Login = () => {
       handleRegistrar(usuario, setSenha)
       alert("Deu")
     }else{
-      alert("Senhas Não são iguais, ou senha vazia")
+      alert("Senhas não são iguais, ou senha vazia")
     }
   };
 
