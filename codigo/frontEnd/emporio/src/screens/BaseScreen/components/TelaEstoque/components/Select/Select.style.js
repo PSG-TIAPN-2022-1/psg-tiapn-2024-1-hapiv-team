@@ -10,10 +10,12 @@ export const ContainerFiltro = styled.div`
   }
 
   select {
-
-    font-size: 15px;    margin-left: 10px;
-    padding: 5px 10p
-    border-radius: 5px;    border-radius: 5px;
+    width: 100px;
+    font-size: 15px;   
+    margin-left: 10px;
+    padding: 5px 10p  
     border: 1px solid #ccc;
+     border-radius: 4px;
   }
+    
 `;

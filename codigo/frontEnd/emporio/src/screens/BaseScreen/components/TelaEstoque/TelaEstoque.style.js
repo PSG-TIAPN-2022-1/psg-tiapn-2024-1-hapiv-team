@@ -39,5 +39,6 @@ export const SecaoSelected = styled.div`
   height: 10%;
   justify-content: center;
   display: flex;
-  alien-items
+  alien-items: center;
+   margin-left: auto;
 `;

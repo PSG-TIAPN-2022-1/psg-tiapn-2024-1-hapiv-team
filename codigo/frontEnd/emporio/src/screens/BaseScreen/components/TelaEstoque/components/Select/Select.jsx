@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ContainerFiltro } from "./Select.style";
 
-export default function SelectFiltro({ labelText }) {
+export default function SelectFiltro({ labelText, options }) {
   const [selectedValue, setSelectedValue] = useState("");
 
   const handleChange = (event) => {
@@ -16,8 +16,11 @@ export default function SelectFiltro({ labelText }) {
           <option value="" disabled>
             Opções
           </option>
-          <option value="PreçoMaior">Maior preço de venda</option>
-          <option value="PreçoMenor">Menor preço de venda</option>
+          {options.map((option, index) => (
+            <option key={index} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </label>
     </ContainerFiltro>
