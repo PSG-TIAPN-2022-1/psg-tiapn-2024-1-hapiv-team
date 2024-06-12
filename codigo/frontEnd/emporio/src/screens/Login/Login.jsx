@@ -21,14 +21,16 @@ const Login = () => {
 
   function verificarSenha(x, y, email, n){
     if(email === "" || email === null){
-      alert("é necessario um email para se registrar!")
+      alert("É necessario um email para se registrar")
     }else if (x === y && x !== "" && x !== null && n>=8){
       handleRegistrar(usuario, setSenha)
       alert("Cadastrado com sucesso!")
     }else if(n < 8){
       alert("A senha deve conter no minimo 8 caracteres")
+    }else if(x !== y){
+      alert("As senhas não são iguais")
     }else{
-    alert("Senhas não são iguais, ou senha vazia")
+    alert("Senha vazia")
     }
   };
 
