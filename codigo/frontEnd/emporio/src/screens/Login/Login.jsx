@@ -19,13 +19,18 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   const [senharepetida, setSenhaRepetida] = useState("");
 
-  
-  function verificarSenha(x, y){
-    if (x === y && x !== "" && x !== null){
+  function verificarSenha(x, y, email, n){
+    if(email === "" || email === null){
+      alert("é necessario um email para se registrar!")
+    }else if (x === y && x !== "" && x !== null && n>=8){
       handleRegistrar(usuario, setSenha)
-      alert("Deu")
+      alert("Cadastrado com sucesso!")
+    }else if(n < 8){
+      alert("A senha deve conter no minimo 8 caracteres")
+    }else if(x!== y){
+      alert("Senhas não são iguais!")
     }else{
-      alert("Senhas Não são iguais, ou senha vazia")
+      alert("Senha vazia")
     }
   };
 
@@ -91,8 +96,7 @@ const Login = () => {
               </SubmitButton>
               <SubmitButton
                 onClick={() => {
-                  if (verificarSenha(senha, senharepetida))
-                    handleRegistrar(usuario, setSenha);
+                  verificarSenha(senha.toString(), senharepetida.toString(), usuario, senha.length)
                 }}
               >
                 Registrar
