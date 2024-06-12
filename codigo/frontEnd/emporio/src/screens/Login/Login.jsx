@@ -27,10 +27,8 @@ const Login = () => {
       alert("Cadastrado com sucesso!")
     }else if(n < 8){
       alert("A senha deve conter no minimo 8 caracteres")
-    }else if(x!== y){
-      alert("Senhas não são iguais!")
     }else{
-      alert("Senha vazia")
+    alert("Senhas não são iguais, ou senha vazia")
     }
   };
 
