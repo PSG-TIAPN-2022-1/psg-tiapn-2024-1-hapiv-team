@@ -35,10 +35,9 @@ export const SecaoTabela = styled.div`
   margin-top: 10px;
 `;
 
-export const SecaoSelected = styled.div`
-  height: 10%;
-  justify-content: center;
+export const SecaoSelect = styled.div`
   display: flex;
-  alien-items: center;
-   margin-left: auto;
+  align-self: end;
+  height: 10%;
+  width: 55%;
 `;
