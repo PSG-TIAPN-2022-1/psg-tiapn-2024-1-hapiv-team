@@ -4,7 +4,7 @@ import {
   Titulo,
   Central,
   Botoes,
-} from ".TelaEstoque/components/Modal/modal.style.js"
+} from "./modal.style"
 
 
 export default function Modal({isOpen}){
