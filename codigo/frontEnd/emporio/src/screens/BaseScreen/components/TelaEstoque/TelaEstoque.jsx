@@ -39,7 +39,7 @@ export const TelaEstoque = () => {
     <Container>
       <SecaoBotoes>
         <BoxBotoes>
-          <Button onClick={() => {setOpenModal(true)}} title={"Adicionar Produto"}>Adicionar Produto</Button>
+          <Button onClick={() => {setOpenModal(true)}} title={"Adicionar Produto"}>Adicionar venda</Button>
           <Button onClick={() => {setOpenModal(true)}} title={"Efetuar Venda"}>Efetuar Venda</Button>
         </BoxBotoes>
       </SecaoBotoes>

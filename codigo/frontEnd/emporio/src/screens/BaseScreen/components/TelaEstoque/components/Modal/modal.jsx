@@ -18,7 +18,6 @@ export default function Modal({ isOpen, setModalOpen, title, children }) {
       <ModalContent>
         <Title>{title}</Title>
         <Content>{children}</Content>
-        
         <Buttons>
         <Button title="Close" onClick={() => setModalOpen(false)} />
         <Button title={"Salvar"}/>

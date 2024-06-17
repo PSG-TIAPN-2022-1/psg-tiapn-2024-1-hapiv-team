@@ -16,7 +16,7 @@ export const BarraLateral = () => {
       </BarraLateralCabecalho>
       <SecaoBotoes>
         <Button icon="store" title="Estoque" />
-        <Button icon="payments" title="Vendas" />
+        <Button icon="payments" title="Finanças" />
       </SecaoBotoes>
       <SecaoInferior>
         <Button icon="logout" title="Sair" />
