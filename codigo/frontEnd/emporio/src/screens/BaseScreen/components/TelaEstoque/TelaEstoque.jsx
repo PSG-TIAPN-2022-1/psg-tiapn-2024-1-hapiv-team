@@ -1,13 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import {
   BoxBotoes,
   Container,
   SecaoBotoes,
   SecaoSelect,
   SecaoTabela,
+  Button,
 } from "./TelaEstoque.style";
-import { Button } from "./components/Button/Button";
 import { SelectFiltro } from "./components/Select/SelectFiltro";
+import Modal from "./components/Modal/modal"
 
 export const TelaEstoque = () => {
   const opcoesFiltrar = [
@@ -27,23 +29,27 @@ export const TelaEstoque = () => {
     { value: "Fornecedor", label: "Fornecedor" },
     { value: "MaiorPrecoVenda", label: "Maior Preço de Venda" },
     { value: "MenorPrecoVenda", label: "Menor Preço de Venda" },
-    { value: "MaiorPrecoCompra", label: "Maior Preço de Compra" },
+    { value: "MaiorPrecoCompra", label: "Maior Preço de Cosmpra" },
     { value: "MenorPrecoCompra", label: "Menor Preço de Compra" },
   ];
+
+  const[openModal, setOpenModal] = useState(false)
 
   return (
     <Container>
       <SecaoBotoes>
         <BoxBotoes>
-          <Button title={"Adicionar Produto"}></Button>
-          <Button title={"Efetuar Venda"}></Button>
+          <Button onClick={() => {setOpenModal(true)}} title={"Adicionar Produto"}>Adicionar venda</Button>
+          <Button onClick={() => {setOpenModal(true)}} title={"Efetuar Venda"}>Efetuar Venda</Button>
         </BoxBotoes>
       </SecaoBotoes>
       <SecaoSelect>
         <SelectFiltro labelText="Filtrar por" options={opcoesFiltrar} />
         <SelectFiltro labelText="Ordenar por" options={opcoesOrdenar} />
       </SecaoSelect>
-      <SecaoTabela></SecaoTabela>
+      <SecaoTabela>
+        <Modal isOpen={openModal}/>
+      </SecaoTabela>
     </Container>
   );
 };
