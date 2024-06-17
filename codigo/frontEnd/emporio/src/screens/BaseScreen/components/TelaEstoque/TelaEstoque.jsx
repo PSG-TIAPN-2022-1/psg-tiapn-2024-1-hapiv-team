@@ -10,6 +10,7 @@ import {
 } from "./TelaEstoque.style";
 import { SelectFiltro } from "./components/Select/SelectFiltro";
 import Modal from "./components/Modal/modal"
+import { InputTelaEstoque } from "./components/InputTelaEstoque/InputTelaEstoque";
 
 export const TelaEstoque = () => {
   const opcoesFiltrar = [
@@ -48,9 +49,12 @@ export const TelaEstoque = () => {
         <SelectFiltro labelText="Ordenar por" options={opcoesOrdenar} />
       </SecaoSelect>
       <SecaoTabela>
-      <Modal isOpen={openModal} setModalOpen={setOpenModal} title="Produto">
-  <p>Categoria x  </p>
-</Modal>
+        <Modal isOpen={openModal} setModalOpen={setOpenModal} title="Produto">
+          <InputTelaEstoque type="text" title="Descricao" placeholder={"Descricao"} />
+          <InputTelaEstoque type="text" title="Categoria" placeholder={"Categoria"} />
+          <InputTelaEstoque type="text" title="Preco de Compra" placeholder={"Preço de Compra"} />
+          <InputTelaEstoque type="text" title="Preco de Venda" placeholder={"Preço de Venda"} />
+        </Modal>
       </SecaoTabela>
     </Container>
   );

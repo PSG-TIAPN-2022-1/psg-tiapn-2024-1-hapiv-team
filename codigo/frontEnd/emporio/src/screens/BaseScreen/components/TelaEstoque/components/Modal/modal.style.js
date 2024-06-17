@@ -17,10 +17,11 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin: auto;
   padding: 20px;
   border: 2px solid #888;
-  width: 90%; 
+  width: 60%; 
   overflow-y: auto; 
   border-radius: 10px;
   background-color: rgb(245, 245, 220);
@@ -31,12 +32,18 @@ export const Title = styled.h2`
 
 export const Content = styled.div`
   margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 60%;
+  justify-content: space-between;
 `;
 
 export const Buttons = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 30%
 `;
 
 export const Button = styled.button`
