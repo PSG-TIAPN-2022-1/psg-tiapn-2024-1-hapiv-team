@@ -7,15 +7,15 @@ import {
 } from "./modal.style"
 
 
-export default function Modal({isOpen}){
+export default function Modal({isOpen, setModalOpen}){
 
   if (isOpen) {
 
     return(
       <Container>
-        <Titulo className='titulos'></Titulo>
+        <Titulo className='titulos'>deu?</Titulo>
         <Central className='central'></Central>
-        <Botoes className='botoes'></Botoes>
+        <Botoes onClick={setModalOpen} className='botoes'>Botao</Botoes>
       </Container>
     )
   }
