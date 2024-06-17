@@ -1,24 +1,28 @@
 import React from 'react'
 import {
-  Container,
-  Titulo,
-  Central,
-  Botoes,
+  ModalContainer,
+  ModalContent,
+  Title,
+  Content,
+  Buttons,
 } from "./modal.style"
+import { Button } from "../Button/Button"
 
-
-export default function Modal({isOpen, setModalOpen}){
-
-  if (isOpen) {
-
-    return(
-      <Container>
-        <Titulo className='titulos'>deu?</Titulo>
-        <Central className='central'></Central>
-        <Botoes onClick={setModalOpen} className='botoes'>Botao</Botoes>
-      </Container>
-    )
+export default function Modal({ isOpen, setModalOpen, title, children }) {
+  if (!isOpen) {
+    return null;
   }
 
-
+  return (
+    <ModalContainer>
+      <ModalContent>
+        <Title>{title}</Title>
+        <Content>{children}</Content>
+        <Buttons>
+        <Button title="Close" onClick={() => setModalOpen(false)} />
+        <Button title={"Salvar"}/>
+        </Buttons>
+      </ModalContent>
+    </ModalContainer>
+  );
 }

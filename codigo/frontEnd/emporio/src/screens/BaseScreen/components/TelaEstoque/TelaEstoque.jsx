@@ -48,8 +48,9 @@ export const TelaEstoque = () => {
         <SelectFiltro labelText="Ordenar por" options={opcoesOrdenar} />
       </SecaoSelect>
       <SecaoTabela>
-        <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
-        </Modal>
+      <Modal isOpen={openModal} setModalOpen={setOpenModal} title="Produto">
+  <p>Categoria x  </p>
+</Modal>
       </SecaoTabela>
     </Container>
   );
