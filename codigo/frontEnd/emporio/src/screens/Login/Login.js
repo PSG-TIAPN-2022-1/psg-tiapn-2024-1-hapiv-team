@@ -3,31 +3,64 @@ import {
   Registrar,
   RecuperarSenha,
 } from "../../services/autenticacao/Autenticacao";
+import {
+  verificarSeElementoEhNulo,
+  verificarSeElementoEhMenor,
+  compararElementos,
+} from "../../utils/utils";
 
-export const handleLogin = async (usuario, senha) => {
+const handleLogin = async (usuario, senha) => {
   try {
-    const response = await EfetuarLogin(usuario, senha);
-    console.log(response); //Redireconar para a próxima tela
+    await EfetuarLogin(usuario, senha);
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
-export const handleRegistrar = async (usuario, senha) => {
+const handleRegistrar = async (usuario, senha) => {
   try {
-    const response = await Registrar(usuario, senha);
-    console.log(response); //Redireconar para a próxima tela
+    await Registrar(usuario, senha);
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
-export const handleRecuperarSenha = async (usuario) => {
+const handleRecuperarSenha = async (usuario) => {
   try {
-    console.log(usuario);
-    const response = await RecuperarSenha(usuario);
-    console.log(response); //Redirecionar para a próxima tela
+    await RecuperarSenha(usuario);
   } catch (error) {
-    console.error(error);
+    alert(error);
+  }
+};
+
+export const validarLogin = (usuario, senha) => {
+  if (verificarSeElementoEhNulo(usuario) || verificarSeElementoEhNulo(senha)) {
+    alert("Preencha todos os campos!");
+  } else {
+    handleLogin(usuario, senha);
+  }
+};
+
+export const validarRegistro = (usuario, senha, senhaRepetida) => {
+  if (
+    verificarSeElementoEhNulo(usuario) ||
+    verificarSeElementoEhNulo(senha) ||
+    verificarSeElementoEhNulo(senhaRepetida)
+  ) {
+    alert("Preencha todos os campos!");
+  } else if (verificarSeElementoEhMenor(senha, 8)) {
+    alert("A senha deve conter no mínimo 8 caracteres!");
+  } else if (!compararElementos(senha, senhaRepetida)) {
+    alert("As senhas não são iguais!");
+  } else {
+    handleRegistrar(usuario, senha);
+  }
+};
+
+export const validarRecuperacaoSenha = (usuario) => {
+  if (verificarSeElementoEhNulo(usuario)) {
+    alert("Preencha o campo com o seu email!");
+  } else {
+    handleRecuperarSenha(usuario);
   }
 };
