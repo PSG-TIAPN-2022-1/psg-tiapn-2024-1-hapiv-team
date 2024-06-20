@@ -1,5 +1,5 @@
 export const verificarSeElementoEhNulo = (a) => {
-  return a === null || a === undefined || a === "";
+  return a === null || a === undefined || a === "" || a.length === 0;
 };
 
 export const verificarSeElementoEhMenor = (a, b) => {
