@@ -11,27 +11,27 @@ import {
   EsqueceuSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
-import { handleLogin, handleRegistrar, handleRecuperarSenha } from "./Login.js";
+import {
+  validarLogin,
+  validarRecuperacaoSenha,
+  validarRegistro,
+} from "./Login.js";
 
 const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
-  const [senharepetida, setSenhaRepetida] = useState("");
+  const [senhaRepetida, setSenhaRepetida] = useState("");
 
-  function verificarSenha(x, y, email, n){
-    if(email === "" || email === null){
-      alert("É necessario um email para se registrar")
-    }else if (x === y && x !== "" && x !== null && n>=8){
-      handleRegistrar(usuario, setSenha)
-      alert("Cadastrado com sucesso!")
-    }else if(n < 8){
-      alert("A senha deve conter no minimo 8 caracteres")
-    }else if(x !== y){
-      alert("As senhas não são iguais")
-    }else{
-    alert("Senha vazia")
-    }
+  const limparCampos = () => {
+    setUsuario("");
+    setSenha("");
+    setSenhaRepetida("");
+  };
+
+  const alterarVisualizacao = (novaVisualizacao) => {
+    limparCampos();
+    setVisualizacao(novaVisualizacao);
   };
 
   const renderizarPagina = () => {
@@ -52,10 +52,10 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("login")}>
+              <SubmitButton onClick={() => alterarVisualizacao("login")}>
                 Voltar
               </SubmitButton>
-              <SubmitButton onClick={() => handleRecuperarSenha(usuario)}>
+              <SubmitButton onClick={() => validarRecuperacaoSenha(usuario)}>
                 Enviar Email
               </SubmitButton>
             </SecaoBotao>
@@ -76,7 +76,7 @@ const Login = () => {
                 onChange={(value) => setUsuario(value)}
               />
               <InputLogin
-                key="senha"
+                key="senha-Registrar"
                 icon="key"
                 placeholder="Senha"
                 type="password"
@@ -91,13 +91,11 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("login")}>
+              <SubmitButton onClick={() => alterarVisualizacao("login")}>
                 Voltar
               </SubmitButton>
               <SubmitButton
-                onClick={() => {
-                  verificarSenha(senha.toString(), senharepetida.toString(), usuario, senha.length)
-                }}
+                onClick={() => validarRegistro(usuario, senha, senhaRepetida)}
               >
                 Registrar
               </SubmitButton>
@@ -112,14 +110,14 @@ const Login = () => {
             </CabecalhoLogin>
             <SecaoInput>
               <InputLogin
-                key="usuario-Login"
+                key="email-Login"
                 icon="email"
                 placeholder="Email"
                 type="text"
                 onChange={(value) => setUsuario(value)}
               />
               <InputLogin
-                key="senha"
+                key="senha-Login"
                 icon="key"
                 placeholder="Senha"
                 type="password"
@@ -127,14 +125,14 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("registrar")}>
+              <SubmitButton onClick={() => alterarVisualizacao("registrar")}>
                 Registrar
               </SubmitButton>
-              <SubmitButton onClick={() => handleLogin(usuario, senha)}>
+              <SubmitButton onClick={() => validarLogin(usuario, senha)}>
                 Entrar
               </SubmitButton>
             </SecaoBotao>
-            <EsqueceuSenha onClick={() => setVisualizacao("esqueceuSenha")}>
+            <EsqueceuSenha onClick={() => alterarVisualizacao("esqueceuSenha")}>
               Esqueceu a senha?
             </EsqueceuSenha>
           </>
