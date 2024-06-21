@@ -25,17 +25,18 @@ export const Box = styled.div`
 
 export const SecaoTitulo = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 15%;
   border-bottom: 1px solid #888;
 `;
 
-export const Titulo = styled.h2``;
+export const Titulo = styled.h2`
+  flex-grow: 1;
+`;
 
 export const FecharModal = styled.div`
-  display: flex;
 `;
 
 export const BotaoFecharModal = styled.span`
