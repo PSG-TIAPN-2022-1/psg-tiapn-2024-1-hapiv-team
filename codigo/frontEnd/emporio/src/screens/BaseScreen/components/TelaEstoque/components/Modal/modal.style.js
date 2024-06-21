@@ -37,11 +37,13 @@ export const Titulo = styled.h2`
 `;
 
 export const FecharModal = styled.div`
+  padding: 5px 3px;
+  align-self: flex-start;
 `;
 
 export const BotaoFecharModal = styled.span`
   display: flex;
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
 `;
 
