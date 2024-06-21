@@ -1,28 +1,41 @@
 import React from "react";
 import {
-  ModalContainer,
-  ModalContent,
-  Title,
-  Content,
-  Buttons,
+  Container,
+  Box,
+  SecaoTitulo,
+  Titulo,
+  FecharModal,
+  BotaoFecharModal,
+  SecaoConteudo,
+  SecaoBotoes,
 } from "./Modal.style";
 import { Button } from "../Button/Button";
 
-export default function Modal({ isOpen, setModalOpen, title, children }) {
-  if (!isOpen) {
+export default function Modal({ estahAberto, setAberto, titulo, conteudo }) {
+  if (!estahAberto) {
     return null;
   }
 
   return (
-    <ModalContainer>
-      <ModalContent>
-        <Title>{title}</Title>
-        <Content>{children}</Content>
-        <Buttons>
-          <Button title="Close" onClick={() => setModalOpen(false)} />
-          <Button title={"Salvar"} />
-        </Buttons>
-      </ModalContent>
-    </ModalContainer>
+    <Container>
+      <Box>
+        <SecaoTitulo>
+          <Titulo>{titulo}</Titulo>
+          <FecharModal>
+            <BotaoFecharModal
+              className="material-symbols-outlined"
+              onClick={() => setAberto(false)}
+            >
+              close
+            </BotaoFecharModal>
+          </FecharModal>
+        </SecaoTitulo>
+        <SecaoConteudo>{conteudo}</SecaoConteudo>
+        <SecaoBotoes>
+          <Button title="Close" onClick={() => setAberto(false)} />
+          <Button title="Salvar" />
+        </SecaoBotoes>
+      </Box>
+    </Container>
   );
 }

@@ -1,52 +1,60 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const ModalContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 1050;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
-export const ModalContent = styled.div`
+
+export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-  padding: 20px;
   border: 2px solid #888;
-  width: 60%; 
-  overflow-y: auto; 
+  width: 60%;
+  height: 60%;
   border-radius: 10px;
   background-color: rgb(245, 245, 220);
 `;
-export const Title = styled.h2`
-  text-align: center;
+
+export const SecaoTitulo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid #888;
 `;
 
-export const Content = styled.div`
-  margin-top: 20px;
+export const Titulo = styled.h2``;
+
+export const FecharModal = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+`;
+
+export const BotaoFecharModal = styled.span`
+  display: flex;
+  font-size: 20px;
+  cursor: pointer;
+`;
+
+export const SecaoConteudo = styled.div`
+  display: flex;
   width: 60%;
-  justify-content: space-between;
+  height: 70%;
 `;
 
-export const Buttons = styled.div`
-  margin-top: 20px;
+export const SecaoBotoes = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 30%
-`;
-
-export const Button = styled.button`
-  padding: 10px 20px;
-  display: inline-block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  border-top: 1px solid #888;
 `;

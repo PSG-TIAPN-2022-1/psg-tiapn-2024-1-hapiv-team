@@ -9,7 +9,7 @@ import {
   Button,
 } from "./TelaEstoque.style";
 import { SelectFiltro } from "./components/Select/SelectFiltro";
-import Modal from "./components/Modal/modal"
+import Modal from "./components/Modal/Modal";
 import { InputTelaEstoque } from "./components/InputTelaEstoque/InputTelaEstoque";
 
 export const TelaEstoque = () => {
@@ -34,28 +34,64 @@ export const TelaEstoque = () => {
     { value: "MenorPrecoCompra", label: "Menor Preço de Compra" },
   ];
 
-  const[openModal, setOpenModal] = useState(false)
+  const [modalAberto, setModalAberto] = useState(false);
 
   return (
     <Container>
       <SecaoBotoes>
         <BoxBotoes>
-          <Button onClick={() => {setOpenModal(true)}} title={"Adicionar Produto"}>Adicionar venda</Button>
-          <Button onClick={() => {setOpenModal(true)}} title={"Efetuar Venda"}>Efetuar Venda</Button>
+          <Button
+            onClick={() => {
+              setModalAberto(true);
+            }}
+            title={"Adicionar Produto"}
+          >
+            Adicionar venda
+          </Button>
+          <Button
+            onClick={() => {
+              setModalAberto(true);
+            }}
+            title={"Efetuar Venda"}
+          >
+            Efetuar Venda
+          </Button>
         </BoxBotoes>
       </SecaoBotoes>
       <SecaoSelect>
         <SelectFiltro labelText="Filtrar por" options={opcoesFiltrar} />
         <SelectFiltro labelText="Ordenar por" options={opcoesOrdenar} />
       </SecaoSelect>
-      <SecaoTabela>
-        <Modal isOpen={openModal} setModalOpen={setOpenModal} title="Produto">
-          <InputTelaEstoque type="text" title="Descricao" placeholder={"Descricao"} />
-          <InputTelaEstoque type="text" title="Categoria" placeholder={"Categoria"} />
-          <InputTelaEstoque type="text" title="Preco de Compra" placeholder={"Preço de Compra"} />
-          <InputTelaEstoque type="text" title="Preco de Venda" placeholder={"Preço de Venda"} />
-        </Modal>
-      </SecaoTabela>
+      <Modal
+        estahAberto={modalAberto}
+        setAberto={setModalAberto}
+        titulo="Adicionar Produto"
+        conteudo={
+          <>
+            <InputTelaEstoque
+              type="text"
+              title="Descricao"
+              placeholder={"Descricao"}
+            />
+            <InputTelaEstoque
+              type="text"
+              title="Categoria"
+              placeholder={"Categoria"}
+            />
+            <InputTelaEstoque
+              type="text"
+              title="Preco de Compra"
+              placeholder={"Preço de Compra"}
+            />
+            <InputTelaEstoque
+              type="text"
+              title="Preco de Venda"
+              placeholder={"Preço de Venda"}
+            />
+          </>
+        }
+      ></Modal>
+      <SecaoTabela></SecaoTabela>
     </Container>
   );
 };
