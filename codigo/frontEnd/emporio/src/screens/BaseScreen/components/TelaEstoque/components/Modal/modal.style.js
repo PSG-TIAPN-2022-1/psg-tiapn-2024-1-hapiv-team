@@ -49,15 +49,16 @@ export const BotaoFecharModal = styled.span`
 
 export const SecaoConteudo = styled.div`
   display: flex;
-  width: 60%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
 `;
 
 export const SecaoBotoes = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 15%;
   border-top: 1px solid #888;
+  gap: 150px;
 `;

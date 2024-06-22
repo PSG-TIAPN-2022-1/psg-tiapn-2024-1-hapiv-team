@@ -1,7 +1,7 @@
 import React from "react";
 import { ContainerBase, TelaBase, Cabecalho, Titulo } from "./Base.style";
 import { BarraLateral } from "./components/BarraLateral/BarraLateral";
-import { TelaEstoque } from "./components/TelaEstoque/TelaEstoque";
+import { TelaEstoque } from "./components/TelaEstoque/TelaEstoque.jsx";
 
 const Base = () => {
   return (
@@ -11,8 +11,8 @@ const Base = () => {
         <Cabecalho>
           <Titulo>Estoque</Titulo>
         </Cabecalho>
-        <TelaEstoque/>
-        </ContainerBase>
+        <TelaEstoque />
+      </ContainerBase>
     </TelaBase>
   );
 };

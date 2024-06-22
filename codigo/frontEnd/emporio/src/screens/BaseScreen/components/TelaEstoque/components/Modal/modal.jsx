@@ -11,7 +11,13 @@ import {
 } from "./Modal.style";
 import { Button } from "../Button/Button";
 
-export default function Modal({ estahAberto, setAberto, titulo, conteudo }) {
+export default function Modal({
+  estahAberto,
+  setAberto,
+  titulo,
+  conteudo,
+  confirmar,
+}) {
   if (!estahAberto) {
     return null;
   }
@@ -32,8 +38,8 @@ export default function Modal({ estahAberto, setAberto, titulo, conteudo }) {
         </SecaoTitulo>
         <SecaoConteudo>{conteudo}</SecaoConteudo>
         <SecaoBotoes>
-          <Button title="Close" onClick={() => setAberto(false)} />
-          <Button title="Salvar" />
+          <Button title="Cancelar" onClick={() => setAberto(false)} />
+          <Button title="Confirmar" onClick={() => confirmar()} />
         </SecaoBotoes>
       </Box>
     </Container>

@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
-
 export const BoxInput = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 8px;
-  margin: 8px;
   width: 40%;
   gap: 8px;
   border-radius: 5px;
@@ -19,11 +16,10 @@ export const Input = styled.input`
   text-align: left;
   border-radius: 5px;
   font-size: 14px;
+  width: 80%;
+  height: 40%;
+  padding: 5px;
   background-color: transparent;
-
-  &:focus {
-    outline: none;
-  }
 
   &::placeholder {
     color: black;
