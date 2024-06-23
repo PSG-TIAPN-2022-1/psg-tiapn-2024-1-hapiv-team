@@ -18,19 +18,35 @@ export const TelaEstoque = () => {
   const [modalAberto, setModalAberto] = useState(false);
   const [tipoModal, setTipoModal] = useState("");
 
-  // const wrapperRef = useRef(null);
+  const wrapperRef = useRef(null);
 
-  // const grid = new Grid({
-  //   columns: ["Name", "Email", "Phone Number"],
-  //   data: [
-  //     ["John", "john@example.com", "(353) 01 222 3333"],
-  //     ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-  //   ],
-  // });
+  const grid = new Grid({
+    columns: ["Name", "Email", "Phone Number"],
+    data: [
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+    ],
+  });
 
-  // useEffect(() => {
-  //   grid.render(wrapperRef.current);
-  // });
+  useEffect(() => {
+    grid.render(wrapperRef.current);
+  });
 
   const opcoesFiltrar = [
     { value: "Todos", label: "Todos" },
@@ -103,7 +119,7 @@ export const TelaEstoque = () => {
           setAberto={setModalAberto}
         />
       )} */}
-      <SecaoTabela>{/* <div ref={wrapperRef}></div> */}</SecaoTabela>
+      <SecaoTabela><div ref={wrapperRef}></div></SecaoTabela>
     </Container>
   );
 };
