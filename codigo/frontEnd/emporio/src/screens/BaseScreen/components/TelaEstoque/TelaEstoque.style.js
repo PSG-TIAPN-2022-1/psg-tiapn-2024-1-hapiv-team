@@ -58,7 +58,8 @@ export const SecaoTabela = styled.div`
 
 export const SecaoSelect = styled.div`
   display: flex;
-  align-self: end;
+  align-self: center;
   height: 10%;
-  width: 55%;
+  width: 40%;
+  margin-left: 10%
 `;

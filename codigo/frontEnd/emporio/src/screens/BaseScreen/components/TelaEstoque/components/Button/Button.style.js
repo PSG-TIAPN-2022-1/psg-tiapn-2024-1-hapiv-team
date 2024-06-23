@@ -15,10 +15,8 @@ export const ContainerButton = styled.button`
   background-color: #F7E3DC;
   font-weight: 600;
   border: none;
-
+  width: 10vw;
   &:hover {
     background-color: #ffdead;
   }
 `;
-
-

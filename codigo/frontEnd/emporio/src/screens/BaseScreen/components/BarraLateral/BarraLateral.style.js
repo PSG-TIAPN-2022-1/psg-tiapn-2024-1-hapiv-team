@@ -16,21 +16,25 @@ export const BarraLateralCabecalho = styled.div`
 `;
 
 export const BarraLateralLogo = styled.img`
-  width: 170px;
+  width: 100%;
+
 `;
 
 export const SecaoBotoes = styled.div`
   display: flex;
   flex-direction: column;
   height: 40%;
+  width: 100%;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
 `;
+
 
 export const SecaoInferior = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   height: 30%;
+  width: 100%;
   padding: 16px;
 `;

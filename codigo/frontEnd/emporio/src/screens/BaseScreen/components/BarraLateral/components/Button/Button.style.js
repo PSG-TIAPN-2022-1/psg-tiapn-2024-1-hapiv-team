@@ -12,6 +12,11 @@ export const ContainerButton = styled.div`
   font-family: Cambria;
   cursor: pointer;
   transition-duration: 0.4s;
+    @media (max-width: 700px) {
+    font-size: 10px;
+    padding: 12px;
+    gap: 1px
+  }
 
   &:hover {
     background-color: #ffdead;
@@ -19,6 +24,9 @@ export const ContainerButton = styled.div`
 `;
 
 export const Icon = styled.span`
-  margin-right: 10px;
+  margin-right: 7%;
   font-size: 25px;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
 `;
