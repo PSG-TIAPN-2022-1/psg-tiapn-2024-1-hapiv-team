@@ -7,6 +7,8 @@ export const BarraLateralBox = styled.div`
   height: 100%;
   border-radius: 6px;
   background-color: rgb(245, 245, 220);
+  position: fixed; 
+  z-index: 1000; 
 `;
 
 export const BarraLateralCabecalho = styled.div`
