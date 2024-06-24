@@ -36,7 +36,7 @@ namespace HapivAPI.Controllers
         }
 
         [HttpPatch]
-        public async Task<IActionResult> Patch([FromBody] IEnumerable<ProdutoRequest> produtos)
+        public async Task<IActionResult> Patch([FromBody] IEnumerable<ProdutoRequestAtualizar> produtos)
         {
             var result = await AtualizarProdutoAsync(produtos);
 
@@ -51,7 +51,7 @@ namespace HapivAPI.Controllers
             return Ok();
         }
 
-        private async Task<IEnumerable<string>> AtualizarProdutoAsync(IEnumerable<ProdutoRequest> produtos)
+        private async Task<IEnumerable<string>> AtualizarProdutoAsync(IEnumerable<ProdutoRequestAtualizar> produtos)
         {
             List<string> erros = new List<string>();
 
@@ -65,7 +65,7 @@ namespace HapivAPI.Controllers
                     produtoDoBanco.PrecoDeVenda = produto.PrecoDeVenda;
                     produtoDoBanco.Quantidade = produto.Quantidade;
                     produtoDoBanco.Fornecedor = string.IsNullOrEmpty(produto.Fornecedor) ? new Fornecedor() { FornecedorId = Guid.NewGuid(), Nome = "" } : await VerificafornecedorAsync(produto.Fornecedor);
-                    produtoDoBanco.Categoria = 
+                    produtoDoBanco.Categoria = string.IsNullOrEmpty(produto.Categoria) ? new Categoria() { CategoriaId = Guid.NewGuid(), TipoCategoria = "" } : await VerificaCategoriaAsync(produto.Categoria);
                     ProdutoRepository.Update(produtoDoBanco);
                 }
                 else
@@ -97,17 +97,16 @@ namespace HapivAPI.Controllers
         {
             var categoria = await CategoriaRepository.Get(x => x.TipoCategoria == nome);
 
-            if (fornecedor == null)
+            if ( categoria == null)
             {
-                var novoFornecedor = new Fornecedor { FornecedorId = Guid.NewGuid(), Nome = nome };
-                FornecedorRepository.Add(novoFornecedor);
-                return novoFornecedor;
+                var novaCategoria = new Categoria { CategoriaId = Guid.NewGuid(), TipoCategoria = nome };
+                CategoriaRepository.Add(novaCategoria);
+                return novaCategoria;
             }
+            categoria.TipoCategoria = nome;
+            CategoriaRepository.Update(categoria);
 
-            fornecedor.Nome = nome;
-            FornecedorRepository.Update(fornecedor);
-
-            return fornecedor;
+            return categoria;
         }
 
     }
