@@ -22,36 +22,6 @@ namespace HapivAPI.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("CategoriaProduto", b =>
-                {
-                    b.Property<string>("CategoriasCategoriaId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ProdutosProdutoId")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("CategoriasCategoriaId", "ProdutosProdutoId");
-
-                    b.HasIndex("ProdutosProdutoId");
-
-                    b.ToTable("CategoriaProduto");
-                });
-
-            modelBuilder.Entity("FornecedorProduto", b =>
-                {
-                    b.Property<string>("FornecedoresFornecedorId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ProdutoId")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("FornecedoresFornecedorId", "ProdutoId");
-
-                    b.HasIndex("ProdutoId");
-
-                    b.ToTable("FornecedorProduto");
-                });
-
             modelBuilder.Entity("HapivAPI.Domain.Categoria", b =>
                 {
                     b.Property<string>("CategoriaId")
@@ -139,13 +109,16 @@ namespace HapivAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("CategoriaId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("FornecedorId")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("GerenteId")
                         .IsRequired()
@@ -166,6 +139,10 @@ namespace HapivAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProdutoId");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.HasIndex("FornecedorId");
 
                     b.HasIndex("GerenteId");
 
@@ -221,36 +198,6 @@ namespace HapivAPI.Migrations
                     b.ToTable("Vendas");
                 });
 
-            modelBuilder.Entity("CategoriaProduto", b =>
-                {
-                    b.HasOne("HapivAPI.Domain.Categoria", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriasCategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HapivAPI.Domain.Produto", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutosProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FornecedorProduto", b =>
-                {
-                    b.HasOne("HapivAPI.Domain.Fornecedor", null)
-                        .WithMany()
-                        .HasForeignKey("FornecedoresFornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HapivAPI.Domain.Produto", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HapivAPI.Domain.GastoFixo", b =>
                 {
                     b.HasOne("HapivAPI.Domain.Gerente", "Gerente")
@@ -264,11 +211,27 @@ namespace HapivAPI.Migrations
 
             modelBuilder.Entity("HapivAPI.Domain.Produto", b =>
                 {
+                    b.HasOne("HapivAPI.Domain.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HapivAPI.Domain.Fornecedor", "Fornecedor")
+                        .WithMany("Produto")
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HapivAPI.Domain.Gerente", "Gerente")
                         .WithMany("Produtos")
                         .HasForeignKey("GerenteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Categoria");
+
+                    b.Navigation("Fornecedor");
 
                     b.Navigation("Gerente");
                 });
@@ -301,6 +264,16 @@ namespace HapivAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Gerente");
+                });
+
+            modelBuilder.Entity("HapivAPI.Domain.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("HapivAPI.Domain.Fornecedor", b =>
+                {
+                    b.Navigation("Produto");
                 });
 
             modelBuilder.Entity("HapivAPI.Domain.Gerente", b =>

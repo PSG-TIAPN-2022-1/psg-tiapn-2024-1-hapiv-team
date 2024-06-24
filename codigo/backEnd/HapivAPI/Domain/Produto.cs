@@ -23,31 +23,25 @@ namespace HapivAPI.Domain
         public decimal PrecoDeVenda { get; set; }
 
         [Required]
-        [MaxLength(300)]
-        public string? Descricao { get; set; }
-
-        [Required]
         public int Quantidade { get; set; }
 
         [Required]
         public DateTime DataEntrada { get; set; }
 
-
-        // Relacionamentos abaixo
-        [Required]
-        [ForeignKey("Gerente")]
-        public Guid GerenteId { get; set; }
+        // Relacionamentos abaixo; 
 
         [Required]
         public Gerente? Gerente { get; set; }
 
         [Required]
-        public ICollection<Categoria>? Categorias { get; set; }
+        public Categoria? Categoria { get; set; }
 
         [Required]
-        public ICollection<Fornecedor>? Fornecedores { get; set; }
+        public Fornecedor? Fornecedor { get; set; }
 
         [Required]
         public ICollection<VendaProduto>? VendaProdutos { get; set; }
+
+
     }
 }

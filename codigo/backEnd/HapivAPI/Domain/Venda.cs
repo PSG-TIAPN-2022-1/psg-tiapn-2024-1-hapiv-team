@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using HapivAPI.Domain.Relacionamentos;
+using System.Collections.ObjectModel;
 
 namespace HapivAPI.Domain
 {
@@ -35,6 +36,11 @@ namespace HapivAPI.Domain
         [Required]
         public ICollection<VendaProduto>? VendaProdutos { get; set; }
 
-      
+        Venda()
+        {
+            VendaProdutos = new Collection<VendaProduto>();
+        }
+
+
     }
 }

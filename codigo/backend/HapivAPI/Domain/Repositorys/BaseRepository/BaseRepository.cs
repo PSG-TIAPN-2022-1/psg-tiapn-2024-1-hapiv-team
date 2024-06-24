@@ -71,6 +71,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         public async Task<IEnumerable<T>> GetAll()
         {
             var itens = await _dbSet.AsNoTracking().ToListAsync<T>();
+
             return itens??new List<T>();
         }
 
