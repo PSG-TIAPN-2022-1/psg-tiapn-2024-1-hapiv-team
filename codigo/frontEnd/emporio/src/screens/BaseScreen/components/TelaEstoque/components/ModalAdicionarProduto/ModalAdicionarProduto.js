@@ -22,14 +22,19 @@ export const handleAdicionarProduto = async (
   precoVenda
 ) => {
   try {
-    await AdicionarProduto({
-      descricao,
-      fornecedor,
-      categoriaId,
-      quantidade,
-      precoCompra,
-      precoVenda,
-    });
+    // Criação do objeto
+    const produto = {
+      descricao: descricao,
+      fornecedor: fornecedor,
+      categoriaId: categoriaId,
+      quantidade: quantidade,
+      precoCompra: precoCompra,
+      precoVenda: precoVenda,
+    };
+
+    // Converte o objeto em uma string JSON
+    const produtoString = JSON.stringify(produto);
+    console.log(produtoString);
   } catch (error) {
     console.error(error);
   }

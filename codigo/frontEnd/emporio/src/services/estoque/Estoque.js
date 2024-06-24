@@ -1,6 +1,18 @@
 import { api } from "../../config/api";
 
-export const AdicionarProduto = async (produto) => {};
+export const AdicionarProduto = async (produto) => {
+  let produtos = [];
+
+  try {
+    const produtoObj = JSON.parse(produto);
+
+    produtos.push(produtoObj);
+
+    console.log("Produto adicionado com sucesso!");
+  } catch (error) {
+    console.error("Erro ao adicionar produto: ", error);
+  }
+};
 
 export const EditarProduto = async (produto) => {};
 
