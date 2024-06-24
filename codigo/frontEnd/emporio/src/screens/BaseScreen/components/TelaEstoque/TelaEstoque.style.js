@@ -34,13 +34,14 @@ export const SecaoBotoes = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30%;
+  height: 20%;
   width: 80%;
   margin-top: 30px;
 `;
 
 export const BoxBotoes = styled.div`
   display: flex;
+
   justify-content: center;
   align-items: center;
   width: 50%;
@@ -50,8 +51,8 @@ export const BoxBotoes = styled.div`
 
 export const SecaoTabela = styled.div`
   display: flex;
-  height: 70%;
-  width: 100%;
+  height: 80%;
+  width: 95%;
   border-radius: 5px;
   margin-top: 10px;
 `;
@@ -61,5 +62,5 @@ export const SecaoSelect = styled.div`
   align-self: center;
   height: 10%;
   width: 40%;
-  margin-left: 10%
+  margin-left: 10%;
 `;

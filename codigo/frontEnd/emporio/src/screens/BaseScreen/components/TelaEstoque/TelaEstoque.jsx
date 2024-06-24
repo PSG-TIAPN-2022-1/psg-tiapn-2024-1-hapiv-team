@@ -4,15 +4,14 @@ import {
   BoxBotoes,
   Container,
   SecaoBotoes,
-  SecaoSelect,
   SecaoTabela,
   Button,
 } from "./TelaEstoque.style";
-import { SelectFiltro } from "./components/Select/SelectFiltro";
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";
 import { Grid } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
+import { ptBR } from "gridjs/l10n";
 
 export const TelaEstoque = () => {
   const [modalAberto, setModalAberto] = useState(false);
@@ -21,7 +20,39 @@ export const TelaEstoque = () => {
   const wrapperRef = useRef(null);
 
   const grid = new Grid({
-    columns: ["Name", "Email", "Phone Number"],
+    columns: [
+      {
+        name: "CATEGORIA",
+        width: "12%",
+        sort: true,
+      },
+      {
+        name: "FORNECEDOR",
+        width: "15%",
+        sort: true,
+      },
+      {
+        name: "DESCRIÇÃO",
+        width: "15%",
+        sort: true,
+      },
+      {
+        name: "QUANTIDADE",
+        width: "13%",
+      },
+      {
+        name: "PREÇO DE COMPRA",
+        width: "15%",
+      },
+      {
+        name: "PREÇO DE VENDA",
+        width: "15%",
+      },
+      {
+        name: "OPÇÕES",
+        width: "12%",
+      },
+    ],
     data: [
       ["John", "john@example.com", "(353) 01 222 3333"],
       ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
@@ -42,32 +73,40 @@ export const TelaEstoque = () => {
       ["John", "john@example.com", "(353) 01 222 3333"],
       ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
     ],
+    style: {
+      table: {
+        "font-family": "Cambria",
+        "font-size": "14px",
+        color: "black",
+        "text-align": "center",
+        "word-wrap": "break-word",
+        width: "100%",
+      },
+      th: {
+        "background-color": "rgb(245, 245, 220)",
+        "font-family": "Cambria",
+        "font-weight": "600",
+        "font-size": "10px",
+        color: "black",
+        "text-align": "center",
+        "word-wrap": "break-word",
+      },
+      td: {},
+    },
+    fixedHeader: true,
+    resizable: true,
+    search: true,
+    pagination: {
+      enabled: true,
+      limit: 5,
+      summary: true,
+    },
+    language: ptBR,
   });
 
   useEffect(() => {
     grid.render(wrapperRef.current);
   });
-
-  const opcoesFiltrar = [
-    { value: "Todos", label: "Todos" },
-    { value: "Bebidas", label: "Bebidas" },
-    { value: "Carnes", label: "Carnes" },
-    { value: "Frutas", label: "Frutas" },
-    { value: "Legumes", label: "Legumes" },
-    { value: "Laticínios", label: "Laticínios" },
-    { value: "Limpeza", label: "Limpeza" },
-    { value: "Outros", label: "Outros" },
-  ];
-
-  const opcoesOrdenar = [
-    { value: "Categoria", label: "Categoria" },
-    { value: "Produto", label: "Produto" },
-    { value: "Fornecedor", label: "Fornecedor" },
-    { value: "MaiorPrecoVenda", label: "Maior Preço de Venda" },
-    { value: "MenorPrecoVenda", label: "Menor Preço de Venda" },
-    { value: "MaiorPrecoCompra", label: "Maior Preço de Cosmpra" },
-    { value: "MenorPrecoCompra", label: "Menor Preço de Compra" },
-  ];
 
   return (
     <Container>
@@ -91,10 +130,6 @@ export const TelaEstoque = () => {
           </Button>
         </BoxBotoes>
       </SecaoBotoes>
-      <SecaoSelect>
-        <SelectFiltro labelText="Filtrar por" options={opcoesFiltrar} />
-        <SelectFiltro labelText="Ordenar por" options={opcoesOrdenar} />
-      </SecaoSelect>
       {tipoModal === "Adicionar Produto" && (
         <ModalAdicionarProduto
           estahAberto={modalAberto}
@@ -119,7 +154,9 @@ export const TelaEstoque = () => {
           setAberto={setModalAberto}
         />
       )} */}
-      <SecaoTabela><div ref={wrapperRef}></div></SecaoTabela>
+      <SecaoTabela>
+        <div ref={wrapperRef}></div>
+      </SecaoTabela>
     </Container>
   );
 };

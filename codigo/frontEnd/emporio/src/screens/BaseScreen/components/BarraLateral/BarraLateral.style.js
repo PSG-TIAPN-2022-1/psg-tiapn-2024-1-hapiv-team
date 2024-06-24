@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 
 export const Link = styled(RouterLink)`
   text-decoration: none;
@@ -10,12 +10,11 @@ export const Link = styled(RouterLink)`
 export const BarraLateralBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 18%;
   height: 100%;
   border-radius: 6px;
   background-color: rgb(245, 245, 220);
-  position: fixed; 
-  z-index: 1000; 
+  z-index: 1000;
 `;
 
 export const BarraLateralCabecalho = styled.div`
@@ -25,8 +24,7 @@ export const BarraLateralCabecalho = styled.div`
 `;
 
 export const BarraLateralLogo = styled.img`
-  width: 100%;
-
+  width: 70%;
 `;
 
 export const SecaoBotoes = styled.div`
@@ -37,7 +35,6 @@ export const SecaoBotoes = styled.div`
   padding: 16px;
   gap: 10px;
 `;
-
 
 export const SecaoInferior = styled.div`
   display: flex;
