@@ -16,12 +16,15 @@ import {
   validarRecuperacaoSenha,
   validarRegistro,
 } from "./Login.js";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [senhaRepetida, setSenhaRepetida] = useState("");
+
+  const navigate = useNavigate();
 
   const limparCampos = () => {
     setUsuario("");
@@ -128,7 +131,14 @@ const Login = () => {
               <SubmitButton onClick={() => alterarVisualizacao("registrar")}>
                 Registrar
               </SubmitButton>
-              <SubmitButton onClick={() => validarLogin(usuario, senha)}>
+              <SubmitButton
+                onClick={async () => {
+                  const loginSucesso = await validarLogin(usuario, senha);
+                  if (loginSucesso) {
+                    navigate("/base");
+                  }
+                }}
+              >
                 Entrar
               </SubmitButton>
             </SecaoBotao>

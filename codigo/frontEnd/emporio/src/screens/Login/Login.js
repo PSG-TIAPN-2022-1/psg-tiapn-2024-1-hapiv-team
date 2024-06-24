@@ -33,11 +33,20 @@ const handleRecuperarSenha = async (usuario) => {
   }
 };
 
-export const validarLogin = (usuario, senha) => {
+export const validarLogin = async (usuario, senha) => {
   if (verificarSeElementoEhNulo(usuario) || verificarSeElementoEhNulo(senha)) {
     alert("Preencha todos os campos!");
-  } else {
-    handleLogin(usuario, senha);
+    return false;
+  }
+
+  try {
+    const loginSucesso = await handleLogin(usuario, senha);
+    if (loginSucesso) {
+      return true;
+    }
+  } catch (error) {
+    alert(error.message);
+    return false;
   }
 };
 

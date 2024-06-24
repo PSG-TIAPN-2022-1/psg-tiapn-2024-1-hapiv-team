@@ -7,7 +7,7 @@ export const ContainerSelect = styled.div`
   border-radius: 5px;
   background-color: rgb(245, 245, 220);
   margin-left: 4%;
-  margin-right: 5%
+  margin-right: 5%;
 `;
 
 export const LabelSelect = styled.div`
@@ -25,7 +25,10 @@ export const Select = styled.select`
   font-family: Cambria;
   text-align: center;
   margin-left: 9%;
-  border: 0.5px solid black;
-  border-radius: 4px;
+  border: none;
   background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
 `;
