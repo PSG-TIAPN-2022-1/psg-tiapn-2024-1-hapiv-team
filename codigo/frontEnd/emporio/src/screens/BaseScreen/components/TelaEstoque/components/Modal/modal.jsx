@@ -8,7 +8,7 @@ import {
   BotaoFecharModal,
   SecaoConteudo,
   SecaoBotoes,
-} from "./Modal.style";
+} from "./Modal12345.style";
 import { Button } from "../Button/Button";
 
 export default function Modal({
