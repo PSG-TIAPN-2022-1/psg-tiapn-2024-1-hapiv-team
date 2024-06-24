@@ -4,5 +4,6 @@ namespace HapivAPI.Interfaces.Repositorys
 {
     public interface IProdutoRepository : IBaseRepository<Produto>
     {
+        public Task<IEnumerable<Produto>> GetTodasColunas();
     }
 }

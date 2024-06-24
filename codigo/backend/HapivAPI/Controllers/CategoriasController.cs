@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HapivAPI.Controllers
 {
     [ApiVersion("1.0")]
-    [Route("api/{version:apiVersion}/[controller]")]
+    [Route("api/v.{version:apiVersion}/[controller]")]
     [ApiController]
     public class CategoriasController : Controller
     {

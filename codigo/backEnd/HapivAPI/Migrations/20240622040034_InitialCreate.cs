@@ -96,16 +96,30 @@ namespace HapivAPI.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PrecoDeCompra = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PrecoDeVenda = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     DataEntrada = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     GerenteId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CategoriaId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FornecedorId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtos", x => x.ProdutoId);
+                    table.ForeignKey(
+                        name: "FK_Produtos_Categorias_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categorias",
+                        principalColumn: "CategoriaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Produtos_Fornecedores_FornecedorId",
+                        column: x => x.FornecedorId,
+                        principalTable: "Fornecedores",
+                        principalColumn: "FornecedorId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Produtos_Gerentes_GerenteId",
                         column: x => x.GerenteId,
@@ -141,60 +155,6 @@ namespace HapivAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "CategoriaProduto",
-                columns: table => new
-                {
-                    CategoriasCategoriaId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProdutosProdutoId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoriaProduto", x => new { x.CategoriasCategoriaId, x.ProdutosProdutoId });
-                    table.ForeignKey(
-                        name: "FK_CategoriaProduto_Categorias_CategoriasCategoriaId",
-                        column: x => x.CategoriasCategoriaId,
-                        principalTable: "Categorias",
-                        principalColumn: "CategoriaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoriaProduto_Produtos_ProdutosProdutoId",
-                        column: x => x.ProdutosProdutoId,
-                        principalTable: "Produtos",
-                        principalColumn: "ProdutoId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "FornecedorProduto",
-                columns: table => new
-                {
-                    FornecedoresFornecedorId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProdutoId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FornecedorProduto", x => new { x.FornecedoresFornecedorId, x.ProdutoId });
-                    table.ForeignKey(
-                        name: "FK_FornecedorProduto_Fornecedores_FornecedoresFornecedorId",
-                        column: x => x.FornecedoresFornecedorId,
-                        principalTable: "Fornecedores",
-                        principalColumn: "FornecedorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FornecedorProduto_Produtos_ProdutoId",
-                        column: x => x.ProdutoId,
-                        principalTable: "Produtos",
-                        principalColumn: "ProdutoId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "VendaProduto",
                 columns: table => new
                 {
@@ -223,19 +183,19 @@ namespace HapivAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriaProduto_ProdutosProdutoId",
-                table: "CategoriaProduto",
-                column: "ProdutosProdutoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FornecedorProduto_ProdutoId",
-                table: "FornecedorProduto",
-                column: "ProdutoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_GastoFixo_GerenteId",
                 table: "GastoFixo",
                 column: "GerenteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_CategoriaId",
+                table: "Produtos",
+                column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_FornecedorId",
+                table: "Produtos",
+                column: "FornecedorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_GerenteId",
@@ -257,28 +217,22 @@ namespace HapivAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoriaProduto");
-
-            migrationBuilder.DropTable(
-                name: "FornecedorProduto");
-
-            migrationBuilder.DropTable(
                 name: "GastoFixo");
 
             migrationBuilder.DropTable(
                 name: "VendaProduto");
 
             migrationBuilder.DropTable(
-                name: "Categorias");
-
-            migrationBuilder.DropTable(
-                name: "Fornecedores");
-
-            migrationBuilder.DropTable(
                 name: "Produtos");
 
             migrationBuilder.DropTable(
                 name: "Vendas");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
+
+            migrationBuilder.DropTable(
+                name: "Fornecedores");
 
             migrationBuilder.DropTable(
                 name: "Gerentes");
