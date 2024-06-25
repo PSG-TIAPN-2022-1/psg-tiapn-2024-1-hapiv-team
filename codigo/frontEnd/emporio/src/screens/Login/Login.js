@@ -12,8 +12,10 @@ import {
 const handleLogin = async (usuario, senha) => {
   try {
     await EfetuarLogin(usuario, senha);
+    return true;
   } catch (error) {
     alert(error);
+    return false;
   }
 };
 
