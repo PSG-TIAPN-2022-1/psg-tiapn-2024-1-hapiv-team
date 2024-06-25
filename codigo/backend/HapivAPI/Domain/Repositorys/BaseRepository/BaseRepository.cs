@@ -1,8 +1,6 @@
 ﻿using HapivAPI.Domain.Context;
 using HapivAPI.Interfaces.Repositorys;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Linq.Expressions;
 
 namespace HapivAPI.Domain.Repositorys.BaseRepository
@@ -20,7 +18,8 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         {
             try
             {
-               _dbSet.Add(entity);
+                _dbSet.Add(entity);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -33,24 +32,27 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             try
             {
                 await _dbSet.AddAsync(entity);
-            }catch(Exception ex)
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
 
-        public T? Delete(Expression<Func<T, bool>> predicate)
+        public async Task<T?> DeleteAsync(Expression<Func<T, bool>> predicate)
         {
             try
             {
-                var deleted = _dbSet.FirstOrDefault(predicate);
+                var deleted = await _dbSet.FirstOrDefaultAsync(predicate);
                 if (deleted != null)
                 {
                     _dbSet.Remove(deleted);
                     _context.SaveChanges();
                 }
                 return deleted;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -62,7 +64,8 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             {
                 var item = await _dbSet.FirstOrDefaultAsync(predicate);
                 return item;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -72,7 +75,7 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
         {
             var itens = await _dbSet.AsNoTracking().ToListAsync<T>();
 
-            return itens??new List<T>();
+            return itens ?? new List<T>();
         }
 
         public T? Update(T entity)
@@ -83,7 +86,8 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 {
                     _dbSet.Update(entity);
                     return entity;
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }

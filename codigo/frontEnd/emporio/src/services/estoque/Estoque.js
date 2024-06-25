@@ -1,16 +1,12 @@
 import { api } from "../../config/api";
 
 export const AdicionarProduto = async (produto) => {
-  let produtos = [];
-
   try {
-    const produtoObj = JSON.parse(produto);
-
-    produtos.push(produtoObj);
-
-    console.log("Produto adicionado com sucesso!");
+    const produtoString = JSON.stringify(produto);
+    const response = await api.put("/Produtos/Inserir", produtoString);
+    alert(response);
   } catch (error) {
-    console.error("Erro ao adicionar produto: ", error);
+    alert(error);
   }
 };
 

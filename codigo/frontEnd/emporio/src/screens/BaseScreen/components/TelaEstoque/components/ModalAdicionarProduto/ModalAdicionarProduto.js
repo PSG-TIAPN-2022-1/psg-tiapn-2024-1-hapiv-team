@@ -1,41 +1,68 @@
 import { AdicionarProduto } from "../../../../../../services/estoque/Estoque.js";
+import {
+  verificarSeElementoEhNulo,
+  verificarSeEhPositivo,
+} from "../../../../../../utils/utils.js";
 
-export const obterCategorias = () => {
-  return [
-    { value: "Todos", label: "Todos" },
-    { value: "Bebidas", label: "Bebidas" },
-    { value: "Carnes", label: "Carnes" },
-    { value: "Frutas", label: "Frutas" },
-    { value: "Legumes", label: "Legumes" },
-    { value: "Laticínios", label: "Laticínios" },
-    { value: "Limpeza", label: "Limpeza" },
-    { value: "Outros", label: "Outros" },
-  ];
-};
-
-export const handleAdicionarProduto = async (
-  descricao,
+const validarCampos = (
+  nome,
   fornecedor,
   categoriaId,
   quantidade,
   precoCompra,
   precoVenda
 ) => {
-  try {
-    // Criação do objeto
-    const produto = {
-      descricao: descricao,
-      fornecedor: fornecedor,
-      categoriaId: categoriaId,
-      quantidade: quantidade,
-      precoCompra: precoCompra,
-      precoVenda: precoVenda,
-    };
+  if (
+    verificarSeElementoEhNulo(nome) ||
+    verificarSeElementoEhNulo(fornecedor) ||
+    verificarSeElementoEhNulo(categoriaId)
+  ) {
+    alert("Preencha todos os campos");
+    return false;
+  } else if (
+    !verificarSeEhPositivo(quantidade) ||
+    !verificarSeEhPositivo(precoCompra) ||
+    !verificarSeEhPositivo(precoVenda)
+  ) {
+    alert("Preencha os campos de quantidade e preços com números positivos");
+    return false;
+  }
+  return true;
+};
 
-    // Converte o objeto em uma string JSON
-    const produtoString = JSON.stringify(produto);
-    console.log(produtoString);
+export const handleAdicionarProduto = async (
+  nome,
+  fornecedor,
+  categoria,
+  quantidade,
+  precoCompra,
+  precoVenda
+) => {
+  if (
+    !validarCampos(
+      nome,
+      fornecedor,
+      categoria,
+      quantidade,
+      precoCompra,
+      precoVenda
+    )
+  ) {
+    return;
+  }
+
+  const produto = {
+    Nome: nome,
+    PrecoDeCompra: precoCompra,
+    PrecoDeVenda: precoVenda,
+    Quantidade: quantidade,
+    Categoria: categoria,
+    Fornecedor: fornecedor,
+  };
+
+  try {
+    await AdicionarProduto(produto);
   } catch (error) {
-    console.error(error);
+    alert("Erro ao adicionar produto");
   }
 };

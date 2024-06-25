@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import { InputModal } from "../Modal/components/InputModal/InputModal";
-import { SelectModal } from "../Modal/components/SelectModal/SelectModal";
 import { ContainerModalAdicionarProduto } from "./ModalAdicionarProduto.style";
-import { obterCategorias } from "./ModalAdicionarProduto";
 import { handleAdicionarProduto } from "./ModalAdicionarProduto";
 
 export const ModalAdicionarProduto = ({ estahAberto, setAberto }) => {
   const [descricao, setDescricao] = useState("");
   const [fornecedor, setFornecedor] = useState("");
-  const [categoriaId, setCategoriaId] = useState("");
+  const [categoria, setCategoria] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [precoCompra, setPrecoCompra] = useState("");
   const [precoVenda, setPrecoVenda] = useState("");
@@ -33,10 +31,11 @@ export const ModalAdicionarProduto = ({ estahAberto, setAberto }) => {
             placeholder="Fornecedor"
             onChange={(e) => setFornecedor(e.target.value)}
           />
-          <SelectModal
-            labelText="Categorias"
-            options={obterCategorias()}
-            onChange={(e) => setCategoriaId(e.target.value)}
+          <InputModal
+            type="text"
+            title="Categoria"
+            placeholder={"Categoria"}
+            onChange={(e) => setCategoria(e.target.value)}
           />
           <InputModal
             type="text"
@@ -62,7 +61,7 @@ export const ModalAdicionarProduto = ({ estahAberto, setAberto }) => {
         handleAdicionarProduto(
           descricao,
           fornecedor,
-          categoriaId,
+          categoria,
           quantidade,
           precoCompra,
           precoVenda

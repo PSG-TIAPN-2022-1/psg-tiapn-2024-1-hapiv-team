@@ -1,18 +1,15 @@
 using Asp.Versioning;
-using HapivAPI.Controllers;
+using HapivAPI.Agents;
+using HapivAPI.Domain.Context;
+using HapivAPI.Domain.Repositorys;
+using HapivAPI.Domain.Repositorys.BaseRepository;
+using HapivAPI.Exceptions.MiddlewareException;
+using HapivAPI.Interfaces.Agents;
+using HapivAPI.Interfaces.Repositorys;
+using HapivAPI.Interfaces.Services;
+using HapivAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using HapivAPI.Exceptions.MiddlewareException;
-using HapivAPI.Domain;
-using HapivAPI.Domain.Repositorys;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using HapivAPI.Domain.Repositorys.BaseRepository;
-using HapivAPI.Services;
-using HapivAPI.Domain.Context;
-using HapivAPI.Agents;
-using HapivAPI.Interfaces.Repositorys;
-using HapivAPI.Interfaces.Agents;
-using HapivAPI.Interfaces.Services;
 
 namespace API
 {
@@ -26,7 +23,7 @@ namespace API
             ConfigureServices(builder.Services);
 
             var connectionString = builder.Configuration.GetConnectionString("Server1"); //Busco a String de conexão no appSettings.json
-            
+
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); //Insere AppDbContext no container DI nativo
 
@@ -53,6 +50,7 @@ namespace API
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IVendaRepository, VendaRepository>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IProdutoService, ProdutoService>();
             services.AddTransient<IUsuarioService, UsuarioService>();
 
             services.AddCors(options =>

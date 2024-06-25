@@ -1,8 +1,10 @@
-﻿namespace HapivAPI.Requests
+﻿using Newtonsoft.Json;
+
+namespace HapivAPI.Requests
 {
-    public class ProdutoRequestAtualizar
+    public class ProdutoRequestInserir
     {
-        public Guid ProdutoId { get; set; }
+        [JsonProperty("Nome")]
         public string? Nome { get; set; }
 
         public decimal PrecoDeCompra { get; set; }

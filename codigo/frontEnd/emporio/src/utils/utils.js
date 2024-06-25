@@ -14,10 +14,10 @@ export const formatarMaiusculo = (a) => {
   return a.toUpperCase();
 };
 
-export const formatarDecimal = (a) => {
-  return parseFloat(a).toFixed(2);
+export const verificarSeEhNumero = (a) => {
+  return !isNaN(a);
 };
 
-export const verificarSeEhNumeroMaiorQueZero = (a) => {
-  return a > 0;
+export const verificarSeEhPositivo = (a) => {
+  return verificarSeEhNumero(a) && a > 0.0;
 };

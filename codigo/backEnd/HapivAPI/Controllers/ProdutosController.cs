@@ -1,8 +1,8 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using HapivAPI.Domain;
 using HapivAPI.DTOs;
 using HapivAPI.Interfaces.Repositorys;
+using HapivAPI.Interfaces.Services;
 using HapivAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +14,15 @@ namespace HapivAPI.Controllers
     public class ProdutosController : Controller
     {
         private IProdutoRepository ProdutoRepository { get; set; }
-        private IFornecedorRepository FornecedorRepository { get; set; }
 
-        private ICategoriaRepository CategoriaRepository { get; set; }
+        private IProdutoService ProdutoService { get; set; }
         private IMapper Mapper { get; set; }
 
-        public ProdutosController(IProdutoRepository produtoRepo, IMapper mapper, IFornecedorRepository fornecedorRepo, ICategoriaRepository catRepo)
+        public ProdutosController(IProdutoRepository produtoRepo, IMapper mapper, IProdutoService produtoServ)
         {
             ProdutoRepository = produtoRepo;
             Mapper = mapper;
-            FornecedorRepository = fornecedorRepo;
-            CategoriaRepository = catRepo;
+            ProdutoService = produtoServ;
         }
 
         [HttpGet]
@@ -35,79 +33,27 @@ namespace HapivAPI.Controllers
             return Ok(produtosDTO);
         }
 
-        [HttpPatch]
+        [HttpPatch("Atualizar")]
         public async Task<IActionResult> Patch([FromBody] IEnumerable<ProdutoRequestAtualizar> produtos)
         {
-            var result = await AtualizarProdutoAsync(produtos);
+            var result = await ProdutoService.AtualizarProdutoAsync(produtos);
 
             return Ok(result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody] ProdutoDTO produtoDTO)
+        [HttpPut("Inserir")]
+        public async Task<IActionResult> Put([FromBody] ProdutoRequestInserir produtoDTO)
         {
-            var produto = Mapper.Map<Produto>(produtoDTO);
-            await ProdutoRepository.AddAsync(produto);
-            return Ok();
+            var text = await Request.BodyReader.ReadAsync();
+            var produto = await ProdutoService.InserirProdutoAsync(produtoDTO);
+            return Ok(produto);
         }
 
-        private async Task<IEnumerable<string>> AtualizarProdutoAsync(IEnumerable<ProdutoRequestAtualizar> produtos)
+        [HttpDelete("Deletar")]
+        public async Task<IActionResult> Delete([FromBody] Guid produtoId)
         {
-            List<string> erros = new List<string>();
-
-            foreach (var produto in produtos)
-            {
-                var produtoDoBanco = await ProdutoRepository.Get( x => produto.ProdutoId == x.ProdutoId);
-                if(produtoDoBanco != null)
-                {
-                    produtoDoBanco.Nome = produto.Nome;
-                    produtoDoBanco.PrecoDeCompra = produto.PrecoDeCompra;
-                    produtoDoBanco.PrecoDeVenda = produto.PrecoDeVenda;
-                    produtoDoBanco.Quantidade = produto.Quantidade;
-                    produtoDoBanco.Fornecedor = string.IsNullOrEmpty(produto.Fornecedor) ? new Fornecedor() { FornecedorId = Guid.NewGuid(), Nome = "" } : await VerificafornecedorAsync(produto.Fornecedor);
-                    produtoDoBanco.Categoria = string.IsNullOrEmpty(produto.Categoria) ? new Categoria() { CategoriaId = Guid.NewGuid(), TipoCategoria = "" } : await VerificaCategoriaAsync(produto.Categoria);
-                    ProdutoRepository.Update(produtoDoBanco);
-                }
-                else
-                {
-                    erros.Add($"Produto {produto.ProdutoId} não encontrado");
-                }              
-            }
-            return erros;
+            var result = await ProdutoRepository.DeleteAsync(x => x.ProdutoId == produtoId);
+            return Ok(result);
         }
-
-        private async Task<Fornecedor> VerificafornecedorAsync(string nome)
-        {
-            var fornecedor = await FornecedorRepository.Get(x => x.Nome == nome);
-
-            if(fornecedor == null)
-            {
-                var novoFornecedor = new Fornecedor { FornecedorId = Guid.NewGuid(), Nome = nome };
-                FornecedorRepository.Add(novoFornecedor);
-                return novoFornecedor;
-            }
-
-            fornecedor.Nome = nome;
-            FornecedorRepository.Update(fornecedor);
-
-            return fornecedor;
-        }
-
-        private async Task<Categoria> VerificaCategoriaAsync(string nome)
-        {
-            var categoria = await CategoriaRepository.Get(x => x.TipoCategoria == nome);
-
-            if ( categoria == null)
-            {
-                var novaCategoria = new Categoria { CategoriaId = Guid.NewGuid(), TipoCategoria = nome };
-                CategoriaRepository.Add(novaCategoria);
-                return novaCategoria;
-            }
-            categoria.TipoCategoria = nome;
-            CategoriaRepository.Update(categoria);
-
-            return categoria;
-        }
-
     }
 }

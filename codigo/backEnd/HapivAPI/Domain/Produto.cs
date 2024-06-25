@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HapivAPI.Domain.Relacionamentos;
 using System.ComponentModel.DataAnnotations;
-using HapivAPI.Domain.Relacionamentos;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HapivAPI.Domain
 {
@@ -28,18 +28,25 @@ namespace HapivAPI.Domain
         [Required]
         public DateTime DataEntrada { get; set; }
 
-        // Relacionamentos abaixo; 
+        [Required]
+        [ForeignKey("GerenteId")]
+        public Guid GerenteId { get; set; }
 
         [Required]
+        [ForeignKey("CategoriaId")]
+        public Guid CategoriaId { get; set; }
+
+        [Required]
+        [ForeignKey("FornecedorId")]
+        public Guid FornecedorId { get; set; }
+
+        // Relacionamentos abaixo; 
         public Gerente? Gerente { get; set; }
 
-        [Required]
         public Categoria? Categoria { get; set; }
 
-        [Required]
         public Fornecedor? Fornecedor { get; set; }
 
-        [Required]
         public ICollection<VendaProduto>? VendaProdutos { get; set; }
 
 
