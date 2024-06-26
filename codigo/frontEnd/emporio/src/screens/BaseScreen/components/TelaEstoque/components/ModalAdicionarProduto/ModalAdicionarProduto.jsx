@@ -4,13 +4,29 @@ import { InputModal } from "../Modal/components/InputModal/InputModal";
 import { ContainerModalAdicionarProduto } from "./ModalAdicionarProduto.style";
 import { handleAdicionarProduto } from "./ModalAdicionarProduto";
 
-export const ModalAdicionarProduto = ({ estahAberto, setAberto }) => {
+export const ModalAdicionarProduto = ({
+  estahAberto,
+  setAberto,
+  onProdutoAdicionado,
+}) => {
   const [descricao, setDescricao] = useState("");
   const [fornecedor, setFornecedor] = useState("");
   const [categoria, setCategoria] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [precoCompra, setPrecoCompra] = useState("");
   const [precoVenda, setPrecoVenda] = useState("");
+
+  const handleConfirmar = async () => {
+    await handleAdicionarProduto(
+      descricao,
+      fornecedor,
+      categoria,
+      quantidade,
+      precoCompra,
+      precoVenda
+    );
+    onProdutoAdicionado();
+  };
 
   return (
     <Modal
@@ -57,16 +73,7 @@ export const ModalAdicionarProduto = ({ estahAberto, setAberto }) => {
           />
         </ContainerModalAdicionarProduto>
       }
-      confirmar={() =>
-        handleAdicionarProduto(
-          descricao,
-          fornecedor,
-          categoria,
-          quantidade,
-          precoCompra,
-          precoVenda
-        )
-      }
+      confirmar={handleConfirmar}
     />
   );
 };

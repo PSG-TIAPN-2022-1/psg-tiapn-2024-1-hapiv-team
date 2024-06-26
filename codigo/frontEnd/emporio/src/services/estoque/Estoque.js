@@ -16,6 +16,11 @@ export const RemoverProduto = async (produto) => {};
 
 export const VenderProduto = async (produto) => {};
 
-export const ObterCategoriasProdutos = async () => {};
-
-export const ObterProdutos = async () => {};
+export const ObterProdutos = async () => {
+  try {
+    const response = await api.get("/Produtos");
+    return response;
+  } catch (error) {
+    alert(error);
+  }
+};
