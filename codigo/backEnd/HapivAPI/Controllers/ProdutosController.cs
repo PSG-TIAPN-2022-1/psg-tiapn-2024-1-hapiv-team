@@ -14,7 +14,6 @@ namespace HapivAPI.Controllers
     public class ProdutosController : Controller
     {
         private IProdutoRepository ProdutoRepository { get; set; }
-
         private IProdutoService ProdutoService { get; set; }
         private IMapper Mapper { get; set; }
 
@@ -44,7 +43,6 @@ namespace HapivAPI.Controllers
         [HttpPut("Inserir")]
         public async Task<IActionResult> Put([FromBody] ProdutoRequestInserir produtoDTO)
         {
-            var text = await Request.BodyReader.ReadAsync();
             var produto = await ProdutoService.InserirProdutoAsync(produtoDTO);
             return Ok(produto);
         }

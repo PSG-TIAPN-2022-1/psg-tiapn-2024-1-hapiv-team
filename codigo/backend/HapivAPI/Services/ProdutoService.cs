@@ -24,23 +24,36 @@ namespace HapivAPI.Services
             CategoriaRepository = catRepo;
         }
 
-        public async Task<IEnumerable<string>> AtualizarProdutoAsync(IEnumerable<ProdutoRequestAtualizar> produtos)
+        public async Task<IEnumerable<string>> AtualizarProdutoAsync(IEnumerable<ProdutoRequestAtualizar> produtosAtualizar)
         {
             List<string> erros = new List<string>();
 
-            foreach (var produto in produtos)
+            var produtosIds = produtosAtualizar.Select(x => x.ProdutoId).ToList();
+
+            var produtosDoBanco = await ProdutoRepository.Listar(i => produtosIds.Contains(i.ProdutoId));
+
+            if (produtosDoBanco == null)
             {
-                var produtoDoBanco = await ProdutoRepository.Get(x => produto.ProdutoId == x.ProdutoId);
+                erros.Add("Nenhum produto encontrado");
+                return erros;
+            }
+
+            foreach (var produto in produtosAtualizar)
+            {
+                var produtoDoBanco = produtosDoBanco.FirstOrDefault(x => x.ProdutoId == produto.ProdutoId);
+
                 if (produtoDoBanco != null)
                 {
+                    // Atualiza propriedades do produto
                     produtoDoBanco.Nome = produto.Nome;
                     produtoDoBanco.PrecoDeCompra = produto.PrecoDeCompra;
                     produtoDoBanco.PrecoDeVenda = produto.PrecoDeVenda;
                     produtoDoBanco.Quantidade = produto.Quantidade;
-                    produtoDoBanco.Fornecedor = string.IsNullOrEmpty(produto.Fornecedor) ? new Fornecedor() { FornecedorId = Guid.NewGuid(), Nome = "" } : await VerificafornecedorAsync(produto.Fornecedor);
-                    produtoDoBanco.Categoria = string.IsNullOrEmpty(produto.Categoria) ? new Categoria() { CategoriaId = Guid.NewGuid(), TipoCategoria = "" } : await VerificaCategoriaAsync(produto.Categoria);
+
+                    produtoDoBanco.Fornecedor = await VerificafornecedorAsync(produto.Fornecedor);
+                    produtoDoBanco.Categoria = await VerificaCategoriaAsync(produto.Categoria);
                     ProdutoRepository.Update(produtoDoBanco);
-                    FornecedorRepository.SaveChanges();
+                    ProdutoRepository.SaveChanges();
                 }
                 else
                 {
@@ -60,8 +73,8 @@ namespace HapivAPI.Services
             produtoDoBanco.Quantidade = produto.Quantidade;
             produtoDoBanco.DataEntrada = DateTime.Now;
             produtoDoBanco.GerenteId = (await GerenteRepository.GetAll()).FirstOrDefault().GerenteId;
-            produtoDoBanco.Fornecedor = string.IsNullOrEmpty(produto.Fornecedor) ? new Fornecedor() { FornecedorId = Guid.NewGuid(), Nome = "" } : await VerificafornecedorAsync(produto.Fornecedor);
-            produtoDoBanco.Categoria = string.IsNullOrEmpty(produto.Categoria) ? new Categoria() { CategoriaId = Guid.NewGuid(), TipoCategoria = "" } : await VerificaCategoriaAsync(produto.Categoria);
+            produtoDoBanco.Fornecedor = await VerificafornecedorAsync(produto.Fornecedor);
+            produtoDoBanco.Categoria = await VerificaCategoriaAsync(produto.Categoria);
             await ProdutoRepository.AddAsync(produtoDoBanco);
             ProdutoRepository.SaveChanges();
 
@@ -77,14 +90,11 @@ namespace HapivAPI.Services
             {
                 var novoFornecedor = new Fornecedor { FornecedorId = Guid.NewGuid(), Nome = nome };
                 FornecedorRepository.Add(novoFornecedor);
-                FornecedorRepository.SaveChanges();
                 return novoFornecedor;
             }
 
             fornecedor.Nome = nome;
             FornecedorRepository.Update(fornecedor);
-            FornecedorRepository.SaveChanges();
-
             return fornecedor;
         }
 
@@ -96,12 +106,10 @@ namespace HapivAPI.Services
             {
                 var novaCategoria = new Categoria { CategoriaId = Guid.NewGuid(), TipoCategoria = nome };
                 CategoriaRepository.Add(novaCategoria);
-                CategoriaRepository.SaveChanges();
                 return novaCategoria;
             }
             categoria.TipoCategoria = nome;
             CategoriaRepository.Update(categoria);
-            CategoriaRepository.SaveChanges();
 
             return categoria;
         }

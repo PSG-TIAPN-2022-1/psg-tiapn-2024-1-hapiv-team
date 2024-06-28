@@ -51,7 +51,9 @@ namespace API
             services.AddScoped<IVendaRepository, VendaRepository>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IProdutoService, ProdutoService>();
-            services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IVendaProdutoRepository, VendaProdutoRepository>();
+            services.AddScoped<IVendaService, VendasService>();
 
             services.AddCors(options =>
             {

@@ -10,6 +10,7 @@ namespace HapivAPI.Interfaces.Repositorys
         Task AddAsync(T entity);
         T? Update(T entity);
         Task<T?> DeleteAsync(Expression<Func<T, bool>> predicate);
+        public Task<IEnumerable<T>?> Listar(Expression<Func<T, bool>> predicate);
         void SaveChanges();
     }
 }

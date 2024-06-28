@@ -1,10 +1,7 @@
 ﻿using Asp.Versioning;
-using HapivAPI.Domain;
-using HapivAPI.Domain.Context;
-using HapivAPI.Interfaces.Repositorys;
+using HapivAPI.Interfaces.Services;
+using HapivAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace HapivAPI.Controllers
 {
@@ -13,13 +10,17 @@ namespace HapivAPI.Controllers
     [ApiController]
     public class VendasController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly ICategoriaRepository _catRepo;
-
-        public VendasController(AppDbContext context, ICategoriaRepository catRepo)
+        private IVendaService VendaService { get; set; }
+        public VendasController(IVendaService venda)
         {
-            _context = context;
-            _catRepo = catRepo;
+            VendaService = venda;
+        }
+
+        [HttpPost("EfetuarVenda")]
+        public async Task<IActionResult> EfetuarVenda(IEnumerable<EfetuarVendaRequest> vendas)
+        {
+            await VendaService.EfetuarVenda(vendas);
+            return Ok();
         }
     }
 }

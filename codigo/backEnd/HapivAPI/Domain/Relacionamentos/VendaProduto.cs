@@ -16,9 +16,23 @@ namespace HapivAPI.Domain.Relacionamentos
         public Guid ProdutoId { get; set; }
 
         [ForeignKey("ProdutoId")]
-        public virtual Produto? Produto { get; set; }
+        public Produto? Produto { get; set; }
 
         [Required]
         public int Quantidade { get; set; }
+
+        public VendaProduto(Guid vendaId, Venda? venda, Guid produtoId, Produto? produto, int quantidade)
+        {
+            VendaId = vendaId;
+            Venda = venda;
+            ProdutoId = produtoId;
+            Produto = produto;
+            Quantidade = quantidade;
+        }
+
+        public VendaProduto()
+        {
+
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             try
             {
                 _dbSet.Add(entity);
-                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -32,7 +31,6 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
             try
             {
                 await _dbSet.AddAsync(entity);
-                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -48,7 +46,6 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 if (deleted != null)
                 {
                     _dbSet.Remove(deleted);
-                    _context.SaveChanges();
                 }
                 return deleted;
             }
@@ -93,6 +90,19 @@ namespace HapivAPI.Domain.Repositorys.BaseRepository
                 }
             }
             return null;
+        }
+
+        public async Task<IEnumerable<T>?> Listar(Expression<Func<T, bool>> predicate)
+        {
+            try
+            {
+                var itens = await _dbSet.Where(predicate).AsNoTracking().ToListAsync();
+                return itens;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         public void SaveChanges()
         {
