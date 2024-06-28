@@ -27,9 +27,12 @@ namespace HapivAPI.Services
 
             var produtosVendidos = await ProdutoRepository.Listar(i => produtosVendidosIds.Contains(i.ProdutoId));
 
+
             var vendaProduto = new VendaProduto();
 
             var venda = await CalcularVenda(produtosVendidosRequest, produtosVendidos);
+
+            VendaRepository.Add(venda);
 
             foreach (var produtoVendido in produtosVendidosRequest)
             {
@@ -42,7 +45,7 @@ namespace HapivAPI.Services
 
                 if (produto.Quantidade < produtoVendido.Quantidade)
                 {
-                    throw new Exception($"Quantidade de {produto.Nome} insuficiente");
+                    throw new Exception($"A quantidade vendida é maior do que o que há em estoque!");
                 }
 
                 produto.Quantidade -= produtoVendido.Quantidade;
@@ -53,8 +56,9 @@ namespace HapivAPI.Services
                 vendaProduto.Venda = venda;
 
                 VendaProdutoRepository.Add(vendaProduto);
+                VendaProdutoRepository.SaveChanges();
             }
-            VendaRepository.Add(venda);
+
             VendaRepository.SaveChanges();
         }
 
