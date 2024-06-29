@@ -1,11 +1,8 @@
 ﻿using Asp.Versioning;
-using HapivAPI.Constantes;
-using HapivAPI.Domain;
-using HapivAPI.Domain.Context;
+using AutoMapper;
+using HapivAPI.DTOs;
 using HapivAPI.Interfaces.Repositorys;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace HapivAPI.Controllers
 {
@@ -14,13 +11,21 @@ namespace HapivAPI.Controllers
     [ApiController]
     public class CategoriasController : Controller
     {
-        private readonly AppDbContext _context;
         private readonly ICategoriaRepository _catRepo;
+        private readonly IMapper _mapper;
 
-        public CategoriasController(AppDbContext context, ICategoriaRepository catRepo)
+        public CategoriasController(IMapper mapper, ICategoriaRepository catRepo)
         {
-            _context = context;
             _catRepo = catRepo;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var categorias = await _catRepo.GetAll();
+            var categoriasDTO = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
+            return Ok(categoriasDTO);
         }
     }
 }
