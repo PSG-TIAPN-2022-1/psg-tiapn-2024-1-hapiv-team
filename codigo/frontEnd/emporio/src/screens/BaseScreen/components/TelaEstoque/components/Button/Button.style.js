@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const ContainerButton = styled.button`
   display: flex;
   justify-content: center;
@@ -12,13 +11,12 @@ export const ContainerButton = styled.button`
   padding: 10px;
   font-family: Cambria;
   transition-duration: 0.4s;
-  background-color: #F7E3DC;
+  background-color: #f7e3dc;
   font-weight: 600;
   border: none;
   margin: 20px;
+
   &:hover {
     background-color: #ffdead;
   }
 `;
-
-

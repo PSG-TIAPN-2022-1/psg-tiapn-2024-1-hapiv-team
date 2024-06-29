@@ -56,11 +56,3 @@ export const SecaoTabela = styled.div`
   border-radius: 5px;
   margin-top: 10px;
 `;
-
-export const SecaoSelect = styled.div`
-  display: flex;
-  align-self: center;
-  height: 10%;
-  width: 40%;
-  margin-left: 10%;
-`;

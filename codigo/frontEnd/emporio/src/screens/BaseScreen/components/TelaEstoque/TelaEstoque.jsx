@@ -8,7 +8,7 @@ import {
 } from "./TelaEstoque.style";
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";
-import { Grid } from "gridjs";
+import { Grid, h } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 import { ptBR } from "gridjs/l10n";
 import { ObterProdutos } from "../../../../services/estoque/Estoque.js";
@@ -23,7 +23,6 @@ export const TelaEstoque = () => {
   const fetchProdutos = async () => {
     try {
       const response = await ObterProdutos();
-
       if (response && response.data) {
         setProdutos(response.data);
       }
@@ -42,35 +41,94 @@ export const TelaEstoque = () => {
         columns: [
           {
             name: "CATEGORIA",
-            width: "12%",
+            width: "11%",
             sort: true,
           },
           {
             name: "FORNECEDOR",
-            width: "15%",
+            width: "14%",
             sort: true,
           },
           {
             name: "DESCRIÇÃO",
             width: "15%",
             sort: true,
-            //TODO: Verificar se funfa => id: (produto) => produto.id,
           },
           {
             name: "QUANTIDADE",
-            width: "13%",
+            width: "11%",
           },
           {
             name: "PREÇO DE COMPRA",
-            width: "15%",
+            width: "13%",
           },
           {
             name: "PREÇO DE VENDA",
-            width: "15%",
+            width: "13%",
+          },
+          {
+            name: "LUCRO UNITÁRIO",
+            width: "12%",
           },
           {
             name: "OPÇÕES",
             width: "12%",
+            formatter: () => {
+              return h(
+                "div",
+                {
+                  style: {
+                    display: "flex",
+                    "justify-content": "space-around",
+                  },
+                },
+                h(
+                  "span",
+                  {
+                    className: "material-symbols-outlined",
+                    onClick: () => {
+                      setTipoModal("Efetuar Venda");
+                      setModalAberto(true);
+                    },
+                    style: {
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    },
+                  },
+                  "edit"
+                ),
+                h(
+                  "span",
+                  {
+                    className: "material-symbols-outlined",
+                    onClick: () => {
+                      setTipoModal("Efetuar Venda");
+                      setModalAberto(true);
+                    },
+                    style: {
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    },
+                  },
+                  "shopping_cart"
+                ),
+                h(
+                  "span",
+                  {
+                    className: "material-symbols-outlined",
+                    onClick: () => {
+                      setTipoModal("Efetuar Venda");
+                      setModalAberto(true);
+                    },
+                    style: {
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    },
+                  },
+                  "delete"
+                )
+              );
+            },
           },
         ],
         data: produtos.map((produto) => [
@@ -80,6 +138,10 @@ export const TelaEstoque = () => {
           produto.quantidade,
           produto.precoDeCompra,
           produto.precoDeVenda,
+          ((produto.precoDeVenda - produto.precoDeCompra) /
+            produto.quantidade) *
+            100 +
+            "%",
         ]),
         style: {
           table: {
@@ -100,7 +162,6 @@ export const TelaEstoque = () => {
           },
         },
         fixedHeader: true,
-        resizable: true,
         search: true,
         pagination: {
           enabled: true,
