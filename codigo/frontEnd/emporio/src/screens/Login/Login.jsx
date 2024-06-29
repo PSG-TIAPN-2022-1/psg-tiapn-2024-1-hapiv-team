@@ -98,7 +98,16 @@ const Login = () => {
                 Voltar
               </SubmitButton>
               <SubmitButton
-                onClick={() => validarRegistro(usuario, senha, senhaRepetida, alterarVisualizacao)}
+                onClick={async () => {
+                  const registroSucesso = await validarRegistro(
+                    usuario,
+                    senha,
+                    senhaRepetida
+                  );
+                  if (registroSucesso) {
+                    alterarVisualizacao("login");
+                  }
+                }}
               >
                 Registrar
               </SubmitButton>

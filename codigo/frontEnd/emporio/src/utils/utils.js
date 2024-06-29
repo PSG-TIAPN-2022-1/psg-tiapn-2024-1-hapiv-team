@@ -10,14 +10,18 @@ export const compararElementos = (a, b) => {
   return a === b;
 };
 
-export const formatarMaiusculo = (a) => {
-  return a.toUpperCase();
-};
-
 export const verificarSeEhNumero = (a) => {
   return !isNaN(a);
 };
 
 export const verificarSeEhPositivo = (a) => {
   return verificarSeEhNumero(a) && a > 0.0;
+};
+
+export const calcularPercentualLucroUnitario = (
+  precoVenda,
+  precoCompra,
+  quantidade
+) => {
+  return ((precoVenda - precoCompra) * quantidade) / 100;
 };

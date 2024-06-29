@@ -19,15 +19,14 @@ const handleLogin = async (usuario, senha) => {
   }
 };
 
-const handleRegistrar = async (usuario, senha, alterarVisualizacao) => { // Receber a função como argumento
+const handleRegistrar = async (usuario, senha) => {
   try {
     await Registrar(usuario, senha);
-    alterarVisualizacao("login"); 
+    return true;
   } catch (error) {
     alert(error);
   }
 };
-
 
 const handleRecuperarSenha = async (usuario) => {
   try {
@@ -54,7 +53,7 @@ export const validarLogin = async (usuario, senha) => {
   }
 };
 
-export const validarRegistro = (usuario, senha, senhaRepetida, alterarVisualizacao) => {
+export const validarRegistro = async (usuario, senha, senhaRepetida) => {
   if (
     verificarSeElementoEhNulo(usuario) ||
     verificarSeElementoEhNulo(senha) ||
@@ -66,7 +65,16 @@ export const validarRegistro = (usuario, senha, senhaRepetida, alterarVisualizac
   } else if (!compararElementos(senha, senhaRepetida)) {
     alert("As senhas não são iguais!");
   } else {
-    handleRegistrar(usuario, senha, alterarVisualizacao);
+    try {
+      const registroSucesso = await handleRegistrar(usuario, senha);
+
+      if (registroSucesso) {
+        alert("Usuário registrado com sucesso!");
+        return true;
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   }
 };
 
