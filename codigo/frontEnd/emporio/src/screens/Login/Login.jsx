@@ -98,7 +98,7 @@ const Login = () => {
                 Voltar
               </SubmitButton>
               <SubmitButton
-                onClick={() => validarRegistro(usuario, senha, senhaRepetida)}
+                onClick={() => validarRegistro(usuario, senha, senhaRepetida, alterarVisualizacao)}
               >
                 Registrar
               </SubmitButton>
