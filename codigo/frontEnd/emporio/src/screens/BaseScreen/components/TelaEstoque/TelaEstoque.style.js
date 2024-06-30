@@ -51,7 +51,7 @@ export const BoxBotoes = styled.div`
 
 export const SecaoTabela = styled.div`
   display: flex;
-  height: 80%;
+  height: 90%;
   width: 95%;
   border-radius: 5px;
   margin-top: 10px;
