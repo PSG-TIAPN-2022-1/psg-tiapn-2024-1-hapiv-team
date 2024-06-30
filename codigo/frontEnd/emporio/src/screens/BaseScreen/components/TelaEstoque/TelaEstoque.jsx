@@ -14,6 +14,7 @@ import "gridjs/dist/theme/mermaid.css";
 import { ptBR } from "gridjs/l10n";
 import { obterProdutosAsync } from "./TelaEstoque.js";
 import { calcularPercentualLucroUnitario } from "../../../../utils/utils.js";
+import { ModalEditarProduto } from "./components/ModalEditarProduto/ModalEditarProduto.jsx";
 
 export const TelaEstoque = () => {
   const [modalAberto, setModalAberto] = useState(false);
@@ -195,6 +196,14 @@ export const TelaEstoque = () => {
             onProdutoRemovido={handleProdutoRemovido}
           />
         );
+        case "Editar Produto":
+          return(
+            <ModalEditarProduto
+            estahAberto={modalAberto}
+            setAberto={setModalAberto}
+            onProdutoAdicionado={handleProdutoAdicionado}
+            />
+          )
       default:
         return null;
     }
