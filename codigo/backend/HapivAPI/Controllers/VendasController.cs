@@ -1,4 +1,6 @@
 ﻿using Asp.Versioning;
+using AutoMapper;
+using HapivAPI.DTOs;
 using HapivAPI.Interfaces.Repositorys;
 using HapivAPI.Interfaces.Services;
 using HapivAPI.Requests;
@@ -13,16 +15,28 @@ namespace HapivAPI.Controllers
     {
         private IVendaService VendaService { get; set; }
         private IVendaRepository VendaRepository { get; set; }
-        public VendasController(IVendaService venda, IVendaRepository vendas)
+        private IVendaProdutoRepository VendaProdutoRepository { get; set; }
+        private IMapper mapper { get; set; }
+        public VendasController(IVendaService venda, IVendaRepository vendas, IMapper map, IVendaProdutoRepository vendasp)
         {
             VendaService = venda;
             VendaRepository = vendas;
+            mapper = map;
+            VendaProdutoRepository = vendasp;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetVendas()
         {
-            return Ok();
+            var itens = await VendaRepository.ListarVendas();
+            var result = mapper.Map<IEnumerable<VendaDTO>>(itens);
+            foreach (var item in result)
+            {
+                var listaVendaProdutos = VendaProdutoRepository.ListarVendas(i => item.VendaId == i.VendaId);
+                var mapped = mapper.Map<IEnumerable<VendaProdutoDTO>>(listaVendaProdutos);
+                item.SetarPropriedades(mapped);
+            }
+            return Ok(result);
         }
 
         [HttpPost("EfetuarVenda")]
