@@ -205,7 +205,6 @@ export const TelaEstoque = () => {
             <ModalEditarProduto
             estahAberto={modalAberto}
             setAberto={setModalAberto}
-            onProdutoAdicionado={handleProdutoAdicionado}
             />
           )
       default:
