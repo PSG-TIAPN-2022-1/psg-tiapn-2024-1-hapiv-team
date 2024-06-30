@@ -29,6 +29,9 @@ namespace HapivAPI.Domain
         public DateTime DataEntrada { get; set; }
 
         [Required]
+        public bool Ativo { get; set; } = true;
+
+        [Required]
         [ForeignKey("GerenteId")]
         public Guid GerenteId { get; set; }
 
