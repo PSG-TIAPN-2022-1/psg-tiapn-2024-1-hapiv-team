@@ -14,7 +14,17 @@ const handleLogin = async (usuario, senha) => {
     await EfetuarLogin(usuario, senha);
     return true;
   } catch (error) {
-    alert(error);
+    switch (error.response.status) {
+      case 400:
+        alert("Usuário ou senha inválidos!");
+        break;
+      case 500:
+        alert("Usuário não encontrado!");
+        break;
+      default:
+        alert("Erro de rede!");
+        break;
+    }
     return false;
   }
 };
@@ -42,15 +52,12 @@ export const validarLogin = async (usuario, senha) => {
     return false;
   }
 
-  try {
-    const loginSucesso = await handleLogin(usuario, senha);
-    if (loginSucesso) {
-      return true;
-    }
-  } catch (error) {
-    alert(error.message);
-    return false;
+  const loginSucesso = await handleLogin(usuario, senha);
+  if (loginSucesso) {
+    return true;
   }
+
+  return false;
 };
 
 export const validarRegistro = async (usuario, senha, senhaRepetida) => {
