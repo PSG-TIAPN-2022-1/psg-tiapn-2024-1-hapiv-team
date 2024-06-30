@@ -18,10 +18,12 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   border: 2px solid #888;
-  width: 60%;
-  height: 60%;
+  justify-content: center;
   border-radius: 10px;
   background-color: rgb(245, 245, 220);
+  padding: 28px;
+  gap: 20px;
+  max-width: 80%;
 `;
 
 export const SecaoTitulo = styled.div`
@@ -30,7 +32,6 @@ export const SecaoTitulo = styled.div`
   align-items: center;
   width: 100%;
   height: 15%;
-  border-bottom: 1px solid #888;
 `;
 
 export const Titulo = styled.h2`
@@ -50,6 +51,7 @@ export const BotaoFecharModal = styled.span`
 
 export const SecaoConteudo = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
 `;
@@ -60,6 +62,5 @@ export const SecaoBotoes = styled.div`
   align-items: center;
   width: 100%;
   height: 15%;
-  border-top: 1px solid #888;
   gap: 30%;
 `;

@@ -5,7 +5,7 @@ export const BoxInput = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 380px;
   gap: 8px;
   border-radius: 5px;
   background-color: rgb(245, 245, 220);
