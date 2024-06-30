@@ -9,12 +9,12 @@ import {
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";
 import { ModalRemoverProduto } from "./components/ModalRemoverProduto/ModalRemoverProduto.jsx";
+import { ModalEditarProduto } from "./components/ModalEditarProduto/ModalEditarProduto.jsx";
 import { Grid, h } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 import { ptBR } from "gridjs/l10n";
 import { obterProdutosAsync } from "./TelaEstoque.js";
 import { calcularPercentualLucroUnitario } from "../../../../utils/utils.js";
-import { ModalEditarProduto } from "./components/ModalEditarProduto/ModalEditarProduto.jsx";
 
 export const TelaEstoque = () => {
   const [modalAberto, setModalAberto] = useState(false);
@@ -147,13 +147,15 @@ export const TelaEstoque = () => {
     });
   };
 
+  const destruirGrid = () => {
+    if (gridRef.current) {
+      gridRef.current.destroy();
+    }
+  };
+
   useEffect(() => {
     if (!carregando) {
-      if (gridRef.current) {
-        if (gridRef.current.__gridjs) {
-          gridRef.current.destroy();
-        }
-      }
+      destruirGrid();
 
       gridRef.current = configurarGrid();
 
@@ -162,11 +164,7 @@ export const TelaEstoque = () => {
       }
     }
 
-    return () => {
-      if (gridRef.current) {
-        gridRef.current.destroy();
-      }
-    };
+    return destruirGrid;
   }, [produtos, carregando]);
 
   const atualizarTabela = () => {
@@ -200,13 +198,13 @@ export const TelaEstoque = () => {
             onProdutoRemovido={atualizarTabela}
           />
         );
-        case "Editar Produto":
-          return(
-            <ModalEditarProduto
+      case "Editar Produto":
+        return (
+          <ModalEditarProduto
             estahAberto={modalAberto}
             setAberto={setModalAberto}
-            />
-          )
+          />
+        );
       default:
         return null;
     }
