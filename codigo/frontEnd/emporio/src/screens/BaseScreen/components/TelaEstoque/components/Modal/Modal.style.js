@@ -23,7 +23,7 @@ export const Box = styled.div`
   background-color: rgb(245, 245, 220);
   padding: 28px;
   gap: 20px;
-  max-width: 80%;
+  max-width: 61%;
 `;
 
 export const SecaoTitulo = styled.div`
@@ -31,22 +31,26 @@ export const SecaoTitulo = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid;
   height: 15%;
+  margin-bottom: 10px;
 `;
 
 export const Titulo = styled.h2`
   flex-grow: 1;
+  margin-bottom: 13px;
 `;
 
 export const FecharModal = styled.div`
   padding: 5px 3px;
-  align-self: flex-start;
+  align-self: flex-end;
 `;
 
 export const BotaoFecharModal = styled.span`
   display: flex;
   font-size: 25px;
   cursor: pointer;
+  
 `;
 
 export const SecaoConteudo = styled.div`
@@ -62,5 +66,6 @@ export const SecaoBotoes = styled.div`
   align-items: center;
   width: 100%;
   height: 15%;
+  border-top: 1px solid;
   gap: 30%;
 `;

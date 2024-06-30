@@ -14,7 +14,7 @@ export const ContainerButton = styled.button`
   background-color: #f7e3dc;
   font-weight: 600;
   border: none;
-  margin: 20px;
+  margin-top: 25px;
 
   &:hover {
     background-color: #ffdead;

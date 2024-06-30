@@ -6,6 +6,6 @@ export const ContainerModalAdicionarProduto = styled.div`
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
   height: 100%;
 `;

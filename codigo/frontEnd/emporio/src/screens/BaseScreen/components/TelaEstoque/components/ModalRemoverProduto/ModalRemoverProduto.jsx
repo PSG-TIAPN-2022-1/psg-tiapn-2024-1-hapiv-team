@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "../Modal/Modal";
 import { handleRemoverProduto } from "./ModalRemoverProduto.js";
+import { RemoverT } from "./ModalRemoverProduto.style.js";
 
 export const ModalRemoverProduto = ({ setAberto, estahAberto, produto }) => {
   const handleConfirmar = async () => {
@@ -16,7 +17,7 @@ export const ModalRemoverProduto = ({ setAberto, estahAberto, produto }) => {
       titulo="Remover Produto"
       conteudo={
         <div>
-          <p>Tem certeza que deseja remover o produto {produto.nome}?</p>
+          <RemoverT>Tem certeza que deseja remover o produto {produto.nome}?</RemoverT>
         </div>
       }
       confirmar={handleConfirmar}
