@@ -14,7 +14,12 @@ import { Grid, h } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 import { ptBR } from "gridjs/l10n";
 import { obterProdutosAsync } from "./TelaEstoque.js";
-import { calcularPercentualLucroUnitario } from "../../../../utils/utils.js";
+import {
+  adicionarPontoACadaTresDigitos,
+  formatarValoresDecimaisComVirgula,
+  formatarValoresDecimaisComPontoEComVirgula,
+  calcularPercentualLucroUnitario,
+} from "../../../../utils/utils.js";
 
 export const TelaEstoque = () => {
   const [modalAberto, setModalAberto] = useState(false);
@@ -49,6 +54,7 @@ export const TelaEstoque = () => {
   const configurarGrid = () => {
     return new Grid({
       columns: [
+        { name: "ID", hidden: true },
         { name: "CATEGORIA", width: "11%", sort: true },
         { name: "FORNECEDOR", width: "14%", sort: true },
         { name: "DESCRIÇÃO", width: "15%", sort: true },
@@ -61,7 +67,7 @@ export const TelaEstoque = () => {
           width: "11%",
           formatter: (_, row) => {
             const produto = produtos.find(
-              (produto) => produto.nome === row.cells[2].data
+              (produto) => produto.produtoId === row.cells[0].data
             );
             return h(
               "div",
@@ -110,17 +116,20 @@ export const TelaEstoque = () => {
         },
       ],
       data: produtos.map((produto) => [
+        produto.produtoId,
         produto.categoria.tipoCategoria,
         produto.fornecedor.nome,
         produto.nome,
-        produto.quantidade,
-        "R$ " + produto.precoDeCompra.toFixed(2),
-        "R$ " + produto.precoDeVenda.toFixed(2),
+        adicionarPontoACadaTresDigitos(produto.quantidade),
+        "R$ " +
+          formatarValoresDecimaisComPontoEComVirgula(produto.precoDeCompra),
+        "R$ " +
+          formatarValoresDecimaisComPontoEComVirgula(produto.precoDeVenda),
         calcularPercentualLucroUnitario(
           produto.precoDeVenda,
           produto.precoDeCompra,
           produto.quantidade
-        ).toFixed(2) + "%",
+        ) + "%",
       ]),
       style: {
         table: {

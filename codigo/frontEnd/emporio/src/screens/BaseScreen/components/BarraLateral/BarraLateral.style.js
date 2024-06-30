@@ -1,16 +1,9 @@
 import styled from "styled-components";
-import { Link as RouterLink } from "react-router-dom";
-
-export const Link = styled(RouterLink)`
-  text-decoration: none;
-  color: inherit;
-  }
-`;
 
 export const BarraLateralBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 18%;
+  width: 15%;
   height: 100%;
   border-radius: 6px;
   background-color: rgb(245, 245, 220);
@@ -24,7 +17,7 @@ export const BarraLateralCabecalho = styled.div`
 `;
 
 export const BarraLateralLogo = styled.img`
-  width: 70%;
+  width: 100%;
 `;
 
 export const SecaoBotoes = styled.div`
