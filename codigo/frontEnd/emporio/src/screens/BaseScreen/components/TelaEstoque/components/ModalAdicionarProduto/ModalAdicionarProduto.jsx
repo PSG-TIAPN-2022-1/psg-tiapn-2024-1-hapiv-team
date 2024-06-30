@@ -17,7 +17,7 @@ export const ModalAdicionarProduto = ({
   const [precoVenda, setPrecoVenda] = useState("");
 
   const handleConfirmar = async () => {
-    await handleAdicionarProduto(
+    const produtoAdicionado = await handleAdicionarProduto(
       descricao,
       fornecedor,
       categoria,
@@ -25,7 +25,8 @@ export const ModalAdicionarProduto = ({
       precoCompra,
       precoVenda
     );
-    onProdutoAdicionado();
+
+    if (produtoAdicionado) onProdutoAdicionado();
   };
 
   return (

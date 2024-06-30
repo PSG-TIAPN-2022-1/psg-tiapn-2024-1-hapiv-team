@@ -26,10 +26,15 @@ export const TelaEstoque = () => {
   const gridRef = useRef(null);
 
   const atualizarProdutos = async () => {
-    setCarregando(true);
-    const produtosObtidos = await obterProdutosAsync();
-    setProdutos(produtosObtidos);
-    setCarregando(false);
+    try {
+      setCarregando(true);
+      const produtosObtidos = await obterProdutosAsync();
+      setProdutos(produtosObtidos);
+    } catch (error) {
+      console.error("Erro ao obter produtos:", error);
+    } finally {
+      setCarregando(false);
+    }
   };
 
   useEffect(() => {
@@ -40,6 +45,107 @@ export const TelaEstoque = () => {
     carregarProdutos();
   }, []);
 
+  const configurarGrid = () => {
+    return new Grid({
+      columns: [
+        { name: "CATEGORIA", width: "11%", sort: true },
+        { name: "FORNECEDOR", width: "14%", sort: true },
+        { name: "DESCRIÇÃO", width: "15%", sort: true },
+        { name: "QUANTIDADE", width: "11%" },
+        { name: "PREÇO DE COMPRA", width: "13%" },
+        { name: "PREÇO DE VENDA", width: "13%" },
+        { name: "LUCRO UNITÁRIO", width: "12%" },
+        {
+          name: "OPÇÕES",
+          width: "11%",
+          formatter: (_, row) => {
+            const produto = produtos.find(
+              (produto) => produto.nome === row.cells[2].data
+            );
+            return h(
+              "div",
+              { style: { display: "flex", justifyContent: "space-between" } },
+              h(
+                "span",
+                {
+                  className: "material-symbols-outlined",
+                  onClick: () => {
+                    setProdutoSelecionado(produto);
+                    setTipoModal("Editar Produto");
+                    setModalAberto(true);
+                  },
+                  style: { cursor: "pointer", fontSize: "20px" },
+                },
+                "edit"
+              ),
+              h(
+                "span",
+                {
+                  className: "material-symbols-outlined",
+                  onClick: () => {
+                    setProdutoSelecionado(produto);
+                    setTipoModal("Efetuar Venda");
+                    setModalAberto(true);
+                  },
+                  style: { cursor: "pointer", fontSize: "20px" },
+                },
+                "shopping_cart"
+              ),
+              h(
+                "span",
+                {
+                  className: "material-symbols-outlined",
+                  onClick: () => {
+                    setProdutoSelecionado(produto);
+                    setTipoModal("Remover Produto");
+                    setModalAberto(true);
+                  },
+                  style: { cursor: "pointer", fontSize: "20px" },
+                },
+                "delete"
+              )
+            );
+          },
+        },
+      ],
+      data: produtos.map((produto) => [
+        produto.categoria.tipoCategoria,
+        produto.fornecedor.nome,
+        produto.nome,
+        produto.quantidade,
+        "R$ " + produto.precoDeCompra.toFixed(2),
+        "R$ " + produto.precoDeVenda.toFixed(2),
+        calcularPercentualLucroUnitario(
+          produto.precoDeVenda,
+          produto.precoDeCompra,
+          produto.quantidade
+        ).toFixed(2) + "%",
+      ]),
+      style: {
+        table: {
+          fontFamily: "Cambria",
+          fontSize: "14px",
+          color: "black",
+          textAlign: "center",
+          wordWrap: "break-word",
+          width: "100%",
+        },
+        th: {
+          backgroundColor: "rgb(245, 245, 220)",
+          fontWeight: "600",
+          fontSize: "10px",
+          color: "black",
+          textAlign: "center",
+          wordWrap: "break-word",
+        },
+      },
+      fixedHeader: true,
+      search: true,
+      pagination: { enabled: true, limit: 5, summary: true },
+      language: ptBR,
+    });
+  };
+
   useEffect(() => {
     if (!carregando) {
       if (gridRef.current) {
@@ -48,104 +154,7 @@ export const TelaEstoque = () => {
         }
       }
 
-      gridRef.current = new Grid({
-        columns: [
-          { name: "CATEGORIA", width: "11%", sort: true },
-          { name: "FORNECEDOR", width: "14%", sort: true },
-          { name: "DESCRIÇÃO", width: "15%", sort: true },
-          { name: "QUANTIDADE", width: "11%" },
-          { name: "PREÇO DE COMPRA", width: "13%" },
-          { name: "PREÇO DE VENDA", width: "13%" },
-          { name: "LUCRO UNITÁRIO", width: "12%" },
-          {
-            name: "OPÇÕES",
-            width: "11%",
-            formatter: (_, row) => {
-              const produto = produtos.find(
-                (produto) => produto.nome === row.cells[2].data
-              );
-              return h(
-                "div",
-                { style: { display: "flex", justifyContent: "space-between" } },
-                h(
-                  "span",
-                  {
-                    className: "material-symbols-outlined",
-                    onClick: () => {
-                      setProdutoSelecionado(produto);
-                      setTipoModal("Editar Produto");
-                      setModalAberto(true);
-                    },
-                    style: { cursor: "pointer", fontSize: "20px" },
-                  },
-                  "edit"
-                ),
-                h(
-                  "span",
-                  {
-                    className: "material-symbols-outlined",
-                    onClick: () => {
-                      setProdutoSelecionado(produto);
-                      setTipoModal("Efetuar Venda");
-                      setModalAberto(true);
-                    },
-                    style: { cursor: "pointer", fontSize: "20px" },
-                  },
-                  "shopping_cart"
-                ),
-                h(
-                  "span",
-                  {
-                    className: "material-symbols-outlined",
-                    onClick: () => {
-                      setProdutoSelecionado(produto);
-                      setTipoModal("Remover Produto");
-                      setModalAberto(true);
-                    },
-                    style: { cursor: "pointer", fontSize: "20px" },
-                  },
-                  "delete"
-                )
-              );
-            },
-          },
-        ],
-        data: produtos.map((produto) => [
-          produto.categoria.tipoCategoria,
-          produto.fornecedor.nome,
-          produto.nome,
-          produto.quantidade,
-          "R$ " + produto.precoDeCompra.toFixed(2),
-          "R$ " + produto.precoDeVenda.toFixed(2),
-          calcularPercentualLucroUnitario(
-            produto.precoDeVenda,
-            produto.precoDeCompra,
-            produto.quantidade
-          ).toFixed(2) + "%",
-        ]),
-        style: {
-          table: {
-            fontFamily: "Cambria",
-            fontSize: "14px",
-            color: "black",
-            textAlign: "center",
-            wordWrap: "break-word",
-            width: "100%",
-          },
-          th: {
-            backgroundColor: "rgb(245, 245, 220)",
-            fontWeight: "600",
-            fontSize: "10px",
-            color: "black",
-            textAlign: "center",
-            wordWrap: "break-word",
-          },
-        },
-        fixedHeader: true,
-        search: true,
-        pagination: { enabled: true, limit: 5, summary: true },
-        language: ptBR,
-      });
+      gridRef.current = configurarGrid();
 
       if (wrapperRef.current) {
         gridRef.current.render(wrapperRef.current);
@@ -159,14 +168,9 @@ export const TelaEstoque = () => {
     };
   }, [produtos, carregando]);
 
-  const handleProdutoAdicionado = () => {
-    setModalAberto(false);
+  const atualizarTabela = () => {
     atualizarProdutos();
-  };
-
-  const handleProdutoRemovido = () => {
     setModalAberto(false);
-    atualizarProdutos();
   };
 
   const renderizarModal = () => {
@@ -176,7 +180,7 @@ export const TelaEstoque = () => {
           <ModalAdicionarProduto
             estahAberto={modalAberto}
             setAberto={setModalAberto}
-            onProdutoAdicionado={handleProdutoAdicionado}
+            onProdutoAdicionado={atualizarTabela}
           />
         );
       case "Efetuar Venda":
@@ -192,7 +196,7 @@ export const TelaEstoque = () => {
             estahAberto={modalAberto}
             setAberto={setModalAberto}
             produto={produtoSelecionado}
-            onProdutoRemovido={handleProdutoRemovido}
+            onProdutoRemovido={atualizarTabela}
           />
         );
       default:

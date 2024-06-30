@@ -27,6 +27,7 @@ const validarCampos = (
     alert("Preencha os campos de quantidade e preços com números positivos");
     return false;
   }
+
   return true;
 };
 
@@ -48,7 +49,7 @@ export const handleAdicionarProduto = async (
       precoVenda
     )
   ) {
-    return;
+    return false;
   }
 
   const produto = {
@@ -62,6 +63,8 @@ export const handleAdicionarProduto = async (
 
   try {
     await AdicionarProduto(produto);
+    alert("Produto adicionado com sucesso");
+    return true;
   } catch (error) {
     alert("Erro ao adicionar produto");
   }
