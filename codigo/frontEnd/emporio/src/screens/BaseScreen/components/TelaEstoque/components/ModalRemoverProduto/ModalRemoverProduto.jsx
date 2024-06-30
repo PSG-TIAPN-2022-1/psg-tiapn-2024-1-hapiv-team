@@ -3,11 +3,16 @@ import Modal from "../Modal/Modal";
 import { handleRemoverProduto } from "./ModalRemoverProduto.js";
 import { RemoverT } from "./ModalRemoverProduto.style.js";
 
-export const ModalRemoverProduto = ({ setAberto, estahAberto, produto }) => {
+export const ModalRemoverProduto = ({
+  setAberto,
+  estahAberto,
+  produto,
+  onProdutoRemovido,
+}) => {
   const handleConfirmar = async () => {
-    // console.log(produto);
-    handleRemoverProduto(produto);
-    setAberto(false);
+    const produtoRemovido = await handleRemoverProduto(produto);
+
+    if (produtoRemovido) onProdutoRemovido();
   };
 
   return (
@@ -17,7 +22,9 @@ export const ModalRemoverProduto = ({ setAberto, estahAberto, produto }) => {
       titulo="Remover Produto"
       conteudo={
         <div>
-          <RemoverT>Tem certeza que deseja remover o produto {produto.nome}?</RemoverT>
+          <RemoverT>
+            Tem certeza que deseja remover o produto {produto.nome}?
+          </RemoverT>
         </div>
       }
       confirmar={handleConfirmar}
