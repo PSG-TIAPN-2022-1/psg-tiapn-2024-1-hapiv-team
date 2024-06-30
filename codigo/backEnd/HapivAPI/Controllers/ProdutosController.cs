@@ -51,6 +51,7 @@ namespace HapivAPI.Controllers
         public async Task<IActionResult> Delete([FromBody] Guid produtoId)
         {
             var result = await ProdutoRepository.DeleteAsync(x => x.ProdutoId == produtoId);
+            ProdutoRepository.SaveChanges();
             return Ok(result);
         }
     }
