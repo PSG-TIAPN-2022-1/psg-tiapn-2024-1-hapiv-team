@@ -32,20 +32,20 @@ export const Button = styled.button`
 
 export const SecaoBotoes = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+  align-items: end;
   height: 20%;
-  width: 80%;
+  width: 100%;
   margin-top: 30px;
 `;
 
 export const BoxBotoes = styled.div`
   display: flex;
-
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 100%;
+  justify-content: end;
+  align-items: end;
+  width: 15%;
+  margin-right: 30px;
+  height: 1%;
   gap: 40%;
 `;
 

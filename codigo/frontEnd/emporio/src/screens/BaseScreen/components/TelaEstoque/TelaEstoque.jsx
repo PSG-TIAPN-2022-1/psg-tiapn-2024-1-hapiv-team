@@ -212,14 +212,6 @@ export const TelaEstoque = () => {
           >
             Adicionar Produto
           </Button>
-          <Button
-            onClick={() => {
-              setTipoModal("Efetuar Venda");
-              setModalAberto(true);
-            }}
-          >
-            Efetuar Venda
-          </Button>
         </BoxBotoes>
       </SecaoBotoes>
       {renderizarModal()}
