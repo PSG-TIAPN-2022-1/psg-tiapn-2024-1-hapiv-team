@@ -16,7 +16,6 @@ import { ptBR } from "gridjs/l10n";
 import { obterProdutosAsync } from "./TelaEstoque.js";
 import {
   adicionarPontoACadaTresDigitos,
-  formatarValoresDecimaisComVirgula,
   formatarValoresDecimaisComPontoEComVirgula,
   calcularPercentualLucroUnitario,
 } from "../../../../utils/utils.js";
@@ -213,6 +212,7 @@ export const TelaEstoque = () => {
             estahAberto={modalAberto}
             setAberto={setModalAberto}
             produto={produtoSelecionado}
+            onProdutoEditado={atualizarTabela}
           />
         );
       default:

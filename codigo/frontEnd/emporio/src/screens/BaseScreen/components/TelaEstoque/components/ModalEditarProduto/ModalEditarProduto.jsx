@@ -20,12 +20,13 @@ export const ModalEditarProduto = ({
 
   const handleConfirmar = async () => {
     const produtoEditado = await handleEditarProduto(
+      produto.produtoId,
       descricao,
-      fornecedor,
+      Number(quantidade),
+      Number(precoCompra),
+      Number(precoVenda),
       categoria,
-      quantidade,
-      precoCompra,
-      precoVenda
+      fornecedor
     );
 
     if (produtoEditado) onProdutoEditado();
