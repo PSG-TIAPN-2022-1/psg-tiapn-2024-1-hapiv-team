@@ -16,8 +16,14 @@ export const ModalAdicionarProduto = ({
   const [precoCompra, setPrecoCompra] = useState("");
   const [precoVenda, setPrecoVenda] = useState("");
 
+  const handleInputChange = (e, setStateFunc) => {
+    let value = e.target.value;
+    value = value.replace(",", ".");
+    setStateFunc(value);
+  };
+  
   const handleConfirmar = async () => {
-    const produtoAdicionado = await handleAdicionarProduto(
+    await handleAdicionarProduto(
       descricao,
       fornecedor,
       categoria,
@@ -25,8 +31,7 @@ export const ModalAdicionarProduto = ({
       precoCompra,
       precoVenda
     );
-
-    if (produtoAdicionado) onProdutoAdicionado();
+    onProdutoAdicionado();
   };
 
   return (
@@ -63,14 +68,14 @@ export const ModalAdicionarProduto = ({
           <InputModal
             type="text"
             title="Preco de Compra"
-            placeholder={"Preço de Compra: R$ "}
-            onChange={(e) => setPrecoCompra(e.target.value)}
+            placeholder={"Preço de Compra"}
+            onChange={(e) => handleInputChange(e, setPrecoCompra)}
           />
           <InputModal
             type="text"
             title="Preco de Venda"
-            placeholder={"Preço de Venda: R$ "}
-            onChange={(e) => setPrecoVenda(e.target.value)}
+            placeholder={"Preço de Venda"}
+            onChange={(e) => handleInputChange(e, setPrecoVenda)}
           />
         </ContainerModalAdicionarProduto>
       }
