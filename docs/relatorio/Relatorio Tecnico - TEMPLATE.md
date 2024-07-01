@@ -207,87 +207,38 @@ feature: Indica que uma nova funcionalidade deve ser adicionada.
 
 # Projeto da Solução
 
-...... COLOQUE AQUI O SEU TEXTO ......
+Esta seção tem como objetivo aprensetar as decisões de engenharia do projeto.
 
 ## Tecnologias Utilizadas
 
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
-> problema, ou seja, implementar a sua solução. Liste todas as
-> tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
-> frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-> Apresente também uma figura explicando como as tecnologias estão
-> relacionadas ou como uma interação do usuário com o sistema vai ser
-> conduzida, por onde ela passa até retornar uma resposta ao usuário.
->
-> Inclua os diagramas de User Flow, esboços criados pelo grupo
-> (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
-> item textualmente comentando e complementando o que está apresentado
-> nas imagens.
+Durante o desenvolvimento de nosso projeto, encontramos várias possibilidades para a implementação do site. Após análise, decidimos que a melhor escolha para a produção seria utilizar a linguagem React juntamente do java-script para o front-end do site. No back-end, optamos por C# com .NET Framework, juntamente com o banco de dados MySQl junto com a ferramenta MySQL Workbench.
+As principais ferramentas utilizadas para a implementação das linguagens selecionadas foram o Visual Studio, o Visual Studio Code e o MySQL Workbench.
 
 ## Arquitetura da solução
 
-...... COLOQUE AQUI O SEU TEXTO E O DIAGRAMA DE ARQUITETURA .......
+Por ser um sistema local, não foi necessário hospedar o site na nuvem. Foram utilizados uma API(C#) para fazer o controle de acesso e filtros lógicos ao banco de dados, React para a parte visual e o MySQL para a persistência, abaixo a imagem da arquitetura:
 
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
->
-> **Exemplo do diagrama de Arquitetura**:
->
-> ![Exemplo de Arquitetura](images/arquitetura-exemplo.png)
+![Arquitetura](Arquivos\Arquitetura.png)
 
 # Avaliação da Aplicação
 
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
+Por se tratar de uma aplicação muito pequena e volátil, ou seja, que está em constante mudança, optamos por não fazer testes unitários nem de integração, já que utilizaria boa parte do nosso tempo nisso e não sobraria tempo para incrementar o software de fato. Em vez disso optamos por fazer apenas testes funcionais para todos os casos de uso da aplicação, visto que nesse caso é necessário até para conseguirmos utilizar as tecnologias todas juntas.
 
 ## Plano de Testes
 
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
->
-> **Links Úteis**:
->
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> - [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-
-## Ferramentas de Testes (Opcional)
-
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Comente sobre as ferramentas de testes utilizadas.
->
-> **Links Úteis**:
->
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+Todos os testes foram feitos pelas perspectivas do usuário, sendo testes que englobam as operações básicas de: Inserção de produto,
+Venda de produto, e edição de produto. Nisso foi validado o comportamento da tabela, do banco e da API, já que estão nesse fluxo.
 
 ## Registros de Testes
 
-...... COLOQUE AQUI O SEU TEXTO ......
-
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
-> fracos identificados na solução. Comente como o grupo pretende atacar
-> esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
-
 # Referências
 
-...... COLOQUE AQUI O SEU TEXTO ......
+EMPÓRIO JEITO SIMPLES. Disponível em:https://www.instagram.com/emporiojeitosimples/. Acesso em: 24 jun. 2024.
 
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados
-> no desenvolvimento do trabalho.
->
-> **Links Úteis**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+SLIDESGO. Disponível em: https://slidesgo.com/editor/?template=9c6a80c7-6246-474b-b70c-88fc441d5a82#my_projects_continue_editing. Acesso em: 24 jun. 2024.
+
+DISCORD. Disponível em: https://discord.com/channels/1080984920740069396/1081012145300455464. Acesso em: 30 jun. 2024.
+
+FIGMA. Disponível em:https://www.figma.com/design/AOgtMtmBq5LnhI666RuC8H/PlantUP?node-id=643-6696&m=dev. Acesso em: 20 jun. 2024.
+
+DRAWIO. Disponível em: https://www.drawio.com/. Acesso em: 20 jun. 2024.
