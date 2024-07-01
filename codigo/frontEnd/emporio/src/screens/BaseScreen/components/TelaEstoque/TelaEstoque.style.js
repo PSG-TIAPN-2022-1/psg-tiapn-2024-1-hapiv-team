@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+  .gridjs-head {
+    width: 80%;
+  }
+`;
 
 export const TelaBase = styled.div`
   display: flex;
@@ -17,6 +23,7 @@ export const Cabecalho = styled.div`
   align-items: center;
   height: 15%;
   font-size: 24px;
+  margin-bottom: 10px;
 `;
 
 export const Titulo = styled.h3`
@@ -57,11 +64,11 @@ export const Button = styled.button`
 
 export const SecaoBotoes = styled.div`
   display: flex;
-  justify-content: end;
-  align-items: end;
-  height: 20%;
-  width: 100%;
-  margin-top: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  height: 5%;
+  margin-top: 10px;
 `;
 
 export const BoxBotoes = styled.div`
@@ -78,6 +85,5 @@ export const SecaoTabela = styled.div`
   display: flex;
   height: 90%;
   width: 95%;
-  border-radius: 5px;
-  margin-top: 10px;
+  align-self: center;
 `;

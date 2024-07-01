@@ -80,7 +80,7 @@ export const TelaFinancas = () => {
       },
       fixedHeader: true,
       search: true,
-      pagination: { enabled: true, limit: 10, summary: true },
+      pagination: { enabled: true, limit: 8, summary: true },
       language: ptBR,
     });
   };

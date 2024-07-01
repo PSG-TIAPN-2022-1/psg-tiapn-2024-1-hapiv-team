@@ -10,6 +10,7 @@ import {
   ContainerBase,
   Cabecalho,
   Titulo,
+  GlobalStyles,
 } from "./TelaEstoque.style";
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";
@@ -152,7 +153,7 @@ export const TelaEstoque = () => {
       },
       fixedHeader: true,
       search: true,
-      pagination: { enabled: true, limit: 5, summary: true },
+      pagination: { enabled: true, limit: 6, summary: true },
       language: ptBR,
     });
   };

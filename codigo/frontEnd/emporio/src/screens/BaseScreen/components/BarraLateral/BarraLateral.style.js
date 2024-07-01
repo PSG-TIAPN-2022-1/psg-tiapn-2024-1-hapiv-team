@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BarraLateralBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 16%;
   height: 100%;
   border-radius: 6px;
   background-color: rgb(245, 245, 220);
@@ -24,7 +24,7 @@ export const SecaoBotoes = styled.div`
   display: flex;
   flex-direction: column;
   height: 40%;
-  width: 100%;
+  width: 90%;
   padding: 16px;
   gap: 10px;
 `;
@@ -34,6 +34,6 @@ export const SecaoInferior = styled.div`
   justify-content: flex-end;
   flex-direction: column;
   height: 30%;
-  width: 100%;
+  width: 90%;
   padding: 16px;
 `;
