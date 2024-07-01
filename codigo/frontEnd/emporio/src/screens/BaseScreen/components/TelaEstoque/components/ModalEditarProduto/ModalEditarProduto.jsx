@@ -3,19 +3,33 @@ import Modal from "../Modal/Modal";
 import { InputModal } from "../Modal/components/InputModal/InputModal";
 import { ContainerModalEditarProduto } from "./ModalEditarProduto.style";
 import { formatarValoresDecimaisComPontoEComVirgula } from "../../../../../../utils/utils";
+import { handleEditarProduto } from "./ModalEditarProduto";
 
 export const ModalEditarProduto = ({
   estahAberto,
   setAberto,
   produto,
-  onProdutoAdicionado,
+  onProdutoEditado,
 }) => {
-  const [descricao, setDescricao] = useState("");
-  const [fornecedor, setFornecedor] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [quantidade, setQuantidade] = useState("");
-  const [precoCompra, setPrecoCompra] = useState("");
-  const [precoVenda, setPrecoVenda] = useState("");
+  const [descricao, setDescricao] = useState(produto.nome);
+  const [fornecedor, setFornecedor] = useState(produto.fornecedor.nome);
+  const [categoria, setCategoria] = useState(produto.categoria.tipoCategoria);
+  const [quantidade, setQuantidade] = useState(produto.quantidade);
+  const [precoCompra, setPrecoCompra] = useState(produto.precoDeCompra);
+  const [precoVenda, setPrecoVenda] = useState(produto.precoDeVenda);
+
+  const handleConfirmar = async () => {
+    const produtoEditado = await handleEditarProduto(
+      descricao,
+      fornecedor,
+      categoria,
+      quantidade,
+      precoCompra,
+      precoVenda
+    );
+
+    if (produtoEditado) onProdutoEditado();
+  };
 
   return (
     <Modal
@@ -70,6 +84,7 @@ export const ModalEditarProduto = ({
           />
         </ContainerModalEditarProduto>
       }
+      confirmar={handleConfirmar}
     />
   );
 };

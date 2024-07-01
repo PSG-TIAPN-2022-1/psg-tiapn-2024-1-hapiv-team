@@ -9,7 +9,14 @@ export const AdicionarProduto = async (produto) => {
   }
 };
 
-export const EditarProduto = async (produto) => {};
+export const EditarProduto = async (produto) => {
+  try {
+    const produtoString = JSON.stringify(produto);
+    await api.post("/Produtos/Editar", produtoString);
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const RemoverProduto = async (produto) => {
   try {
