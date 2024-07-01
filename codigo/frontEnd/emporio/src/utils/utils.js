@@ -66,3 +66,8 @@ export const calcularPercentualLucro = (precoVenda, precoCompra) => {
     (precoVenda / precoCompra - 1) * 100
   );
 };
+
+export const formatarData = (data) => {
+  let dataFormatada = new Date(data).toLocaleDateString("pt-BR");
+  return dataFormatada;
+};

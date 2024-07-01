@@ -18,8 +18,20 @@ export const BarraLateral = () => {
         <BarraLateralLogo src={logo} />
       </BarraLateralCabecalho>
       <SecaoBotoes>
-        <Button icon="store" title="Estoque" />
-        <Button icon="payments" title="Finanças" />
+        <Button
+          icon="store"
+          title="Estoque"
+          onClick={() => {
+            navigate("/estoque");
+          }}
+        />
+        <Button
+          icon="payments"
+          title="Vendas"
+          onClick={() => {
+            navigate("/financas");
+          }}
+        />
       </SecaoBotoes>
       <SecaoInferior>
         <Button

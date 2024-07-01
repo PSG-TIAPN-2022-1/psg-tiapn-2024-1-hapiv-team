@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
+import { BarraLateral } from "../BarraLateral/BarraLateral.jsx";
 import {
   BoxBotoes,
   Container,
   SecaoBotoes,
   SecaoTabela,
   Button,
+  TelaBase,
+  ContainerBase,
+  Cabecalho,
+  Titulo,
 } from "./TelaEstoque.style";
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";
@@ -220,24 +225,36 @@ export const TelaEstoque = () => {
   };
 
   return (
-    <Container>
-      <SecaoBotoes>
-        <BoxBotoes>
-          <Button
-            onClick={() => {
-              setTipoModal("Adicionar Produto");
-              setModalAberto(true);
-            }}
-          >
-            Adicionar Produto
-          </Button>
-        </BoxBotoes>
-      </SecaoBotoes>
-      {renderizarModal()}
-      <SecaoTabela>
-        {carregando ? <div>Carregando...</div> : <div ref={wrapperRef}></div>}
-      </SecaoTabela>
-    </Container>
+    <TelaBase>
+      <BarraLateral />
+      <ContainerBase>
+        <Cabecalho>
+          <Titulo>Estoque</Titulo>
+        </Cabecalho>
+        <Container>
+          <SecaoBotoes>
+            <BoxBotoes>
+              <Button
+                onClick={() => {
+                  setTipoModal("Adicionar Produto");
+                  setModalAberto(true);
+                }}
+              >
+                Adicionar Produto
+              </Button>
+            </BoxBotoes>
+          </SecaoBotoes>
+          {renderizarModal()}
+          <SecaoTabela>
+            {carregando ? (
+              <div>Carregando...</div>
+            ) : (
+              <div ref={wrapperRef}></div>
+            )}
+          </SecaoTabela>
+        </Container>
+      </ContainerBase>
+    </TelaBase>
   );
 };
 

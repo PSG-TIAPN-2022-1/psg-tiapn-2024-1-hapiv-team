@@ -144,7 +144,7 @@ const Login = () => {
                 onClick={async () => {
                   const loginSucesso = await validarLogin(usuario, senha);
                   if (loginSucesso) {
-                    navigate("/base");
+                    navigate("/estoque");
                   }
                 }}
               >

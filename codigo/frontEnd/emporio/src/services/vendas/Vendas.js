@@ -3,7 +3,8 @@ import { api } from "../../config/api";
 export const ObterVendas = async () => {
   try {
     const response = await api.get("/Vendas");
-    return response.data;
+    console.log(response.data);
+    return response;
   } catch (error) {
     return error.response.data;
   }
