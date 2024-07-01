@@ -41,6 +41,7 @@ const handleRegistrar = async (usuario, senha) => {
 const handleRecuperarSenha = async (usuario) => {
   try {
     await RecuperarSenha(usuario);
+    alert("Senha enviada para o email!");
   } catch (error) {
     alert(error);
   }
