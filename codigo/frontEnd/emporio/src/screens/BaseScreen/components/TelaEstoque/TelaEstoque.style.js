@@ -1,10 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-export const GlobalStyles = createGlobalStyle`
-  .gridjs-head {
-    width: 80%;
-  }
-`;
+import styled from "styled-components";
 
 export const TelaBase = styled.div`
   display: flex;

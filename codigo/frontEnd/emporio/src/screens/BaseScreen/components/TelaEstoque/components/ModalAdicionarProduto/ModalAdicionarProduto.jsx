@@ -21,9 +21,9 @@ export const ModalAdicionarProduto = ({
     value = value.replace(",", ".");
     setStateFunc(value);
   };
-  
+
   const handleConfirmar = async () => {
-    await handleAdicionarProduto(
+    const produtoAdicionado = await handleAdicionarProduto(
       descricao,
       fornecedor,
       categoria,
@@ -31,7 +31,7 @@ export const ModalAdicionarProduto = ({
       precoCompra,
       precoVenda
     );
-    onProdutoAdicionado();
+    if (produtoAdicionado) onProdutoAdicionado();
   };
 
   return (

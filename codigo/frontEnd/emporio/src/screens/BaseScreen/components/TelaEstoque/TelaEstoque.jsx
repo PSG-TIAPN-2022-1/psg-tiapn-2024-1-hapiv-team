@@ -10,7 +10,6 @@ import {
   ContainerBase,
   Cabecalho,
   Titulo,
-  GlobalStyles,
 } from "./TelaEstoque.style";
 import { ModalAdicionarProduto } from "./components/ModalAdicionarProduto/ModalAdicionarProduto.jsx";
 import { ModalEfetuarVenda } from "./components/ModalEfetuarVenda/ModalEfetuarVenda.jsx";

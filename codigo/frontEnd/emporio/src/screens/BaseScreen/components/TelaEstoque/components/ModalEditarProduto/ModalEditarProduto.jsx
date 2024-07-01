@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import { InputModal } from "../Modal/components/InputModal/InputModal";
 import { ContainerModalEditarProduto } from "./ModalEditarProduto.style";
-import { formatarValoresDecimaisComPontoEComVirgula } from "../../../../../../utils/utils";
+import {
+  formatarValoresDecimaisComPontoEComVirgula,
+  substituirVirgulaPorPonto,
+} from "../../../../../../utils/utils";
 import { handleEditarProduto } from "./ModalEditarProduto";
 
 export const ModalEditarProduto = ({
@@ -19,9 +22,14 @@ export const ModalEditarProduto = ({
   const [precoVenda, setPrecoVenda] = useState(produto.precoDeVenda);
 
   const handleConfirmar = async () => {
-    const precoCompraFormatado = Number(precoCompra.toString().replace(',', '.'));
-    const precoVendaFormatado = Number(precoVenda.toString().replace(',', '.'));
-  
+    const precoCompraFormatado = Number(
+      substituirVirgulaPorPonto(precoCompra.toString())
+    );
+
+    const precoVendaFormatado = Number(
+      substituirVirgulaPorPonto(precoVenda.toString())
+    );
+
     const produtoEditado = await handleEditarProduto(
       produto.produtoId,
       descricao,
@@ -31,10 +39,9 @@ export const ModalEditarProduto = ({
       categoria,
       fornecedor
     );
-  
+
     if (produtoEditado) onProdutoEditado();
   };
-  
 
   return (
     <Modal
