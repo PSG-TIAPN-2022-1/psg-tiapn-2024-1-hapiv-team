@@ -43,7 +43,7 @@ namespace HapivAPI.Services
                     throw new Exception($"Produto {produtoVendido.ProdutoId} não encontrado");
                 }
 
-                if (produto.Quantidade < produtoVendido.Quantidade)
+                if (produto.Quantidade < produtoVendido.Quantidade) //Trazer essa validação pra fora do For
                 {
                     throw new Exception($"A quantidade vendida é maior do que o que há em estoque!");
                 }
@@ -82,7 +82,6 @@ namespace HapivAPI.Services
                 venda.Faturamento += produtoVendido.Quantidade * produto.PrecoDeVenda;
             }
             return venda;
-
         }
     }
 }
