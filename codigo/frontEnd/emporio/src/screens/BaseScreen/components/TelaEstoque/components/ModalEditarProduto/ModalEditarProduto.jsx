@@ -19,18 +19,22 @@ export const ModalEditarProduto = ({
   const [precoVenda, setPrecoVenda] = useState(produto.precoDeVenda);
 
   const handleConfirmar = async () => {
+    const precoCompraFormatado = Number(precoCompra.toString().replace(',', '.'));
+    const precoVendaFormatado = Number(precoVenda.toString().replace(',', '.'));
+  
     const produtoEditado = await handleEditarProduto(
       produto.produtoId,
       descricao,
       Number(quantidade),
-      Number(precoCompra),
-      Number(precoVenda),
+      precoCompraFormatado,
+      precoVendaFormatado,
       categoria,
       fornecedor
     );
-
+  
     if (produtoEditado) onProdutoEditado();
   };
+  
 
   return (
     <Modal
