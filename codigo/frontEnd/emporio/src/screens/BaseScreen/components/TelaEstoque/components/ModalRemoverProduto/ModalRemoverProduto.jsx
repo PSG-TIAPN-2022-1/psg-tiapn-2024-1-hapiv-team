@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "../Modal/Modal";
+import Modal from "../Modal/Modal.jsx";
 import { handleRemoverProduto } from "./ModalRemoverProduto.js";
 import { MensagemRemoverProduto } from "./ModalRemoverProduto.style.js";
 
