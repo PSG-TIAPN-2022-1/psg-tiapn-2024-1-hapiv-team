@@ -4,7 +4,6 @@ import {
   BarraLateralLogo,
   SecaoBotoes,
   SecaoInferior,
-  Link,
 } from "./BarraLateral.style";
 import logo from "../../../../Assets/img/logo-emporio-jeito-simples.png";
 import Button from "./components/Button/Button";
@@ -27,9 +26,6 @@ export const BarraLateral = () => {
           icon="logout"
           title="Sair"
           onClick={() => {
-            // Aqui você pode colocar a lógica para fazer logout, se necessário
-            // Exemplo de navegação para a página de login:
-            console.log("Fazer logout");
             navigate("/login");
           }}
         />

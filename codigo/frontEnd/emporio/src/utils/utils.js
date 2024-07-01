@@ -6,6 +6,10 @@ export const verificarSeElementoEhMenor = (a, b) => {
   return a.length < b;
 };
 
+export const verificarSeNumeroEhMenor = (a, b) => {
+  return a < b;
+};
+
 export const compararElementos = (a, b) => {
   return a === b;
 };
@@ -53,12 +57,8 @@ export const formatarValoresDecimaisComPontoEComVirgula = (numero) => {
   return parts.join(",");
 };
 
-export const calcularPercentualLucroUnitario = (
-  precoVenda,
-  precoCompra,
-  quantidade
-) => {
+export const calcularPercentualLucro = (precoVenda, precoCompra) => {
   return formatarValoresDecimaisComPontoEComVirgula(
-    ((precoVenda - precoCompra) * quantidade) / 100
+    (precoVenda / precoCompra - 1) * 100
   );
 };

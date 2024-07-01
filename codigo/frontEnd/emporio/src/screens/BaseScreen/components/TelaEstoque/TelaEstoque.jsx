@@ -17,7 +17,7 @@ import { obterProdutosAsync } from "./TelaEstoque.js";
 import {
   adicionarPontoACadaTresDigitos,
   formatarValoresDecimaisComPontoEComVirgula,
-  calcularPercentualLucroUnitario,
+  calcularPercentualLucro,
 } from "../../../../utils/utils.js";
 
 export const TelaEstoque = () => {
@@ -60,7 +60,7 @@ export const TelaEstoque = () => {
         { name: "QUANTIDADE", width: "12%", sort: true },
         { name: "PREÇO DE COMPRA", width: "14%", sort: true },
         { name: "PREÇO DE VENDA", width: "14%", sort: true },
-        { name: "LUCRO UNITÁRIO", width: "13%", sort: true },
+        { name: "MARGEM LUCRO", width: "13%", sort: true },
         {
           name: "OPÇÕES",
           width: "11%",
@@ -124,11 +124,8 @@ export const TelaEstoque = () => {
           formatarValoresDecimaisComPontoEComVirgula(produto.precoDeCompra),
         "R$ " +
           formatarValoresDecimaisComPontoEComVirgula(produto.precoDeVenda),
-        calcularPercentualLucroUnitario(
-          produto.precoDeVenda,
-          produto.precoDeCompra,
-          produto.quantidade
-        ) + "%",
+        calcularPercentualLucro(produto.precoDeVenda, produto.precoDeCompra) +
+          "%",
       ]),
       style: {
         table: {
@@ -195,6 +192,8 @@ export const TelaEstoque = () => {
           <ModalEfetuarVenda
             estahAberto={modalAberto}
             setAberto={setModalAberto}
+            produto={produtoSelecionado}
+            onProdutoAdicionado={atualizarTabela}
           />
         );
       case "Remover Produto":

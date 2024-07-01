@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import { ContainerModalEfetuarVenda } from "./ModalEfetuarVenda.style";
 import { InputModal } from "../Modal/components/InputModal/InputModal";
+import { handleVenderProduto } from "./ModalEfetuarVenda";
 
 export const ModalEfetuarVenda = ({
   estahAberto,
   setAberto,
+  produto,
   onProdutoAdicionado,
 }) => {
   const [quantidade, setQuantidade] = useState("");
+
+  const handleConfirmar = async () => {
+    const produtoVendido = await handleVenderProduto(produto, quantidade);
+
+    if (produtoVendido) onProdutoAdicionado();
+  };
 
   return (
     <Modal
@@ -25,6 +33,7 @@ export const ModalEfetuarVenda = ({
           />
         </ContainerModalEfetuarVenda>
       }
+      confirmar={handleConfirmar}
     />
   );
 };
