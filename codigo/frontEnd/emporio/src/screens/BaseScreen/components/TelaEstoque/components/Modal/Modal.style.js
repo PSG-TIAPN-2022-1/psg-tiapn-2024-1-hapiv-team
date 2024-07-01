@@ -50,7 +50,6 @@ export const BotaoFecharModal = styled.span`
   display: flex;
   font-size: 25px;
   cursor: pointer;
-  
 `;
 
 export const SecaoConteudo = styled.div`

@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "../Modal/Modal";
 import { handleRemoverProduto } from "./ModalRemoverProduto.js";
-import { RemoverT } from "./ModalRemoverProduto.style.js";
+import { MensagemRemoverProduto } from "./ModalRemoverProduto.style.js";
 
 export const ModalRemoverProduto = ({
   setAberto,
@@ -22,9 +22,10 @@ export const ModalRemoverProduto = ({
       titulo="Remover Produto"
       conteudo={
         <div>
-          <RemoverT>
-            Tem certeza que deseja remover o produto {produto.nome}?
-          </RemoverT>
+          <MensagemRemoverProduto>
+            Tem certeza que deseja remover o produto{" "}
+            <strong>{produto.nome} </strong>?
+          </MensagemRemoverProduto>
         </div>
       }
       confirmar={handleConfirmar}

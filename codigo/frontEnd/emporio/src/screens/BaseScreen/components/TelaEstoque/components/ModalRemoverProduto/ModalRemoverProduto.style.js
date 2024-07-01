@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const RemoverT = styled.p`
+export const MensagemRemoverProduto = styled.p`
   font-size: 18px;
   color: #333;
   margin: 30px;

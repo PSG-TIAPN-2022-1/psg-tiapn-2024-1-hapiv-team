@@ -63,13 +63,13 @@ export const ModalAdicionarProduto = ({
           <InputModal
             type="text"
             title="Preco de Compra"
-            placeholder={"Preço de Compra"}
+            placeholder={"Preço de Compra: R$ "}
             onChange={(e) => setPrecoCompra(e.target.value)}
           />
           <InputModal
             type="text"
             title="Preco de Venda"
-            placeholder={"Preço de Venda"}
+            placeholder={"Preço de Venda: R$ "}
             onChange={(e) => setPrecoVenda(e.target.value)}
           />
         </ContainerModalAdicionarProduto>

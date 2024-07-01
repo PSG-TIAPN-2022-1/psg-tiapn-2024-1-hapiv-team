@@ -22,8 +22,9 @@ export const Input = styled.input`
   background-color: transparent;
 
   &::placeholder {
-    color: black;
-    opacity: 1;
+    color: gray;
+    opacity: 2;
+    font-weight: 500;
     font-size: 14px;
   }
 `;

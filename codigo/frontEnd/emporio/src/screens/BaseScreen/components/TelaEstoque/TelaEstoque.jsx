@@ -56,15 +56,15 @@ export const TelaEstoque = () => {
       columns: [
         { name: "ID", hidden: true },
         { name: "CATEGORIA", width: "11%", sort: true },
-        { name: "FORNECEDOR", width: "14%", sort: true },
-        { name: "DESCRIÇÃO", width: "15%", sort: true },
-        { name: "QUANTIDADE", width: "11%" },
-        { name: "PREÇO DE COMPRA", width: "13%" },
-        { name: "PREÇO DE VENDA", width: "13%" },
-        { name: "LUCRO UNITÁRIO", width: "12%" },
+        { name: "FORNECEDOR", width: "13%", sort: true },
+        { name: "DESCRIÇÃO", width: "14%", sort: true },
+        { name: "QUANTIDADE", width: "12%", sort: true },
+        { name: "PREÇO DE COMPRA", width: "14%", sort: true },
+        { name: "PREÇO DE VENDA", width: "14%", sort: true },
+        { name: "LUCRO UNITÁRIO", width: "13%", sort: true },
         {
           name: "OPÇÕES",
-          width: "11%",
+          width: "10%",
           formatter: (_, row) => {
             const produto = produtos.find(
               (produto) => produto.produtoId === row.cells[0].data
@@ -212,6 +212,7 @@ export const TelaEstoque = () => {
           <ModalEditarProduto
             estahAberto={modalAberto}
             setAberto={setModalAberto}
+            produto={produtoSelecionado}
           />
         );
       default:
