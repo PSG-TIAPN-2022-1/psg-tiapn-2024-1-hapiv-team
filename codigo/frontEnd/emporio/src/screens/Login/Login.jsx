@@ -11,7 +11,12 @@ import {
   EsqueceuSenha,
 } from "./Login.style";
 import { InputLogin } from "./components/Input/InputLogin";
-import { handleLogin, handleRegistrar, handleRecuperarSenha } from "./Login.js";
+import {
+  validarLogin,
+  validarRecuperacaoSenha,
+  validarRegistro,
+} from "./Login.js";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [visualizacao, setVisualizacao] = useState("login");
@@ -19,8 +24,17 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   const [senhaRepetida, setSenhaRepetida] = useState("");
 
-  const verificarSenha = (senha, senhaRepetida) => {
-    return senha === senhaRepetida;
+  const navigate = useNavigate();
+
+  const limparCampos = () => {
+    setUsuario("");
+    setSenha("");
+    setSenhaRepetida("");
+  };
+
+  const alterarVisualizacao = (novaVisualizacao) => {
+    limparCampos();
+    setVisualizacao(novaVisualizacao);
   };
 
   const renderizarPagina = () => {
@@ -41,10 +55,10 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("login")}>
+              <SubmitButton onClick={() => alterarVisualizacao("login")}>
                 Voltar
               </SubmitButton>
-              <SubmitButton onClick={() => handleRecuperarSenha(usuario)}>
+              <SubmitButton onClick={() => validarRecuperacaoSenha(usuario)}>
                 Enviar Email
               </SubmitButton>
             </SecaoBotao>
@@ -65,7 +79,7 @@ const Login = () => {
                 onChange={(value) => setUsuario(value)}
               />
               <InputLogin
-                key="senha"
+                key="senha-Registrar"
                 icon="key"
                 placeholder="Senha"
                 type="password"
@@ -80,13 +94,19 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("login")}>
+              <SubmitButton onClick={() => alterarVisualizacao("login")}>
                 Voltar
               </SubmitButton>
               <SubmitButton
-                onClick={() => {
-                  if (verificarSenha(senha, senhaRepetida))
-                    handleRegistrar(usuario, senha);
+                onClick={async () => {
+                  const registroSucesso = await validarRegistro(
+                    usuario,
+                    senha,
+                    senhaRepetida
+                  );
+                  if (registroSucesso) {
+                    alterarVisualizacao("login");
+                  }
                 }}
               >
                 Registrar
@@ -102,14 +122,14 @@ const Login = () => {
             </CabecalhoLogin>
             <SecaoInput>
               <InputLogin
-                key="usuario-Login"
+                key="email-Login"
                 icon="email"
                 placeholder="Email"
                 type="text"
                 onChange={(value) => setUsuario(value)}
               />
               <InputLogin
-                key="senha"
+                key="senha-Login"
                 icon="key"
                 placeholder="Senha"
                 type="password"
@@ -117,14 +137,21 @@ const Login = () => {
               />
             </SecaoInput>
             <SecaoBotao>
-              <SubmitButton onClick={() => setVisualizacao("registrar")}>
+              <SubmitButton onClick={() => alterarVisualizacao("registrar")}>
                 Registrar
               </SubmitButton>
-              <SubmitButton onClick={() => handleLogin(usuario, senha)}>
+              <SubmitButton
+                onClick={async () => {
+                  const loginSucesso = await validarLogin(usuario, senha);
+                  if (loginSucesso) {
+                    navigate("/estoque");
+                  }
+                }}
+              >
                 Entrar
               </SubmitButton>
             </SecaoBotao>
-            <EsqueceuSenha onClick={() => setVisualizacao("esqueceuSenha")}>
+            <EsqueceuSenha onClick={() => alterarVisualizacao("esqueceuSenha")}>
               Esqueceu a senha?
             </EsqueceuSenha>
           </>

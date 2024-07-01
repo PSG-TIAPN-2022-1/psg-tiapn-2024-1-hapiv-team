@@ -3,31 +3,93 @@ import {
   Registrar,
   RecuperarSenha,
 } from "../../services/autenticacao/Autenticacao";
+import {
+  verificarSeElementoEhNulo,
+  verificarSeElementoEhMenor,
+  compararElementos,
+} from "../../utils/utils";
 
-export const handleLogin = async (usuario, senha) => {
+const handleLogin = async (usuario, senha) => {
   try {
-    const response = await EfetuarLogin(usuario, senha);
-    console.log(response); //Redireconar para a próxima tela
+    await EfetuarLogin(usuario, senha);
+    return true;
   } catch (error) {
-    console.error(error);
+    switch (error.response.status) {
+      case 400:
+        alert("Usuário ou senha inválidos!");
+        break;
+      case 500:
+        alert("Usuário não encontrado!");
+        break;
+      default:
+        alert("Erro de rede!");
+        break;
+    }
+    return false;
   }
 };
 
-export const handleRegistrar = async (usuario, senha) => {
+const handleRegistrar = async (usuario, senha) => {
   try {
-    const response = await Registrar(usuario, senha);
-    console.log(response); //Redireconar para a próxima tela
+    await Registrar(usuario, senha);
+    return true;
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
-export const handleRecuperarSenha = async (usuario) => {
+const handleRecuperarSenha = async (usuario) => {
   try {
-    console.log(usuario);
-    const response = await RecuperarSenha(usuario);
-    console.log(response); //Redirecionar para a próxima tela
+    await RecuperarSenha(usuario);
+    alert("Senha enviada para o email!");
   } catch (error) {
-    console.error(error);
+    alert(error);
+  }
+};
+
+export const validarLogin = async (usuario, senha) => {
+  if (verificarSeElementoEhNulo(usuario) || verificarSeElementoEhNulo(senha)) {
+    alert("Preencha todos os campos!");
+    return false;
+  }
+
+  const loginSucesso = await handleLogin(usuario, senha);
+  if (loginSucesso) {
+    return true;
+  }
+
+  return false;
+};
+
+export const validarRegistro = async (usuario, senha, senhaRepetida) => {
+  if (
+    verificarSeElementoEhNulo(usuario) ||
+    verificarSeElementoEhNulo(senha) ||
+    verificarSeElementoEhNulo(senhaRepetida)
+  ) {
+    alert("Preencha todos os campos!");
+  } else if (verificarSeElementoEhMenor(senha, 8)) {
+    alert("A senha deve conter no mínimo 8 caracteres!");
+  } else if (!compararElementos(senha, senhaRepetida)) {
+    alert("As senhas não são iguais!");
+  } else {
+    try {
+      const registroSucesso = await handleRegistrar(usuario, senha);
+
+      if (registroSucesso) {
+        alert("Usuário registrado com sucesso!");
+        return true;
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+};
+
+export const validarRecuperacaoSenha = (usuario) => {
+  if (verificarSeElementoEhNulo(usuario)) {
+    alert("Preencha o campo com o seu email!");
+  } else {
+    handleRecuperarSenha(usuario);
   }
 };

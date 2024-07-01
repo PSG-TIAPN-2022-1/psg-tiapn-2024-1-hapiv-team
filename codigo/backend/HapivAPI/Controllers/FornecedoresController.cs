@@ -1,10 +1,8 @@
 ﻿using Asp.Versioning;
-using HapivAPI.Domain;
-using HapivAPI.Domain.Context;
+using AutoMapper;
+using HapivAPI.DTOs;
 using HapivAPI.Interfaces.Repositorys;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace HapivAPI.Controllers
 {
@@ -13,13 +11,21 @@ namespace HapivAPI.Controllers
     [ApiController]
     public class FornecedoresController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly ICategoriaRepository _catRepo;
+        private readonly IFornecedorRepository fornecedorRepository;
+        private readonly IMapper mapper;
 
-        public FornecedoresController(AppDbContext context, ICategoriaRepository catRepo)
+        public FornecedoresController(IFornecedorRepository fornecedor, IMapper _mapper)
         {
-            _context = context;
-            _catRepo = catRepo;
+            fornecedorRepository = fornecedor;
+            mapper = _mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var fornecedores = await fornecedorRepository.GetAll();
+            var fornecedorDTO = mapper.Map<IEnumerable<FornecedorDTO>>(fornecedores);
+            return Ok(fornecedorDTO);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using HapivAPI.Domain.Relacionamentos;
+﻿using HapivAPI.Domain.Relacionamentos;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HapivAPI.Domain
 {
@@ -13,15 +13,15 @@ namespace HapivAPI.Domain
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Lucro { get; set; }
+        public decimal Lucro { get; set; } = 0;
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Faturamento { get; set; }
+        public decimal Faturamento { get; set; } = 0;
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal TaxaDoCartao { get; set; }
+        public decimal TaxaDoCartao { get; set; } = 0;
 
         [Required]
         public DateTime DataDeVenda { get; set; }
@@ -36,11 +36,9 @@ namespace HapivAPI.Domain
         [Required]
         public ICollection<VendaProduto>? VendaProdutos { get; set; }
 
-        Venda()
+        public Venda()
         {
             VendaProdutos = new Collection<VendaProduto>();
         }
-
-
     }
 }

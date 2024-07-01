@@ -109,6 +109,9 @@ namespace HapivAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("CategoriaId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");

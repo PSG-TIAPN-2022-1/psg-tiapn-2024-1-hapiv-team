@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HapivAPI.Domain
 {
@@ -21,7 +21,7 @@ namespace HapivAPI.Domain
 
         // Propriedade de navegação
         [Required]
-        [ForeignKey("Gerente")]
+        [ForeignKey("GerenteId")]
         public Guid GerenteId { get; set; }
         [Required]
         public Gerente? Gerente { get; set; }

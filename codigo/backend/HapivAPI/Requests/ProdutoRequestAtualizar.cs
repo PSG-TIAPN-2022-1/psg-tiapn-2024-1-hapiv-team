@@ -1,6 +1,4 @@
-﻿using HapivAPI.DTOs;
-
-namespace HapivAPI.Requests
+﻿namespace HapivAPI.Requests
 {
     public class ProdutoRequestAtualizar
     {
