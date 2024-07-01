@@ -19,7 +19,11 @@ export const verificarSeEhNumero = (a) => {
 };
 
 export const verificarSeEhPositivo = (a) => {
-  return verificarSeEhNumero(a) && a > 0.0;
+  return verificarSeEhNumero(a) && a > 0;
+};
+
+export const verificarSeEhInteiroPositivo = (a) => {
+  return Number.isInteger(a) && verificarSeEhPositivo(a);
 };
 
 export const substituirPontoPorVirgula = (numero) => {
