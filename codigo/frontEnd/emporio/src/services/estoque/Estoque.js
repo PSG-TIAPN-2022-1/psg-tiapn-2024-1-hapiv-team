@@ -12,7 +12,7 @@ export const AdicionarProduto = async (produto) => {
 export const EditarProduto = async (produto) => {
   try {
     const produtoString = JSON.stringify(produto);
-    await api.post("/Produtos/Editar", produtoString);
+    await api.patch("/Produtos/Atualizar", produtoString);
   } catch (error) {
     throw error;
   }
@@ -27,8 +27,6 @@ export const RemoverProduto = async (produto) => {
     throw error;
   }
 };
-
-export const VenderProduto = async (produto) => {};
 
 export const ObterProdutos = async () => {
   try {

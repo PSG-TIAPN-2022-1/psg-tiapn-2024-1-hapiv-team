@@ -57,14 +57,14 @@ export const TelaEstoque = () => {
         { name: "ID", hidden: true },
         { name: "CATEGORIA", width: "11%", sort: true },
         { name: "FORNECEDOR", width: "13%", sort: true },
-        { name: "DESCRIÇÃO", width: "14%", sort: true },
+        { name: "DESCRIÇÃO", width: "13%", sort: true },
         { name: "QUANTIDADE", width: "12%", sort: true },
         { name: "PREÇO DE COMPRA", width: "14%", sort: true },
         { name: "PREÇO DE VENDA", width: "14%", sort: true },
         { name: "LUCRO UNITÁRIO", width: "13%", sort: true },
         {
           name: "OPÇÕES",
-          width: "10%",
+          width: "11%",
           formatter: (_, row) => {
             const produto = produtos.find(
               (produto) => produto.produtoId === row.cells[0].data
