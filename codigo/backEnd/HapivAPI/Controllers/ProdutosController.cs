@@ -32,6 +32,14 @@ namespace HapivAPI.Controllers
             return Ok(produtosDTO);
         }
 
+        [HttpGet("QuantidadeTotal")]
+        public async Task<IActionResult> GetQuantidadeTotal()
+        {
+            var produtos = await ProdutoRepository.GetAll();
+            var itens = produtos.Where(x => x.Ativo == true).Count();
+            return Ok(itens);
+        }
+
         [HttpPatch("Atualizar")]
         public async Task<IActionResult> Patch([FromBody] IEnumerable<ProdutoRequestAtualizar> produtos)
         {
